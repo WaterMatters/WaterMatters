@@ -1,0 +1,13 @@
+<template name="Map2Field">
+        <div class="map-field" title={{this.crop}}>
+          {{#if cropRice}}
+          <img src="/Village/Crop_Rice.svg" alt={{this.crop}} class="img-field">
+          {{/if}}
+          {{#if cropMaize}}
+          <img src="/Village/Crop_corn.svg" alt={{this.crop}} class="img-field">
+          {{/if}}
+          {{#if cropSoybean}}
+          <img src="/Village/Crop_beans.svg" alt={{this.crop}} class="img-field">
+          {{/if}}
+        </div>
+</template>

@@ -1,0 +1,91 @@
+@media only screen and (min-width:301px)  /*Smartphones*/
+{
+	@supports (-webkit-overflow-scrolling: touch) {
+	  /* CSS specific to iOS devices */ 
+	  
+		.left-nav {
+			list-style: none; 
+			background-image: url('/WM_assets/Canal.svg');
+			background-repeat: no-repeat;
+			margin-left: -15px;
+			margin-top: -50px;
+			/*height : 150vh;
+			width : 200px;*/
+			margin-bottom: 0;
+		}
+
+		.drop 
+		{
+			height: 100px;
+			width: 77px;
+		}
+
+		.img-village {
+			height: 372px;
+			width: 800px;
+			position: relative; 
+			top : 0; 
+			left: 0;
+
+		}
+
+		.cloud
+		{
+			width: 135px;
+			height : 85px;
+			position: absolute;  
+			top : 175px; 
+			left: 333px;
+		}
+
+		/* PlayerInfo */
+
+		.info-season
+		{
+			color: white;
+			font-family: 'SourceSP-xlight';
+
+			background-image: url('/Button_Stroke.svg');
+			background-repeat: no-repeat;
+			background-size: cover;
+			font-size: 24px;
+			white-space:nowrap;
+			margin : 5px;
+			width: 119px;
+			height: 32px;
+			/*width: 185px;
+			height: 50px;*/
+			text-align: center;
+		}
+
+		.info-stage
+		{
+			color: white;
+			font-family: 'SourceSP';
+
+			background-image: url('/Button_full_Down.svg');
+			background-repeat: no-repeat;
+			background-size: cover;
+			font-size: 22px;
+			white-space:nowrap;
+			margin : 5px;
+			width: 88px;
+			height: 32px;	
+			text-align: center;
+		}
+
+		.img-cap
+		{
+			width: 25px;
+			height: 25px;
+		}
+
+		.credits
+		{
+			white-space: nowrap;
+			line-height: 100px;
+			color : white;
+			font-size: 26px;
+		}
+	}
+}

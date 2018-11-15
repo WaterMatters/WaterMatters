@@ -1,0 +1,266 @@
+<template name="FormEvent">
+
+  {{#if $.Session.equals 'eventView' 'new'}}
+    {{#autoForm collection="Events" id="EventForm" type="insert"}}
+    <table class="table-newGame table-newEvent">
+      <thead>
+        <tr>
+          <td colspan="6" class="white-cell newGame-title event-spacing">
+            New Event
+            <img src="/Control/NewGame_button_cross.png" style="float : right; padding: 5px;" class="ng-close">
+          </td>
+        </tr>
+      </thead>
+      <tbody class=" event-spacing-v">
+        <tr class="event-border">
+          <td class="white-eventCell blue-ng event-lbl">
+            Name
+          </td>
+          <td colspan="5" class="grey-cell">
+            {{> afFieldInput name="name" class="grey-cell newGameInput no-border event-input"}}
+          </td>
+        </tr>
+        <tr class="event-border">
+          <td class="white-eventCell blue-ng event-lbl">
+            Event
+          </td>
+          <td colspan="2" class="grey-cell">
+            {{> afFieldInput name="event" id="eventFormEvent" type="select" options=eventOptions class="grey-cell newGameInput no-border event-input"}}
+          </td>
+          <td class="white-eventCell blue-ng event-lbl event-border-left">
+            Where
+          </td>
+          <td colspan="2" class="grey-cell">
+            {{> afFieldInput name="where" id="eventFormWhere" type="select" options=whereOptions class="grey-cell newGameInput no-border event-input"}}
+          </td>
+        </tr>
+        <tr class="event-border">
+          <td class="white-eventCell blue-ng event-lbl">
+            Modification
+          </td>
+          <td colspan="2" class="grey-cell">
+            {{> afFieldInput name="modification" class="grey-cell newGameInput no-border event-input"}}
+          </td>
+          <td class="white-eventCell blue-ng event-lbl event-border-left">
+            Reparation Cost
+          </td>
+          <td colspan="2" class="grey-cell">
+            {{#if isEventCanal}}
+              {{> afFieldInput name="priceReparation" id="eventFormPrice" class="grey-cell newGameInput no-border event-input"}}
+            {{/if}}
+          </td>
+        </tr>
+        <tr class="event-border">
+          <td class="white-eventCell blue-ng event-lbl">
+            Season
+          </td>
+          <td class="grey-cell">
+            {{> afFieldInput name="season" id="eventFormSeason" type="select" options=seasonsOptions class="grey-cell newGameInput no-border event-input"}}
+          </td>
+          <td class="white-eventCell blue-ng event-lbl event-border-left">
+            Stage
+          </td>
+          <td class="grey-cell">
+            {{> afFieldInput name="stage" id="eventFormStage" type="select" options=stagesOptions class="grey-cell newGameInput no-border event-input"}}
+          </td>
+          <td class="white-eventCell blue-ng event-lbl event-border-left">
+            Timing
+          </td>
+          <td class="grey-cell">
+            {{> afFieldInput name="timing" id="eventFormTiming" type="select" options=timingOptions class="grey-cell newGameInput no-border event-input"}}
+          </td>
+        </tr>
+        <tr class="event-border">
+          <td class="white-eventCell blue-ng event-lbl">
+            Description
+          </td>
+          <td colspan="6" class="grey-cell">
+            {{> afFieldInput name="description" id="eventFormDescription" class="grey-cell newGameInput no-border event-input" style="height: 100px;"}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="submit-ng">
+      <button class="btn submission center" type="submit"><img src="/Control/NewGame_button_submit_up.png"></button>
+    </div>
+    {{/autoForm}}
+  {{/if}}
+
+  {{#if $.Session.equals 'eventView' 'edit'}}
+    {{#autoForm collection="Events" id="EventForm" type="update" doc=eventEditDoc autosave=false}}
+    <table class="table-newGame table-newEvent">
+      <thead>
+        <tr>
+          <td colspan="6" class="white-cell newGame-title">
+            Edit Event
+            <img src="/Control/NewGame_button_cross.png" style="float : right; padding: 5px;" class="ng-close">
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="event-border">
+          <td class="white-eventCell blue-ng event-lbl">
+            Name
+          </td>
+          <td colspan="5" class="grey-cell">
+            {{> afFieldInput name="name" class="grey-cell newGameInput no-border event-input"}}
+          </td>
+        </tr>
+        <tr class="event-border">
+          <td class="white-eventCell blue-ng event-lbl">
+            Event
+          </td>
+          <td colspan="2" class="grey-cell">
+            {{> afFieldInput name="event" id="eventFormEvent" type="select" options=eventOptions class="grey-cell newGameInput no-border event-input"}}
+          </td>
+          <td class="white-eventCell blue-ng event-lbl event-border-left">
+            Where
+          </td>
+          <td colspan="2" class="grey-cell">
+            {{> afFieldInput name="where" id="eventFormWhere" type="select" options=whereOptions class="grey-cell newGameInput no-border event-input"}}
+          </td>
+        </tr>
+        <tr class="event-border">
+          <td class="white-eventCell blue-ng event-lbl">
+            Modification
+          </td>
+          <td colspan="2" class="grey-cell">
+            {{> afFieldInput name="modification" class="grey-cell newGameInput no-border event-input"}}
+          </td>
+          <td class="white-eventCell blue-ng event-lbl event-border-left">
+            Reparation Cost
+          </td>
+          <td colspan="2" class="grey-cell">
+            {{#if isEventCanal}}
+              {{> afFieldInput name="priceReparation" id="eventFormPrice" class="grey-cell newGameInput no-border event-input"}}
+            {{/if}}
+          </td>
+        </tr>
+        <tr class="event-border">
+          <td class="white-eventCell blue-ng event-lbl">
+            Season
+          </td>
+          <td class="grey-cell">
+            {{> afFieldInput name="season" id="eventFormSeason" type="select" options=seasonsOptions class="grey-cell newGameInput no-border event-input"}}
+          </td>
+          <td class="white-eventCell blue-ng event-lbl event-border-left">
+            Stage
+          </td>
+          <td class="grey-cell">
+            {{> afFieldInput name="stage" id="eventFormStage" type="select" options=stagesOptions class="grey-cell newGameInput no-border event-input"}}
+          </td>
+          <td class="white-eventCell blue-ng event-lbl event-border-left">
+            Timing
+          </td>
+          <td class="grey-cell">
+            {{> afFieldInput name="timing" id="eventFormTiming" type="select" options=timingOptions class="grey-cell newGameInput no-border event-input"}}
+          </td>
+        </tr>
+        <tr class="event-border">
+          <td class="white-eventCell blue-ng event-lbl">
+            Description
+          </td>
+          <td colspan="6" class="grey-cell">
+            {{> afFieldInput name="description" id="eventFormDescription" class="grey-cell newGameInput no-border event-input" style="height: 100px;"}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="submit-ng">
+      <button class="btn submission center" type="submit"><img src="/Control/NewGame_button_submit_up.png"></button>
+    </div>
+    {{/autoForm}}
+  {{/if}}
+
+
+  <!--
+{{#if $.Session.equals 'eventView' 'new'}}
+    {{#autoForm collection="Events" id="EventForm" type="insert"}}
+              <fieldset>
+                <div class="field-name">
+                      {{> afQuickField name="name"}}
+                </div>
+                <div class="fields-event-specs">
+                      <div class="box-specs">
+                        <div class="field">
+                          <div>Event</div>
+                          {{> afFieldInput name="event" id="eventFormEvent" type="select" options=eventOptions}}
+                        </div>
+                        {{> afQuickField name="modification"}}
+                      </div>
+                      <div class="box-specs">
+                        <div class="field">
+                          <div>Where</div>
+                          {{> afFieldInput name="where" id="eventFormWhere" type="select" options=whereOptions}}
+                        </div>
+                        {{#if isEventCanal}}
+                          {{> afQuickField name="priceReparation" id="eventFormPrice"}}
+                        {{/if}}
+                      </div>
+                </div>
+                <div class="fields-timing">
+                      <div class="field">
+                        <div>Season</div>
+                        {{> afFieldInput name="season" id="eventFormSeason" type="select" options=seasonsOptions}}
+                      </div>
+                      <div class="field">
+                        <div>Stage</div>
+                        {{> afFieldInput name="stage" id="eventFormStage" type="select" options=stagesOptions}}
+                      </div>
+                      <div class="field">
+                        <div>Timing</div>
+                        {{> afFieldInput name="timing" id="eventFormTiming" type="select" options=timingOptions}}
+                      </div>
+                </div>
+                <div class="field-description">
+                  {{> afQuickField name="description" id="eventFormDescription"}}
+                </div>
+              </fieldset>
+              <button type="submit" class="btn btn-primary">Create Event</button>
+    {{/autoForm}}
+{{/if}}
+
+{{#if $.Session.equals 'eventView' 'edit'}}
+    {{#autoForm collection="Events" id="EventForm" type="update" doc=eventEditDoc autosave=false}}
+              <fieldset>
+                <div class="field-name">
+                      {{> afQuickField name="name"}}
+                </div>
+                <div class="fields-event-specs">
+                      <div class="box-specs">
+                        <div class="field">
+                          <div>Event</div>
+                          {{> afFieldInput name="event" id="eventFormEvent" type="select" options=eventOptions}}
+                        </div>
+                        {{> afQuickField name="modification"}}
+                      </div>
+                      <div class="box-specs">
+                        <div class="field">
+                          <div>Where</div>
+                          {{> afFieldInput name="where" id="eventFormWhere" type="select" options=whereOptions}}
+                        </div>
+                        {{> afQuickField name="priceReparation" id="eventFormPrice"}}
+                      </div>
+                </div>
+                <div class="fields-timing">
+                      <div class="field">
+                        <div>Season</div>
+                        {{> afFieldInput name="season" id="eventFormSeason" type="select" options=seasonsOptions}}
+                      </div>
+                      <div class="field">
+                        <div>Stage</div>
+                        {{> afFieldInput name="stage" id="eventFormStage" type="select" options=stagesOptions}}
+                      </div>
+                      <div class="field">
+                        <div>Timing</div>
+                        {{> afFieldInput name="timing" id="eventFormTiming" type="select" options=timingOptions}}
+                      </div>
+                </div>
+                {{> afQuickField name="description" id="eventFormDescription"}}
+              </fieldset>
+              <button type="submit" class="btn btn-primary">Update</button>
+  {{/autoForm}}
+{{/if}}
+
+-->
+</template>

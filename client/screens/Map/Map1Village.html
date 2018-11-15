@@ -1,0 +1,58 @@
+<template name="Map1Village">
+{{#if Template.subscriptionsReady}}
+  <div class="map-village-container {{#if storage this.village}}hastank{{else}}hasnotank{{/if}}" id="V{{this.village}}" style="left : {{setLeft this.village}}; top: {{setTop this.village}}">
+    <div class="map-village-header">
+      <div class="village-name">
+          <!-- Village {{this.village}} --> 
+            {{this.village}}. {{name}}
+            {{#if waterManager this.village}}
+              <div class="village-water-manager">
+                <!--<img src="/Map/Water_Manager_crown_label.png" alt={{cap}} class="img-cap-map">-->
+              </div>
+            {{/if}}
+      </div>
+      <!--{{#if $.Session.equals 'see-map-toggle' 'opened'}}
+        <div>
+          Money = {{this.money}} Pz.
+        </div>
+      {{else}}
+      {{/if}}-->
+    </div>
+    <div class="map-fields-area">
+      {{#if $.Session.equals 'see-map-toggle' 'opened'}}
+        {{#if isController}}
+          <div class="money">
+            Money
+          </div> 
+          <br>
+          <div class="money-amount">
+            {{this.money}} Pz.
+          </div>
+        {{else}}
+            {{#each this.crops}}
+                {{> Map2Field}}
+            {{/each}}
+        {{/if}}
+      {{else}}
+        {{#each this.crops}}
+            {{> Map2Field}}
+        {{/each}}
+      {{/if}}
+<!--
+      {{#if displayFields}}
+          {{#each this.crops}}
+              {{> Map2Field}}
+          {{/each}}
+      {{else}}
+          {{#each this.crops}}
+              <div class="map-field gogol"></div>
+          {{/each}}
+      {{/if}}
+-->
+    </div>
+  </div>
+
+{{else}}
+
+{{/if}}
+</template>

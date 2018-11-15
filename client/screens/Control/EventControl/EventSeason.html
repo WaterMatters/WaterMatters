@@ -1,0 +1,76 @@
+<template name="EventSeason">
+  <!-- {{#if isSubsequentSeason}} -->
+        <div class="bloc-season {{#if isPresentOrSubsequentSeason}}{{else}}disabled{{/if}}">
+            <!-- <p> -->
+              <table class="event-table">
+                <thead>
+                  <tr class="eventTitle">
+                    <td class="white-cell" colspan="8">
+                      Season {{this}}
+                    </td>
+                  </tr>
+                  {{#if isPresentOrSubsequentSeason}}
+                  <tr class="eventSubtitle">
+                    <td class="event-white-cell">
+                      Stage
+                    </td>
+                    <td class="event-white-cell">
+                      Event
+                    </td>
+                    <td class="event-white-cell">
+                      Modification
+                    </td>
+                    <td class="event-white-cell">
+                      Price
+                    </td>
+                    <td class="event-white-cell">
+                      Where
+                    </td>
+                    <td class="event-white-cell">
+                      Timing
+                    </td>
+                    <td class="event-white-cell">
+                      Edit
+                    </td>
+                    <td class="event-white-cell">
+                      Delete
+                    </td>
+                  </tr>
+                  {{/if}}
+                </thead>
+                {{#if isPresentOrSubsequentSeason}}
+                  <tbody>
+                    {{#each eventsThisSeason}}
+                      {{>EventDoc}}
+                    {{/each}}
+                  </tbody>
+                {{/if}}
+              </table>
+              <!--
+              <div class="bloc-season-header">
+                Season {{this}}
+              </div>
+
+              {{#if isPresentOrSubsequentSeason}}
+                  <div class="content-events">
+                      <div class="control-event-season-headers">
+                        <span>Stage</span>
+                        <span>Event</span>
+                        <span>Modification</span>
+                        <span>Price</span>
+                        <span>Where</span>
+                        <span>Timing</span>
+                        <span>Edit</span>
+                        <span>Delete</span>
+                      </div>
+                      
+
+                  </div>
+
+
+              {{/if}}
+            -->
+        </div>
+
+
+</template>

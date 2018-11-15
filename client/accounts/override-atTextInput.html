@@ -1,0 +1,16 @@
+
+<template name="override-atTextInput">
+  <div class="at-input {{#if isValidating}}validating{{/if}} {{#if hasError}}has-error{{/if}} {{#if hasSuccess}}has-success{{/if}} {{#if feedback}}has-feedback{{/if}}" style="margin: 15px 0px;">
+    <div class="input-group">
+      {{#if hasIcon}}
+        <span class="{{iconClass}} fa fa-close"></span>
+      {{/if}}
+      <input type="{{type}}" id="at-field-{{_id}}" name="at-field-{{_id}}" placeholder="{{placeholder}}" autocapitalize="none" autocorrect="off" class="form-control-lg SourceSP-xlight input-log">
+    </div>
+    
+    
+    {{#if hasError}}
+      <span>{{errorText}}</span>
+    {{/if}}
+  </div>
+</template>

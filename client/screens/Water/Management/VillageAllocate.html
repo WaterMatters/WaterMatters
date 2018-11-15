@@ -1,0 +1,67 @@
+<template name="VillageAllocate">
+
+  <tr>
+        {{#if yourVillage}}
+        <th class="no-border">
+          {{#if yourVillageTransparent}}
+            <i class="fas fa-eye  clickable toggle-visibility eye-decal" style="color:green; font-size: 18px;" title="Your water management is visible for everybody. Click to undo."></i>
+            <!-- <i class="fas fa-eye-slash clickable toggle-visibility" title="Your water management is visible for everybody. Click to undo."></i> -->
+          {{else}}
+            <!-- <i class="fas fa-eye clickable toggle-visibility" title="Your water management is visible only for you. Click if you want to share it with the community."></i> -->
+            <i class="fas fa-eye-slash clickable toggle-visibility eye-decal" style="color:red; font-size: 18px;" title="Your water management is visible only for you. Click if you want to share it with the community."></i>
+          {{/if}}
+        </th>
+        {{else}}
+        <th class="no-border"></th>
+        {{/if}}
+
+        <th class="border-white">{{name}}</th>
+
+        <th class="border-grey">{{#if transparentVillage}}{{plantedArea}}{{/if}}</th>
+
+        <th class="border-grey">{{#if transparentVillage}}{{waterRequest}}{{/if}}</th>
+
+        {{#if totalVisibility}}
+
+          <th class="border-grey">{{propPlanted}}</th>
+
+          <th class="border-grey">{{propRequest}}</th>
+
+          <th class="border-grey">{{evenDistribution}}</th>
+
+        {{/if}}
+
+        <th class="backBlue border-grey">
+          {{#if transparentVillage}}
+            {{#if modifAllocPower}}
+              <input class="backBlue inputAlloc input-manual" type="number" min="0" value="{{allocation}}">
+            {{else}}
+              <div class="backBlue">
+                {{allocation}}
+              </div>
+            {{/if}}
+          {{/if}}
+        </th>
+
+        {{#if totalVisibility}}
+
+            {{#if $gte mainCanal.after 0}}
+                {{#if $eq mainCanal.gainOrLossBefore 'loss'}}
+                    <th style="background-color:#ff9999;" title = "water loss of {{mainCanal.gainOrLossValue}} units upstream of this village" class="border-grey">{{mainCanal.after}}</th>
+                {{else}}
+                    {{#if $eq mainCanal.gainOrLossBefore 'gain'}}
+                    <th style="background-color:#d3f4bc;" title = "water gain of {{mainCanal.gainOrLossValue}} units upstream of this village" class="border-grey">{{mainCanal.after}}</th>
+                    {{else}}
+                    <th class="border-grey">{{mainCanal.after}}</th>
+                    {{/if}}
+                {{/if}}
+            {{else}}
+                <th style="background-color:#ff9999;" title = "You are dealing too much water!!!" class="border-grey">{{mainCanal.after}}</th>
+            {{/if}}
+
+        {{else}}
+          <th class="no-border"></th>
+        {{/if}}
+  </tr>
+
+</template>

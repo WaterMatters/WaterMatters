@@ -1,0 +1,164 @@
+<template name="Reservoir">
+
+  <div class="marketContainer">
+    <div class="market-leftPart">      
+ <!--     <div class="header_menu">
+        <img src="/Documents/Market/Market_title.png">
+      </div> -->
+      <div class="{{#if isInRole 'controller'}}inactive{{/if}}">
+        {{> MarketNav btn="4"}}
+      </div>
+    </div>
+    <div class="market-rightPart">
+        {{#if Template.subscriptionsReady}}
+<!--
+          <div class="action-header header-market">
+            <a href="/market">Market</a>
+            <span class="">/</span>
+            <a href="/market/shop">Shop</a>
+            <span class="">/</span>
+            <span class="">Reservoir</span>
+          </div>
+-->
+          <div class="body-reservoir">
+
+            <!--<button type="button" name="button" class="btn btn-green {{#if $gte money 2000}}btn-green addCapacity{{else}}btn-inactive{{/if}}">
+                <p>
+                  <span>Add 5 storage units</span>
+                  <br>
+                  <span>Price = 2000 Pz.</span>
+                </p>
+            </button> -->
+            <div class="tank">
+              {{#if $gte money 2000}}
+                <div class="btn">
+                  <img src="/Documents/Reservoir/Reservoir_button_up.png" class="addCapacity">
+                </div>
+              {{else}}
+              {{/if}}            
+            </div>
+            
+            <div class="tank-info">
+              <img src="/Documents/Reservoir/Reservoir_reservoir.png" alt="" class="img-storage">
+              <div class="capacity">{{storage.capacity}}</div>
+            </div>
+          </div>
+        {{/if}}
+    </div>
+  </div>
+
+  <!-- The Housing Modal -->
+<div class="modal" id="housingModal" data-backdrop="false">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Subsistence costs</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h3>You already paid for this season.</h3>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- The Crop Seeds Modal -->
+<div class="modal" id="cropModal" data-backdrop="false">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Crop Seeds</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h3>
+          {{#if subsistenceActive}}
+            You must pay the subsistence costs of your villagers before being able to buy your crops.
+          {{else}}
+            You can only do that at the start of a season.
+          {{/if}}
+        </h3>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- The maintenance Modal -->
+<div class="modal" id="maintenanceModal" data-backdrop="false">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Maintenance Counters</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h3>
+          {{#if subsistenceActive}}
+            You must pay the subsistence costs of your villagers before being able to maintain your fields.
+          {{else}}
+            Maintenance is possible only during the start of the season, from season n°2.
+          {{/if}}
+        </h3>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- The tank Modal -->
+<div class="modal" id="tankModal" data-backdrop="false">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Tank</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h3>Storing water is only available from season n°2.</h3>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    
+
+</template>

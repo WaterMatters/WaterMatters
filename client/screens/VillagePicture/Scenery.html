@@ -1,0 +1,58 @@
+<template name="Scenery">
+  
+    {{#if thereIsARainEvent}}
+      <div class="dot-event blue dot-rain trigger-modal" id="trigger-modal-eventRain"></div>
+    {{/if}}
+
+      <div class="villageContainer">
+        {{#if $neq storage.capacity 0}}
+          <img src="/Village/Village_nomill_tank.svg" alt="" class="img-village">
+        {{else}}
+          <img src="/Village/Village_nomill_notank.svg" class="img-village">
+        {{/if}}
+        {{#if currentUser}}
+          <img src="/Village/Village_name_banner.svg" class="village-banner">
+          <span class="village-banner-text">{{name}}</span>
+        {{/if}}
+      </div>
+
+
+    {{#if showRainAndCanal}}
+    <div class="cloud center">
+      <img src="/Village/Cloud.svg" id="RainingCloud">
+      <span class="text-in-cloud" id="TextCloud">{{rain}}</span>
+      <div class="cloud-panel">
+          <span class="cloud-info-title">{{rainEvent.name}}</span>
+          <br>
+          <span class="cloud-info center">{{rainEvent.description}}</span>
+      </div>
+    </div>
+    <!--
+            <div class="rain-on-screen">
+              <div class="stacked-icons">
+                <span class="fa-stack fa-3x">
+                  <i class="fas fa-cloud fa-stack-2x dark-cloud"></i>
+                  <span class="fa fa-stack-1x">
+                    <span class="rain-text-in-cloud">{{rain}}</span>
+                  </span>
+                </span>
+              </div>
+              <div class="rain-drops"><i class="fas fa-tint"></i><i class="fas fa-tint"></i><i class="fas fa-tint"></i></div>
+              <div class="rain-drops rain-under"><i class="fas fa-tint"></i><i class="fas fa-tint"></i></div>
+            </div>
+    -->
+    {{/if}}
+<!--
+    {{#if $neq storage.capacity 0}}
+      <div class="storage unblur">
+        <img src="/Village/Village_WaterTank.svg" alt="" class="img-storage">
+        <div class="capacity">{{storage.value}} / {{storage.capacity}}</div>
+      </div>
+    {{/if}}
+-->
+    {{#if $neq storage.capacity 0}}
+          <span class="tank-capacity">{{storage.value}} / {{storage.capacity}}</span>
+    {{/if}}
+    {{> Fields}}
+
+</template>

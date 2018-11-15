@@ -1,0 +1,13 @@
+<template name="ParticipationEvent">
+
+	<div class="village-participation">
+		<!--<p>Village {{this.village}}: </p>-->
+		<div class="event-village-name">{{name}}</div> 
+		<div class="event-village-input">
+			<input type="number" class="input-manual" name="test" value="{{this.value}}" disabled="{{#if $eq player this.village}}{{else}}disabled{{/if}}">
+			Pz.
+		</div>
+	</div>
+	<br>
+
+</template>

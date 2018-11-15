@@ -1,0 +1,103 @@
+<template name="ChatBox">
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<div class="media-list">
+					<!-- message template -->
+					{{#each messages}}
+						{{> message}}
+					{{/each}}
+				</div>
+				<!-- message textbox -->
+				{{#if currentUser}}
+					<form class="new-message">
+							<div class="input-group">
+								<input type="text" name="text" class="form-control form-control-lg chat-input" placeholder="Enter your message ..." autocomplete="off" />
+								<span class="input-group-btn">
+									<button class="btn btn-lg send" type="submit"></button>
+								</span>
+							</div>
+					</form>
+				{{/if}}
+			</div>
+		</div>
+	</div>
+	<div id="newChannel" style="visibility: hidden;">
+		<div class="newChannel-header">
+			<div class="header-left">
+				<div class="newChannel-title">New Channel</div>
+			</div>
+			<div class="header-right">
+				<button type="button" class="close-newChannel"></button>
+			</div>
+		</div>
+		<div class="newChannel-body">
+			<div class="channelName">
+				<label for="iptChName">Name</label>
+				<input type="text" name="iptChName" id="iptChName" class="iptChName form-control">
+			</div>
+			<div class="village-selection">
+				Choose players
+				<div class="players-btn">
+					<div class="container">
+						<div class="row" style="text-align: center;">
+							<!--{{#each usersOnline}}
+								<div class="col-6">
+									<button class="btn users-item btn-user id-{{id roles}}">{{name roles}}</button>
+								</div>
+							{{/each}}-->
+							{{#each getUsers}}
+								{{#if isMe this._id}}
+								{{else}}
+									{{#if isController this}}
+										<div class="col-4">
+											<button class="btn users-item btn-user btn-select" id="{{this._id}}">Controller</button>
+										</div>
+									{{else}}
+										<div class="col-4">
+											<button class="btn users-item btn-user btn-select" id="{{this._id}}">{{this.profile.name}}</button>
+										</div>
+									{{/if}}
+								{{/if}}
+							{{/each}}
+							<!--
+							<div class="col-4">
+								<button class="btn users-item btn-user btn-select" id="jYvfCjFrfRmSxumK5">Rivergate</button>
+							</div>
+							<div class="col-4">
+								<button class="btn users-item btn-user btn-select" id="r6m6BGjiRTh6xE5Zn">Suncreek</button>
+							</div>
+							<div class="col-4">
+								<button class="btn users-item btn-user btn-select" id="eP3R2JiafviLDqH7X">Clearwater</button>
+							</div>
+							<div class="col-4">
+								<button class="btn users-item btn-user btn-select" id="kYvfCjFrfRmSxumK5">Blueharvest</button>
+							</div>
+							<div class="col-4">
+								<button class="btn users-item btn-user btn-select" id="l6m6BGjiRTh6xE5Zn">Starfields</button>
+							</div>
+							<div class="col-4">
+								<button class="btn users-item btn-user btn-select" id="mP3R2JiafviLDqH7X">Aquarun</button>
+							</div>
+							<div class="col-4">
+								<button class="btn users-item btn-user btn-select" id="n6m6BGjiRTh6xE5Zn">Greenbounty</button>
+							</div>
+							<div class="col-4">
+								<button class="btn users-item btn-user btn-select" id="oP3R2JiafviLDqH7X">Moonbanks</button>
+							</div>
+							<div class="col-4">
+								<button class="btn users-item btn-user btn-select" id="akdoGrGZzsiGCkDJy">Controller</button>
+							</div>
+						-->
+							<div class="col-12">
+								<button class="btn btn-create">Create</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

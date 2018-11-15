@@ -1,0 +1,115 @@
+<template name="MarketNav">
+	<!--<span>Button = {{btn}}</span><br>-->
+	<div class="header_menu">
+		<img src="/Documents/Market/Market_title.png">
+	</div>
+	<div class="{{#if isInRole 'controller'}}inactive{{/if}}">
+		<!-- Food & Housing -->
+	    <div class="housing_menu">
+	    {{#if $eq btn "1"}}
+	    	{{#if subsistenceActive}}
+	          <a class="active link" href="/market/shop/food&housing">
+	            <img src="/Documents/Market/Button_Food&housing_down.png" class="btn-market btn img-responsive">
+	          </a>      
+			{{else}}
+			  <a class="trigger-modal" id="trigger-modal-subsistence houmodal" href="" data-toggle="modal" data-target="#housingModal">
+			    <img src="/Documents/Market/Button_Food&housing_down.png" class="btn-market btn img-responsive">
+			  </a>
+			{{/if}}
+		{{else}}
+	      {{#if subsistenceActive}}
+	          <a class="active link" href="/market/shop/food&housing">
+	            <img src="/Documents/Market/Button_Food&housing_up.png" class="btn-market btn img-responsive">
+	          </a>      
+	      {{else}}
+	          <a class="trigger-modal" id="trigger-modal-subsistence houmodal" href="" data-toggle="modal" data-target="#housingModal">
+	            <img src="/Documents/Market/Button_Food&housing_up.png" class="btn-market btn img-responsive">
+	          </a>
+	      {{/if}}
+	    {{/if}}
+	    </div>
+
+	    <!-- Crops -->
+	    <div class="seeds_menu">
+	    	{{#if $eq btn "2"}}
+		    	{{#if cropsActive}}
+		          <a class="active link" href="/market/shop/crops">
+		            <img src="/Documents/Market/Button_CropSeeds_down.png" class="btn-market btn img-responsive">
+		          </a>
+		        {{else}}
+		          <a class="trigger-modal" id="trigger-modal-crops cromodal" href="" data-toggle="modal" data-target="#cropModal">
+		            <img src="/Documents/Market/Button_CropSeeds_down.png" class="btn-market btn img-responsive">
+		          </a>
+		        {{/if}}
+	    	{{else}}
+		      	{{#if cropsActive}}
+		          <a class="active link" href="/market/shop/crops">
+		            <img src="/Documents/Market/Button_CropSeeds_up.png" class="btn-market btn img-responsive">
+		          </a>
+		        {{else}}
+		          <a class="trigger-modal" id="trigger-modal-crops cromodal" href="" data-toggle="modal" data-target="#cropModal">
+		            <img src="/Documents/Market/Button_CropSeeds_up.png" class="btn-market btn img-responsive">
+		          </a>
+		        {{/if}}
+	      	{{/if}}
+	    </div>
+
+	    <div class="maintenance_menu">
+	    	{{#if $eq btn "3"}}
+	    		{{#if maintenanceActive}}
+					<a class="active link" href="/market/shop/maintenance">
+					  <img src="/Documents/Market/Button_Maintenance_down.png" class="btn-market btn img-responsive">
+					</a>
+				{{else}}
+					<a class="trigger-modal" id="trigger-modal-maintenance maimodal" href="" data-toggle="modal" data-target="#maintenanceModal">
+					  <img src="/Documents/Market/Button_Maintenance_down.png" class="btn-market btn img-responsive">
+					</a>
+				{{/if}}
+	    	{{else}}
+				{{#if maintenanceActive}}
+					<a class="active link" href="/market/shop/maintenance">
+					  <img src="/Documents/Market/Button_Maintenance_up.png" class="btn-market btn img-responsive">
+					</a>
+				{{else}}
+					<a class="trigger-modal" id="trigger-modal-maintenance maimodal" href="" data-toggle="modal" data-target="#maintenanceModal">
+					  <img src="/Documents/Market/Button_Maintenance_up.png" class="btn-market btn img-responsive">
+					</a>
+				{{/if}}
+			{{/if}}
+	    </div>
+
+	    <div class="tank_menu">
+	    	{{#if $eq btn "4"}}
+	    		{{#if reservoirActive}}
+					<a class="active link" href="/market/shop/reservoir">
+					  <img src="/Documents/Market/Button_reservoir_down.png" class="btn-market btn img-responsive">
+					</a>
+				{{else}}
+					<a class="trigger-modal" id="trigger-modal-reservoir tanmodal" href="" data-toggle="modal" data-target="#tankModal">
+					  <img src="/Documents/Market/Button_reservoir_down.png" class="btn-market btn img-responsive">
+					</a>
+				{{/if}}
+	    	{{else}}
+	    		{{#if reservoirActive}}
+					<a class="active link" href="/market/shop/reservoir">
+					  <img src="/Documents/Market/Button_reservoir_up.png" class="btn-market btn img-responsive">
+					</a>
+				{{else}}
+					<a class="trigger-modal" id="trigger-modal-reservoir tanmodal" href="" data-toggle="modal" data-target="#tankModal">
+					  <img src="/Documents/Market/Button_reservoir_up.png" class="btn-market btn img-responsive">
+					</a>
+				{{/if}}
+	    	{{/if}}
+
+	    </div>
+	</div>
+  	<div class="trade_menu">
+  		<a class="active link" href="/market/trade">
+  		{{#if $eq btn "5"}}
+    		<img src="/Documents/Market/Button_trade_down.png" class="btn-market btn img-responsive">
+    	{{else}}
+    		<img src="/Documents/Market/Button_trade_up.png" class="btn-market btn img-responsive">
+    	{{/if}}
+    	</a>
+  	</div>	
+</template>

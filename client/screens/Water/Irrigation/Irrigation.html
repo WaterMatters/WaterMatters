@@ -1,0 +1,47 @@
+<template name="Irrigation">
+  <!-- {{#if canStayOnIrrigation}} -->
+  <div class="irrigation">
+    <div class="irrigationTitle">
+      <img src="/Documents/Irrigation/Irrigation_title.png" class="center title title-img-irrig">
+    </div>
+    <div class="irrigationMenu">
+      <div class="container">
+        <div class="row h-100 justify-content-center align-items-center">
+          <div class="irrigationFiller">
+            <!--<span style="font-weight:bold;text-decoration:underline;margin-left : 20px;">Infos</span><br>-->
+            <div class="irrigationInfos col-12"> 
+              <div class="center"> 
+                <div class="right">        
+                  <span>Rain : {{rain}}</span><br>
+                  <span>Water allocated to you: {{allocation}}</span><br>
+                  <span>Water you actually received: {{received}}</span>
+                </div> 
+              </div> 
+            </div>
+            <span style="font-weight:bold;text-decoration:underline;margin-left : 20px;">Manage your water</span><br>
+            <div class="manage-water col-12" style=" margin-bottom: 25px;">       
+              <div class="center"> 
+                <div class="right">       
+                  <span>Put back in main canal: <input type="number" class="input-manual backInMC-input" min="0" value="{{backInMC}}"></span><br>
+                  {{#if $gt storage.capacity 0}}
+                    <span>Storage: <input type="number" class="input-manual storage-input" min="0" max="{{storage.capacity}}" value="{{storage.value}}"></span><br>
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="water-irrigation" style="display: flex;">
+              <div class="row" >
+                {{#each fields}}
+                      {{> SupplySlot}}
+                {{/each}}
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>        
+  <!-- {{else}}
+  {{/if}} -->
+</template>

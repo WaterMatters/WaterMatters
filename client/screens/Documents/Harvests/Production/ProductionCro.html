@@ -1,0 +1,48 @@
+<template name='ProductionCro'> <!-- Not used yet -->   
+  <div class="production-crop">
+      <div class="production-name-crop">
+          {{#if $eq this.crop 'soybean'}}
+            <div>
+              <img src="/image_Soybean.svg" alt="soybean" class="img-field">
+            </div>
+          {{/if}}
+          {{#if $eq this.crop 'maize'}}
+            <div>
+              <img src="/image_Maize.svg" alt="maize" class="img-field">
+            </div>
+          {{/if}}
+          {{#if $eq this.crop 'rice'}}
+            <div>
+              <img src="/image_Rice.svg" alt="rice" class="img-field">
+            </div>
+          {{/if}}
+          <p class="crop-name">{{this.crop}}</p>
+      </div>
+
+      <p><span>Total production : </span>{{this.totalProduction}}<span> tons</span></p>
+      <p><span>Total Area : </span>{{this.totalPlantedArea}}<span> ha</span></p>
+      <p><span>Market price : </span>{{this.localMarketPrice}}<span> Pz/ton</span></p>
+      <p class="personal">Personal production {{personalProduction}} t</p>
+      <p class="personal">Personal revenue {{personalRevenue}} Pz.</p>
+ </div>
+</template>
+
+<template name="production">
+  {{this.totalProduction}}<span> tons</span>
+</template>
+
+<template name="area">
+  {{this.totalPlantedArea}}<span> ha</span>
+</template>
+
+<template name="price">
+  {{this.localMarketPrice}}<span> Pz/ton</span>
+</template>
+
+<template name="productionPerso">
+  {{personalProduction}} t
+</template>
+
+<template name="revenue">
+  {{personalRevenue}} Pz.
+</template>

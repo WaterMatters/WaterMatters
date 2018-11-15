@@ -1,0 +1,1347 @@
+/* @media (min-width:320px)  {  smartphones, iPhone, portrait 480x320 phones }*/
+/* @media (min-width:481px)  { portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. } */
+/* @media (min-width:641px)  { portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones } */
+/* @media (min-width:961px)  { tablet, landscape iPad, lo-res laptops ands desktops } */
+/* @media (min-width:1025px) { big landscape tablets, laptops, and desktops } */
+/* @media (min-width:1281px) { hi-res laptops and desktops } */
+
+
+/*  FONTS   */
+
+@font-face{
+	font-family: 'Pingwing';
+	src: url(/Fonts/pingwing/pingwing.ttf);
+}
+
+@font-face{
+	font-family: 'SourceSP';
+	src: url(/Fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf);
+}
+
+@font-face{
+	font-family: 'SourceSP-italic';
+	src: url(/Fonts/Source_Sans_Pro/SourceSansPro-Italic.ttf);
+}
+
+@font-face{
+	font-family: 'SourceSP-bold';
+	src: url(/Fonts/Source_Sans_Pro/SourceSansPro-Bold.ttf);
+}
+
+@font-face{
+	font-family: 'SourceSP-BoldIt';
+	src: url(/Fonts/Source_Sans_Pro/SourceSansPro-BoldItalic.ttf);
+}
+
+@font-face{
+	font-family: 'SourceSP-light';
+	src: url(/Fonts/Source_Sans_Pro/SourceSansPro-Light.ttf);
+}
+
+@font-face{
+	font-family: 'SourceSP-xlight';
+	src: url(/Fonts/Source_Sans_Pro/SourceSansPro-ExtraLight.ttf);
+}
+
+.Pingwing { font-family: 'Pingwing'; }
+.SourceSP { font-family: 'SourceSP'; }
+.SourceSP-xlight { font-family: 'SourceSP-xlight'; }
+.SourceSP-italic { font-family: 'SourceSP-italic'; }
+.SourceSP-bold { font-family: 'SourceSP-BoldIt'; }
+
+/* STYLES */
+
+html, body
+{
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#a38152), to(#e7c69e));
+  background-image: -webkit-linear-gradient(bottom, #a38152, #e7c69e);
+  background-image: -o-linear-gradient(bottom, #a38152, #e7c69e);
+  background-image: linear-gradient(to top, #a38152, #e7c69e);
+  width: 100%;
+  height: 100vh;
+
+  /*margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  max-height: 100vh;
+  /*overflow: hidden;*/
+}
+
+
+.pattern {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background-image : url('/Map/Background_pattern20.png');
+	background-repeat: all;
+
+}
+
+.timer
+{
+	margin: auto;
+	width: 75px;
+	height: 75px;
+	/*border : 1px solid red;*/
+	position: relative;
+	text-align: center;
+}
+
+.timer-drop-full
+{
+	position: relative;
+	top: 0;
+}
+
+.timer-drop-empty
+{
+	position: relative;
+	top:0;
+	transform: translate(0,-100%); 
+}
+
+.timer-needle
+{
+	width: 75px;
+	height: 75px;
+	position: relative;
+	top:0;
+	transform: translate(0,-160%); 
+	/*border : 1px solid blue;*/
+}
+
+.timer-eraser
+{
+	top : 0;
+	position: absolute;
+	width: 100%;
+	background-color: white;
+	/*border : 2px solid blue;*/
+	height: 0%;	
+}
+
+.ready {
+	margin-top : -20px;
+	position: relative;
+}
+
+.timer-ready {
+	margin-top : -15px;
+}
+
+.timeLeft {
+	left : 0;
+	top : 0;
+	position: relative;
+	font-size: 22px;
+	width: 100px;
+}
+
+.endturn {
+	font-size: 26px;
+	margin-bottom : -20px;
+	line-height: 50px;
+}
+
+.lock-screen {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    position: fixed;
+}
+
+.loading
+{
+	font-family: 'SourceSP-BoldIt';
+	font-size: 48px;
+	color:white;
+	margin-top: 150px;
+	text-align: center;
+}
+
+.WMBody{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.dot-notif, .dot-notif:hover
+{
+	color : white;
+	background-color: #ff4747;
+	border-radius: 25px;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	font-family: 'SourceSP-bold';
+	font-size: 18px;
+	text-decoration: none;
+	position : absolute;
+	margin-top : -20px;
+	z-index: 999;
+	line-height: 23px;
+}
+
+.dot-stage
+{
+	height: 18px;
+	width: 18px;
+	border-radius: 9px;
+	position: absolute;
+	border: 2px solid #222;
+	background: #0f667d;
+}
+/*
+0 : 30.5%;
+1 : 42.5%;
+2 : 54.4%;
+3 : 66.4%;
+*/
+.stage0{left : 30.5%;}
+.stage1{left : 42.5%;}
+.stage2{left : 54.4%;}
+.stage3{left : 66.4%;}
+
+#yieldGraph
+{
+	text-align: center;
+	font-family: "SourceSP";
+}
+
+.yield-graph-btn
+{
+	color : white;
+	/*background-image: url("/Village/Yield_graph_button.png");
+	background-repeat: no-repeat;
+	background-position: center;	*/	
+	font-size: 16px;
+	line-height: 16px;
+	width: 80%;
+	border-radius: 50px;
+	background-color: #64d3de;
+}
+
+.fig-yield
+{
+	width: 380px;
+	height : auto;
+}
+
+.fig-supply
+{
+	/*display: flex;
+	border : 1px solid blue;*/
+	margin-left : 235px;
+}
+
+.fig-supply-box
+{
+	width: 75px;
+	height: 100px;
+	border : 3px solid lightgrey;
+	float: left;
+	margin : 15px 13px;
+}
+
+.fig-supply-good {
+	font-size: 14px;
+	color: green;
+}
+
+.fig-supply-medium {
+	font-size: 14px;
+	color: #ffb903;
+}
+
+.fig-supply-poor {
+	font-size: 14px;
+	color: red;
+}
+
+.logo_title
+{
+	width: 300px;
+	height : 110px;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}
+
+.input-log
+{
+	width : 350px; 
+	margin: auto; 
+	font-size: 28px; 
+}
+
+.btn-log
+{
+	width : 350px; 
+	margin: auto; 
+	font-size: 28px; 
+	margin-bottom: 5px;
+	background-color : #099DCE;
+	border-color: #099DCE;
+}
+
+.select-log
+{
+	width : 350px; 
+	margin: auto; 
+	font-size: 28px; 
+	text-align-last:center;
+}
+
+#main-nav
+{
+	background-image: url('/Menu/Header.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-top: -40px;
+	height : 160px;
+	z-index: 100;
+}
+
+.toTop 
+{
+	margin-top : -15px;
+}
+
+.navbar-brand
+{
+	width: 51px;
+	height: 56px;
+}
+
+.navbar-nav > li{
+  padding-left:30px;
+  padding-right:30px;
+}
+
+#second-nav
+{
+	background-image: url('/Menu/header_smallpart_solo.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	height : 160px;
+	z-index: 100;
+	margin-top: -74px;
+}
+
+.titleScreen
+{
+	text-align: center;
+	line-height: 9em;
+	margin-top: 5%;
+}
+..title-login input {
+	text-align: center;
+}
+
+.title-login
+{
+	margin-top : 7%;
+	text-align: center;
+}
+
+.logoWM {
+	margin : auto;
+	height: 70%;
+	width: 70%;
+	margin-top : 5%;
+}
+
+.white {
+	color : white;
+}
+
+.btn-rounded{
+	border-radius: 50px;
+	color : white;
+}
+
+.nav-bg{
+	background-color: rgba(0,0,0,0.0);
+}
+
+#main-nav a h1{
+	color: #64d3de;
+}
+
+#main-nav{
+	color: #64d3de;
+	/*font-size: 1.8em;*/
+}
+
+.logout:hover{
+	text-decoration: underline;
+	-webkit-text-decoration-color : #64d3de;
+	        text-decoration-color : #64d3de;
+}
+
+.uppercase { text-transform: uppercase; }
+
+.side-nav
+{
+	
+	background: url('/Menu/Canal_alone.svg') no-repeat top /cover;
+	margin-top: -100px;
+	width : 10%;
+	height: 100%;
+	top : 0;
+	left : 0;
+	bottom: 0;
+	position : absolute;
+	z-index: 1;
+}
+
+.game{
+	width: 90%;
+	height: 100%;
+	position: absolute;
+	top : 0;
+	margin-left: 10%;
+	display: inline-block;
+}
+
+.left-nav {
+	list-style: none; 
+	max-width: 10%;
+	margin-top: 50%;
+}
+
+.screenVillage
+{ 
+	position: relative;
+}
+
+.map
+{
+	/*border : 1px solid red;*/	
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top : 8%;
+	overflow: visible;
+}
+
+
+.main-layout{
+	width: 100%;
+	height: 100%;
+}
+
+.villageContainer{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+
+.img-village {
+	display: block;
+	width: 70%;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.cloud
+{ 
+	position: absolute;
+	top : 0px;
+	width: 10%;
+	left: calc(50% - 86px);
+	height: auto;
+	margin : auto;
+	text-align: center;
+}
+
+.text-in-cloud
+{
+	color : #099dce; 
+	font-family: 'Pingwing';
+	font-size: 4.5em;
+	position : relative;
+	text-align: center;
+	top : -85px;
+}
+
+.cloud-panel
+{
+	display: none;
+	border-radius: 5px;
+	width : 150px;
+	height : 75px;
+	background-color: #f2f2e7;
+	text-align: center;
+	margin : auto;
+}
+
+.cloud-info-title
+{
+	color: #0f667d;
+	font-family: "SourceSP-xlight";
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.cloud-info
+{
+	color: #0f667d;
+	font-family: "SourceSP-xlight";
+	font-size: 12px;
+	text-align: center;
+}
+
+/* PlayerInfo */
+
+.info-season
+{
+	color: white;
+	font-family: 'SourceSP-xlight';
+	background-image: url('/PlayerInfo/Button_Stroke.svg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-size: 24px;
+	white-space:nowrap;
+	margin : 5px;
+	width: 119px;
+	height: 32px;
+	text-align: center;
+}
+
+.info-stage
+{
+	color: white;
+	font-family: 'SourceSP';
+
+	
+	font-size: 22px;
+	white-space:nowrap;
+	margin : 5px;
+	width: 88px;
+	height: 32px;	
+	text-align: center;
+}
+
+.present 
+{  
+	background-image: url('/PlayerInfo/Button_full_Up.svg');
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	-moz-box-shadow: 2.5px 2.5px 0px 0px #897358;
+	-webkit-box-shadow: 2.5px 2.5px 0px 0px #897358;
+	-o-box-shadow: 2.5px 2.5px 0px 0px #897358;
+	box-shadow: 2.5px 2.5px 0px 0px #897358;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#897358, Direction=134, Strength=0);
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.past 
+{ 
+	background-image: url('/PlayerInfo/Button_full_Down.svg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.arrow{
+	color: white; 
+	margin: auto;
+	margin-left: 15px;
+	margin-right: 15px;
+	font-size: 25px; 
+}
+
+.img-cap
+{
+	width: 50px;
+	height: 50px;
+}
+                        
+/*
+.credits
+{
+	white-space: nowrap;
+	line-height: 100px;
+	color : white;
+	font-size: 30px;
+}
+*/
+.player-credit
+{
+	width: 30%;
+}
+
+.playerInfo
+{
+	margin-left: 50px;
+}
+
+.playerInfo-left{
+	float: left;
+}
+
+.playerInfo-right{
+	float:right;
+	display: -webkit-inline-box;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	line-height: 100px;
+}
+
+.village-banner
+{
+	display: table;
+	width : 20%;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+
+.village-banner-text
+{
+	display: table;
+	position: relative;
+	color : #099dce; 
+	font-family: 'Pingwing';
+	font-size: 3.5em;
+	margin : -85px auto 0 auto;
+}
+
+.fieldsContainer{
+	width: 100%;
+	height: auto;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	
+}
+
+.fields
+{
+	position : relative;
+	margin : 0 auto;
+	text-align: center;
+}
+
+.field
+{
+	position: relative;
+}
+
+.fieldDead
+{
+	background-image: url('/Village/Crop_village_yellow.png');
+	background-size: 246px 193px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.fieldNormal
+{
+	/*background-image: url('/Village/Crop_village_blue.png');
+	background-size: 100% 100% /contain;
+	background-repeat: no-repeat;
+	background-position: center;*/
+}
+
+.field-text
+{
+	/*border : 1px solid red;*/
+	height: 100%;
+	width: 100%;
+	padding: 15px;
+	color : white;
+	text-align: center;
+	font-family: 'SourceSP-xlight';
+	font-size: 12px;
+	position: absolute;
+	top : 0;
+	display: block;
+}
+
+.canalNav
+{
+	top:0;
+	left:0;
+	bottom: 0;
+	position: relative;
+}
+
+.drop
+{
+	z-index : 5;
+	width: 75px;
+	height: 75px;
+}
+
+.todo
+{
+	color : white;
+	font-family: 'SourceSP-xlight';
+	font-size: 24px;
+	border-left : 1px solid white;
+	padding-left: 15px;
+}
+
+.player-info
+{
+	color : white;
+	font-family: 'SourceSP-xlight';
+	font-size: 30px;
+	white-space: nowrap;
+}
+
+.playerView
+{
+	margin-top: -15px;
+}
+
+.cropTitle
+{
+	position: absolute;
+	color: white;
+	font-family: 'SourceSP-xlight';
+	font-size: 22px;
+	margin-top: 10px;
+}
+
+.cropImage
+{
+	height : 90px; 
+	width : 76px;
+}
+
+.cropInfo
+{
+	width: 100%;
+	color: white;
+	font-family: 'SourceSP-xlight';
+	font-size: 16px;
+	position: relative;
+	top : 0;
+}
+
+.cropField
+{
+	margin : 0 auto;
+	width: 100%;
+}
+
+.LinkNav
+{
+	float: left;
+}
+
+.tank-capacity
+{
+	font-family: 'SourceSP-bold';
+	color : #0f667d;
+	font-size: 18px;
+	position: absolute;
+}
+
+.field-title
+{
+	color: white;
+	font-family: "SourceSP-BoldIt";
+	font-size: 16px;
+	position: relative;
+	width: 100%;
+	top : 0;
+}
+
+
+@media (min-width : 1900px) /* large screens only*/
+{
+	
+
+	.drop{
+		margin : 30px auto;
+	}
+
+	.cloud{
+		margin-top : 50px;
+	}
+
+	.img-village{
+		margin-top : 10%; 
+	}
+
+	.field{
+		width: 193px;
+		height: 246px;
+		margin-top: 600px;
+		bottom: 0;
+	}
+
+	.fields {
+		margin-top : 0px;
+	}
+
+	.fieldBg
+	{
+		width: 193px;
+		height: 246px;
+	}
+
+	.cropTitle{
+		margin-top: -10px;
+	}
+
+	.field-text{
+		margin-top : 25px;
+	}
+
+	.map {
+		top : 9%;
+	}
+
+	.tank-capacity
+	{
+		font-size: 26px;
+		left : 435px;
+		top : 315px;
+	}
+
+	.yield-graph-btn
+	{
+		margin-top : 15px;
+
+	}
+
+
+	/*Specific to Firefox*/
+	@-moz-document url-prefix()
+	{
+		.playerInfo-right{
+			line-height: 1.2;
+		}
+
+		.field{
+			width: 193px;
+			height: 246px;
+		}
+	}
+}
+
+@media only screen and (min-width:301px) and (max-width: 1280px) /* Tablets only */
+{
+	.img-village{
+		margin-top : 12%; 
+		width: 60%;
+		height: auto;
+	}
+
+	.village-banner-text{
+		margin-top : -75px;
+		font-size: 2.5em;
+	}
+
+	.cropTitle{
+		margin-top: 10px;
+	}
+
+	.field-text{
+		margin-top: 15px;
+	}
+
+	.map {
+		top : 9%;
+	}
+
+	.field{
+		margin-top: 400px;
+		width: 155px;
+		height: 197px;
+	}
+
+	.fieldBg
+	{
+		width: 155px;
+		height: 197px;
+	}
+
+	.tank-capacity
+	{
+		left : 330px;
+		top : 215px;
+	}
+
+	.yield-graph-btn
+	{
+	}
+
+	.fields {
+		margin-top : 0px 15px;
+	}
+}
+
+@media only screen and (min-width:1281px) and (max-width: 1900px) /* Medium screens only */
+{
+	.img-village{
+		margin-top : 12%; 
+		width: 50%;
+		height: auto;
+	}
+
+	.village-banner-text{
+		margin-top : -75px;
+		font-size: 3em;
+	}
+
+	.field
+	{
+		width: 155px;
+		height: 197px;
+		margin-top: 450px;
+	}
+
+	.map {
+		
+	}
+
+	.tank-capacity
+	{
+		left : 440px;
+		top : 245px;
+	}
+
+	.crop-title
+	{
+		margin-top: 35px;
+	}
+
+	.cloud
+	{
+		top:75px;
+	}
+
+	.fieldBg
+	{
+		width: 155px;
+		height: 197px;
+		margin-top: -10px;
+	}
+
+	.fields {
+		margin-top : 0px;
+	}
+
+}
+
+@media only screen and (min-width:301px) and (max-width: 1900px) /* Tablet and Large screens*/
+{
+	.cloud{
+		top : 50px;
+	}
+
+	.text-in-cloud{
+		top : -70px;
+	}
+
+	.drop{
+
+		margin: 15px auto;
+		margin-left: -20px;
+	}
+
+}
+
+/* ChatBox */
+
+.ChatBox{
+	float: right;
+	width: 250px;
+	height : 300px;
+	background-color: #f2f2e7;
+	/*position: fixed;*/
+}
+
+.ChatBubble{
+	float : right;
+	height : 100px;
+	width : 100px;
+	/*border-radius: 50%;*/
+	/*background-color: white;*/
+	border-radius: 100px 0 0 0;
+     -moz-border-radius: 100px 0 0 0;
+     -webkit-border-radius: 100px 0 0 0;
+	right: 0;
+	bottom: 0;
+	z-index: 9998;
+	position: fixed;
+}
+#ChatModal {
+	font-size: 12px;
+}
+
+#ChatModal .modal-dialog {
+	background-color: #f2f2e7;
+	color : black;
+    -webkit-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+        transform: translate(0,-50%);
+    top: 50%;
+    margin: 0 auto;
+    z-index: 9999;
+}
+
+#ChatBox-Body {
+	background-color: #f2f2e7;
+	color : black;
+}
+
+.chat-wm {
+	width: 20px;
+	height: 20px;
+	margin-left: -10px;
+    margin-top: -10px;
+}
+
+.card-body{
+   overflow-y:scroll;
+   height:60vh;
+   border-left: 1px solid grey;
+   background-color: #f2f2e7;
+ }
+
+ .usersListTitle {
+ 	font-family: "SourceSP-xlight";
+ 	font-size : 18px;
+ 	color: #0f667d;
+ 	text-align: left;
+ }
+
+ .channelsListTitle{
+ 	font-family: "SourceSP-xlight";
+ 	font-size : 18px;
+ 	color: #0f667d;
+ 	text-align: left;
+ }
+
+ .userCol{
+ 	border-right : 3px solid #E6E6DA;
+ }
+
+ .users, .channels{
+ 	text-align: center;
+ }
+
+ .usersList{
+ 	height: 90%;
+ 	/*border : 1px solid red;*/
+ 	overflow-y: scroll;
+ }
+
+ .modal-open {
+    overflow-y: scroll;
+}
+ 
+ .modal-title {
+ 	font-family: "SourceSP";
+ 	font-size: 38px;
+ 	color: #67CBE0;
+ }
+
+ .users-item, .btn-chat-global, .btn-chat-newChannel, .btn-chat-channel, .btn-create{
+ 	background-image: url("/Chat/Chat_village_button_up.png");
+ 	background-repeat: no-repeat;
+ 	background-position: center;
+ 	background-size: 100%;
+ 	border-radius: 10px;
+ 	font-family: "SourceSP-xlight";
+ 	font-size : 16px;
+ 	text-decoration: none; 
+ 	color: #0f667d;
+ 	margin-top: 5px;
+ 	margin-left:auto;
+ 	margin-right:auto;
+ 	height : 34px;
+ 	width: 107px;
+ 	display: inline-block;
+ 	word-wrap: nowrap;
+ }
+
+ .users-item:focus, .btn-chat-global:focus{
+ 	background-image: url("/Chat/Chat_village_button_down.png");
+ }
+
+ .btn-chat-newChannel{
+ 	position: absolute;
+ 	color: #15AFD7;
+ 	margin-left: 40px;
+ 	left: 0;
+ 	bottom: 0;
+ }
+
+ .dot-notifs {
+ 	width: 18px;
+ 	height: 58px;
+ 	background-image: url('/Chat/ExclamationPoint_RedStroke.png');
+ 	border-radius: 15px;
+ 	position : absolute;
+ 	left : 30px;
+ 	visibility: hidden;
+ 	animation: bounce 0.35s ease infinite alternate;
+ }
+
+ .CB-dot-notifs {
+ 	width: 18px;
+ 	height: 58px;
+ 	background-image: url('/Chat/ExclamationPoint_RedStroke.png');
+ 	position : absolute;
+ 	bottom: 25px;
+ 	right: 40px;
+ 	visibility: hidden;
+ 	z-index: 9999;
+ 	animation: bounce 0.35s ease infinite alternate;
+ }
+
+ @keyframes bounce{
+     from {transform: translateY(0);}
+     to   {transform: translateY(-10px);}
+}
+
+ .modal-header{
+ 	border-bottom: 3px solid #E6E6DA;
+ 	height : 70px;
+ }
+
+.media{
+	margin: 0;
+	width: 100%;
+	font-family: "SourceSP-light";
+	font-size: 18px;
+	color: black;
+	border-bottom: 3px solid #f2f2e7;
+	background-color: #E6E6DA;
+	word-wrap: break-word;
+      white-space: -moz-pre-wrap;
+      white-space: pre-wrap;
+}
+
+.media-list{
+	overflow-y: scroll; 
+	overflow-x: hidden;
+	height : 60vh; 
+	margin: 0;
+}
+
+.media-body{
+	
+	width: 85%;
+	padding-right: 0px;
+	width: 100%;
+	padding-left : 5px;
+	
+}
+
+.text-muted{
+	width:15%;
+	white-space: nowrap;
+	/*border : 1px solid red;*/
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.right
+{
+	text-align: right;
+}
+
+.send{
+	width: 45px;
+	height: 45px;
+	background-image: url("/Chat/Chat_send_button_up.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: center;
+}
+
+.chat-input, .chat-input:focus, .chat-input::placeholder
+{
+	background-color: #0f667d;
+	color: white;
+	font-family: "SourceSP-light";
+	font-size: 14px;
+}
+
+.chat-msg-list
+{
+	color: black;
+}
+
+.close-chatmodal, .close-newChannel
+{
+	background-image: url("/Chat/Chat_quit_button_up.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 45px;
+	height: 45px;
+}
+
+#newChannel{
+ 	position: absolute;
+ 	width: 550px;
+ 	height: 400px;
+ 	background-color: #f2f2e7;
+ 	top : 10px;
+ 	/*margin-left : 75px;*/
+ 	border : 2px solid lightgrey;
+ 	font-family: "SourceSP";
+ 	z-index: 600;
+ }
+
+.newChannel-header
+{
+	height: 60px;
+	border-bottom: 3px solid lightgrey;
+}
+.newChannel-body
+{
+	text-align: left;
+	padding: 15px;
+}
+
+.close-newChannel
+{
+	float: right;
+	margin-top : 5px;
+	margin-right: 5px;
+}
+
+.newChannel-title
+{
+	margin-top : 5px;
+	margin-left: 5px;
+	float : left;
+	font-size: 32px;
+	color : #67CBE0;
+}
+
+.village-selection{
+	margin-top : 15px;
+}
+
+.btn-create{
+	margin-top: 50px;
+	font-family: "SourceSP-bold";
+
+}
+
+@media only screen 		/* ================ IPAD ================ */
+	and (min-device-width : 768px) 
+	and (max-device-width : 1024px) 
+	and (orientation : landscape) 
+{ 
+
+	.fields {
+		margin-top : -150px;
+	}
+
+	.field {
+
+	}
+
+	.field-text 
+	{
+		top : -30px;
+	}
+
+	.village-banner {
+		display: table;
+		width : 20%;
+		margin: 0 auto;
+		margin-top: -30px;
+		z-index: 10;
+	}
+	.village-banner-text {
+		margin-top : -45px;
+		z-index: 15;
+	}
+
+	.img-village {
+		z-index: -1;
+		-webkit-transform: translate3d(0,0,0);
+		margin-top : 17%;
+	}
+
+	.pattern {
+		z-index: -2;
+	}
+
+	.dot-notif {
+	margin-top : 75px;
+	left : 10px;
+	}
+
+	.cloud
+	{ 
+		top : 100px;
+		text-align: center;
+		margin: 0 auto;
+	}
+
+	.text-in-cloud
+	{
+		top : -60px;
+	}
+
+	.tank-capacity 
+	{
+		left: 260px;
+	}
+
+	.playerInfo-right
+	{
+		line-height: 50px;
+		font-size : 15px;
+		position : absolute;
+		margin-left : -50px;
+		margin-top : 40px;
+	}
+
+	.player-credit
+	{
+		width: 15%;
+	}
+
+	.logoWM {
+		margin-top: 12%;
+	}
+
+	#ChatModal .modal-dialog {
+		margin-top : 35%;
+	}
+
+	.endturn {
+		font-size: 16px;
+		margin-bottom : -20px;
+		margin-left : 50px;
+		line-height: 50px;
+	}
+
+
+	.timer-ready {
+		margin-left : 60px;
+	}
+
+}
+

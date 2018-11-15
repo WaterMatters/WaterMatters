@@ -1,0 +1,115 @@
+<template name="YieldGraphModal">
+
+
+<!--
+  <div class="yield-graph-modal {{$.Session.get 'yieldGraph-toggle.state'}}">
+    <div class="yield-graph-block">
+      {{#if Template.subscriptionsReady}}
+            <i class="fas fa-times close-yield-graph"></i>
+-->
+            <!-- dots to see the path of the irrigation -->
+<!--
+            <div class="dot-stage stage0"></div>
+            <div class="dot-stage stage1" style="{{stylesDotsArray.st1}}"></div>
+            <div class="dot-stage stage2" style="{{stylesDotsArray.st2}}"></div>
+            <div class="dot-stage stage3" style="{{stylesDotsArray.st3}}"></div>
+
+            <div class="fig-yield-header">
+              Field {{sessionData.field}} - {{sessionData.crop}} (FEF={{sessionData.fef}})
+            </div>
+
+            <div class="fig-supply" style="{{topFigSupply}}">
+                  <div class="fig-supply-box {{#if boxShadow.stage1}}shadow{{/if}}">
+                      <p class="fig-supply-good" title="Good Supply">G = {{boxesSupplyObject.stage1.good}}</p>
+                      <p class="fig-supply-medium" title="Medium Supply">M = {{boxesSupplyObject.stage1.medium}}</p>
+                      <p class="fig-supply-poor" title="Poor Supply">P = {{boxesSupplyObject.stage1.poor}}</p>
+                  </div>
+                  <div class="fig-supply-box {{#if boxShadow.stage2}}shadow{{/if}}">
+                      <p class="fig-supply-good" title="Good Supply">G = {{boxesSupplyObject.stage2.good}}</p>
+                      <p class="fig-supply-medium" title="Medium Supply">M = {{boxesSupplyObject.stage2.medium}}</p>
+                      <p class="fig-supply-poor" title="Poor Supply">P = {{boxesSupplyObject.stage2.poor}}</p>
+                  </div>
+                  <div class="fig-supply-box {{#if boxShadow.stage3}}shadow{{/if}}">
+                      <p class="fig-supply-good" title="Good Supply">G = {{boxesSupplyObject.stage3.good}}</p>
+                      <p class="fig-supply-medium" title="Medium Supply">M = {{boxesSupplyObject.stage3.medium}}</p>
+                      <p class="fig-supply-poor" title="Poor Supply">P = {{boxesSupplyObject.stage3.poor}}</p>
+                  </div>
+            </div>
+
+            {{#if $.Session.equals 'yieldGraph-toggle.crop' 'soybean'}}
+              <img src="/Figure_Soybean-yield_response_to_water.svg" alt="soybean" class="fig-yield">
+            {{/if}}
+            {{#if $.Session.equals 'yieldGraph-toggle.crop' 'maize'}}
+              <img src="/Figure_Maize-yield_response_to_water.svg" alt="maize" class="fig-yield">
+            {{/if}}
+            {{#if $.Session.equals 'yieldGraph-toggle.crop' 'rice'}}
+              <img src="/Figure_Rice-yield_response_to_water.svg" alt="rice" class="fig-yield">
+            {{/if}}
+      {{else}}
+        ...Loading
+      {{/if}}
+
+    </div>
+  </div>
+-->
+<!-- The Modal -->
+<div class="modal fade" id="yieldGraph">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    {{#if Template.subscriptionsReady}}
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="fig-yield-header">
+          <h4 class="modal-title">Field {{sessionData.field}} - {{sessionData.crop}} (FEF={{sessionData.fef}})</h4>
+        </div>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body yield-graph-block">
+
+        <div class="yield-info">
+          <!-- dots to see the path of the irrigation -->
+          <div class="dot-stage stage0" style="{{stylesDotsArray.st0}}"></div>
+          <div class="dot-stage stage1" style="{{stylesDotsArray.st1}}"></div>
+          <div class="dot-stage stage2" style="{{stylesDotsArray.st2}}"></div>
+          <div class="dot-stage stage3" style="{{stylesDotsArray.st3}}"></div>
+        </div>
+
+        {{#if $.Session.equals 'yieldGraph-toggle.crop' 'soybean'}}
+          <img src="/Village/YieldGraph_Soybean.png" alt="soybean" class="fig-yield">
+        {{/if}}
+        {{#if $.Session.equals 'yieldGraph-toggle.crop' 'maize'}}
+          <img src="/Village/YieldGraph_Maize.png" alt="maize" class="fig-yield">
+        {{/if}}
+        {{#if $.Session.equals 'yieldGraph-toggle.crop' 'rice'}}
+          <img src="/Village/YieldGraph_Rice.png" alt="rice" class="fig-yield">
+        {{/if}}
+
+
+        <div class="fig-supply" style="{{topFigSupply}}">
+          <div class="fig-supply-box {{#if boxShadow.stage1}}shadow{{/if}}">
+              <p class="fig-supply-good" title="Good Supply">G = {{boxesSupplyObject.stage1.good}}</p>
+              <p class="fig-supply-medium" title="Medium Supply">M = {{boxesSupplyObject.stage1.medium}}</p>
+              <p class="fig-supply-poor" title="Poor Supply">P = {{boxesSupplyObject.stage1.poor}}</p>
+          </div>
+          <div class="fig-supply-box {{#if boxShadow.stage2}}shadow{{/if}}">
+              <p class="fig-supply-good" title="Good Supply">G = {{boxesSupplyObject.stage2.good}}</p>
+              <p class="fig-supply-medium" title="Medium Supply">M = {{boxesSupplyObject.stage2.medium}}</p>
+              <p class="fig-supply-poor" title="Poor Supply">P = {{boxesSupplyObject.stage2.poor}}</p>
+          </div>
+          <div class="fig-supply-box {{#if boxShadow.stage3}}shadow{{/if}}">
+              <p class="fig-supply-good" title="Good Supply">G = {{boxesSupplyObject.stage3.good}}</p>
+              <p class="fig-supply-medium" title="Medium Supply">M = {{boxesSupplyObject.stage3.medium}}</p>
+              <p class="fig-supply-poor" title="Poor Supply">P = {{boxesSupplyObject.stage3.poor}}</p>
+          </div>
+        </div>
+      </div>
+    {{else}}
+      Loading ...
+    {{/if}}
+    </div>
+  </div>
+</div>
+
+</template>

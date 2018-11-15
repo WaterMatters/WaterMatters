@@ -1,0 +1,126 @@
+<template name='Harvests'>
+{{#if $.Session.equals 'document-tab' 'harvests'}}
+  {{#if showHarvest}}
+    {{#if Template.subscriptionsReady}}
+      <div class="harvest">
+        <div class="harvest-left"  style="float : left;">     
+          <!--<div class="links-harvests">
+            <div id="harvLink-crops" class="{{#if $.Session.equals 'harvest-tab' 'crops'}}selected{{/if}}">Crops</div>
+            <div id="harvLink-cropsMarket" class="{{#if $.Session.equals 'harvest-tab' 'cropsMarket'}}selected{{/if}}">Crops Market</div>
+            <div id="harvLink-villages" class="{{#if $.Session.equals 'harvest-tab' 'villages'}}selected{{/if}}">Villages' Revenues</div>
+            <div id="harvLink-manager" class="{{#if $.Session.equals 'harvest-tab' 'manager'}}selected{{/if}}">Water Manager</div>
+          </div>-->
+          <table class="landholding-table2">
+             <thead>
+              <tr>
+                <td class="no-border"></td>
+                {{#each productionCrops}}
+                  <td class="grey-cell" style="padding: 5px;">{{> ProductionCroHead}}</td>
+                {{/each}}
+              </tr>
+             </thead>
+             <tbody>
+                <tr>
+                  <td class="grey-cell doc-title">
+                    Total production
+                  </td>
+                  {{#each productionCrops}}
+                    <td class="white-cell-txt">{{> production}}</td>
+                  {{/each}}
+                </tr>
+                <tr>
+                  <td class="grey-cell doc-title">
+                    Total Area
+                  </td>
+                  {{#each productionCrops}}
+                    <td class="white-cell-txt">{{> area}}</td>
+                  {{/each}}
+                </tr>
+                <tr>
+                  <td class="grey-cell doc-title">
+                    Market price
+                  </td>
+                  {{#each productionCrops}}
+                    <td class="white-cell-txt">{{> price}}</td>
+                  {{/each}}
+                </tr>
+                <tr>
+                  <td class="grey-cell doc-title">
+                    Personal production
+                  </td>
+                  {{#each productionCrops}}
+                    <td class="white-cell-txt">{{> productionPerso}}</td>
+                  {{/each}}
+                </tr>
+                <tr>
+                  <td class="grey-cell doc-title">
+                    Personal revenue
+                  </td>
+                  {{#each productionCrops}}
+                    <td class="white-cell-txt">{{> revenue}}</td>
+                  {{/each}}
+                </tr>
+             </tbody>
+          </table>  
+          <br>
+          <div class="total-revenue">
+              <p>Total Harvest Revenues for your village = {{villageRevenues}} Pz.</p>
+              <p>Total Harvest Revenues in the valley = {{totalRevenues}} Pz.</p>
+          </div>
+        </div>
+        <div class="harvest-right" style="float : right;">
+        <!--
+                            <div class="tab-content {{#if $.Session.equals 'harvest-tab' 'crops'}}{{else}}hide{{/if}}" id="crops">
+                                    <div class="production">
+                                      {{#each productionCrops}}
+                                          {{> ProductionCro}}
+                                      {{/each}}
+                                    </div>
+
+                                    <div class="total-revenue">
+                                        <p>Total Harvest Revenues for your village = {{villageRevenues}} Pz.</p>
+                                        <p>Total Harvest Revenues in the valley = {{totalRevenues}} Pz.</p>
+                                    </div>
+                            </div>
+        -->
+          <!--<div class="tab-content  {{#if $.Session.equals 'harvest-tab' 'cropsMarket'}}{{else}}hide{{/if}}" id="crops-market">-->
+          <div class="tab-content" id="crops-market">
+                  {{>CropsMarket}}
+          </div>
+        </div>
+<!--                    <div class="tab-content {{#if $.Session.equals 'harvest-tab' 'villages'}}{{else}}hide{{/if}}" id="villages">
+                            <div class="title-harvest-village">
+                              Harvest Revenues
+                            </div>
+                            <div class="villages-harvest">
+                              {{#each arrayHarvestVillagesThisSeason}}
+                                  {{> ResultHarvestVillage}}
+                              {{/each}}
+                            </div>
+                            <div class="title-net-village">
+                              Net Revenues
+                            </div>
+                            <div class="villages-harvest">
+                              {{#each arrayNetReturnVillagesThisSeason}}
+                                  {{> ResultNetReturnVillage}}
+                              {{/each}}
+                            </div>
+                    </div>
+
+                    <div class="tab-content {{#if $.Session.equals 'harvest-tab' 'manager'}}{{else}}hide{{/if}}" id="manager">
+                            {{#each waterManagersDocs}}
+                                {{> ResultWaterManager}}
+                            {{/each}}
+                    </div>
+-->
+      </div>
+    {{/if}}
+  {{else}}
+    <div class="waiting-for-harvest doc-noDisplay">
+      This harvest is not available yet...
+    </div>
+  {{/if}}
+{{/if}}
+</template>
+
+

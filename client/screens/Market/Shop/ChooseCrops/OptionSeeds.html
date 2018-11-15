@@ -1,0 +1,11 @@
+<template name="OptionSeeds">
+    <select id="select{{this.field}}">
+      {{#each crop in crops}}
+          {{#if $eq this.crop crop.crop}}
+            <option class="field border-white" id="seed{{crop.crop}}{{this.field}}" value="{{crop.crop}}" selected='selected'>{{crop.crop}}</option>
+          {{else}}
+            <option class="field border-white" id="seed{{crop.crop}}{{this.field}}" value="{{crop.crop}}">{{crop.crop}} - price: {{crop.buy.price}} - yield: {{crop.buy.yield}}</option>
+          {{/if}}
+      {{/each}}
+    </select>
+</template>

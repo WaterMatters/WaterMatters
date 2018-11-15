@@ -1,0 +1,53 @@
+<template name="MainLayout">  
+  <style type="text/css">
+    html, body
+    {
+      margin: 0;
+      padding: 0;
+      top:0;
+        bottom:0;
+        left:0;
+        right:0;
+    }
+
+    .select2-container .select2-selection--single {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 50px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+  </style>
+  {{#if currentUser}}
+    {{> Header}}
+    <div class="WMBody pattern">
+        <div class="side-nav">
+          {{> SideNav}}
+        </div>
+        <div class="game">
+          {{> PlayerInfo}}
+
+          {{#if isInRole 'village'}}
+              {{#if $.Session.equals 'view' 'village'}}
+
+                  {{> Template.dynamic template=screen}}
+
+                  
+              {{else}}
+               <!--When on map and when water manager that distribute water, big screen-->
+                  <div class="screenManager">
+                        {{> Template.dynamic template=screen}}
+                  </div>
+              {{/if}}
+          {{else}}
+              <div class="screenManager">
+                    {{> Template.dynamic template=screen}}
+              </div>
+          {{/if}}
+        </div>
+    </div>
+    {{>Chat}}
+    {{>ChatModal}}
+  {{/if}}
+</template>

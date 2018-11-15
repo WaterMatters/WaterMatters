@@ -1,0 +1,404 @@
+.docsContainer{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	/*border: 1px solid green;*/
+	margin-top: 100px;
+}
+
+.docs-leftPart
+{
+	/*border: 1px solid blue;*/
+	width: 25%;
+	height: 100%;
+	float : left;  
+}
+
+.docs-rightPart
+{
+	/*border: 1px solid red;*/
+	width: 75%;
+	height: 100%;
+	float: left;
+}
+
+
+.landholding-table
+{
+	text-align: center;
+	width: 95%;
+	color: #0f667d;
+}
+
+.landholding-table2
+{
+	text-align: center;
+	color: #0f667d;
+	width: 100%;
+}
+
+.grey-cell
+{
+	background-color: #e6e6da;
+	border : 1px solid #d1d1c6;
+	height: 25px;
+}
+
+.white-cell
+{
+	background-color: #fcfcf0;
+	border : 1px solid #ddd0b8;
+	height: 25px;
+}
+
+.white-cell-txt
+{
+	background-color: #fcfcf0;
+	border : 1px solid #ddd0b8;
+	height: 25px;
+	font-family: "SourceSP";
+	font-size: 16px;
+}
+
+.img-title
+{
+	height: 50px;
+	color: blue;
+	fill: currentColor;
+}
+
+.harvest
+{
+	width: 100%;
+	margin : auto 0;
+	/*border : 2px solid red;*/
+}
+
+.harvest-left
+{
+	float: left;
+}
+
+.harvest-right
+{
+	float : right;
+}
+
+.total-revenue
+{
+	background-color: #fcfcf0;
+	color: #0f667d;
+	text-align: center;
+	font-family: "SourceSP-xlight";
+	font-size : 18px;
+}
+
+.graph-price
+{
+	width: 558px;
+	height: 371px;
+	margin : auto 10px;
+}
+
+.dot-crops-market
+{
+	width: 16px;
+    height: 16px;
+    margin-top: -16px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 11;
+    box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+    border: 1px solid #222;
+    background: #cbe56c;
+}
+
+.txt
+{
+	font-family: "SourceSP-xlight";
+	font-size : 14px;
+	text-align: center;
+}
+
+#crops-market
+{
+	    height: 370px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: space-around;
+    -ms-flex-align: space-around;
+    align-items: space-around;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: relative;
+    /*border : 1px solid red;*/
+}
+
+.select-landhold-season, .select-landhold-season option
+{
+	width: 100px;
+	height: 30px;
+	font-family: "SourceSP-xlight";
+	font-size: 18px;
+	background-color: #fcfcf0;
+	color: #0f667d;
+	text-align: center;
+}
+
+#villages
+{
+	width: 90%;
+	height: 370px;
+	/*border : 1px solid red;*/
+	display: block;
+}
+
+.title-harvest-village 
+{
+	font-family: "SourceSP-BoldIt";
+	font-size: 22px;
+	width: 100%;
+	text-align: center;
+	/*border : 1px solid grey;*/
+	background-color: #fcfcf0;
+	color: #0f667d;
+}
+
+.villages-harvest
+{
+	width: 100%;
+	height: 150px;
+	background-color: #e6e6da;
+	display: flex;
+	font-family: "SourceSP-bold";
+	font-size: 12px;
+	color: #0f667d;
+}
+
+.village-doc
+{
+	width : 12%;
+	/*border : 1px solid blue;*/
+	/*margin-right : 0.5%;*/
+	/*background-color: blue;*/
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-box-align: center;
+	align-items: center;
+	flex-direction: column;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -ms-flex-align: center;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    cursor: default;
+    box-sizing: inherit;
+}
+
+.boundary-bloc
+{
+	height: 110px;
+	width: 100%;
+	/*border-top: 1px dashed #737373;*/
+    border-bottom: 2px solid #ccccc1;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    /*border : 1px solid blue;*/
+    position: relative;
+    margin: 0 auto;
+}
+
+.score-harvest { background-color: #63d0e6; }
+.score-netto { background-color: #0f667d; }
+
+.score-harvest, .score-netto
+{
+	width: 50%;
+	left : 25%;
+	margin: 0 auto;
+	bottom: 0;
+	display: block;
+	/*border : 1px solid red;*/
+	position: absolute;
+}
+
+.result-name
+{
+	box-sizing: border-box;
+}
+
+.result-score
+{
+	box-sizing: border-box;
+}
+
+.separator
+{
+	position: absolute;
+	height: 100%;
+	left:49%;
+	width: 2px;
+	border : 1px solid #ccccc1;
+}
+
+#manager
+{
+	width: 90%;
+	margin-top: 60px;
+}
+
+.manager-table
+{
+	width: 100%;
+	color : #0f667d;
+}
+
+.doc-title
+{
+	font-family: "SourceSP";
+	font-size: 16px;
+	text-align: center;
+	color : #0F667D;
+	margin-top: 200px;
+}
+
+.doc-noDisplay
+{
+	font-family: "SourceSP";
+	font-size: 28px;
+	text-align: center;
+	color : #0F667D;
+	margin-top: 200px;
+}
+
+.documents-container
+{
+	overflow-y: scroll;
+}
+
+
+
+.space { margin-top : 30px; }
+.marge { padding-left : 15px; font-family: "SourceSP-bold"; font-size: 12px;}
+@media (min-width : 1600px) /* large screens only*/
+{
+	.landholding-table
+	{
+		font-family: "SourceSP";
+		font-size: 16px;
+	}
+
+	.white-cell
+	{
+		font-family: "SourceSP-BoldIt";
+		font-size: 22px;
+	}
+
+	.landholding-table2
+	{
+		margin-right: 50px;
+	}
+
+	.harvest-left
+	{
+		margin-top: 100px;
+	}
+	.harvest-right
+	{
+		margin-top: 75px;
+		margin-right: 100px;
+	}
+
+	.documents-container
+	{
+		height: 75vh;
+	}
+}
+
+@media only screen and (min-width:1281px) and (max-width: 1600px) /* Medium screens only */
+{
+	.landholding-table
+	{
+		font-family: "SourceSP";
+		font-size: 12px;
+	}
+
+	.white-cell
+	{
+		font-family: "SourceSP-BoldIt";
+		font-size: 18px;
+	}
+
+	.harvest-left
+	{
+		margin-top: 75px;
+		/*border : 1px solid purple;*/
+	}
+	.harvest-right
+	{
+		margin-top: 25px;
+		margin-right: 50px;
+		/*border : 1px solid blue;*/
+	}
+
+	.documents-container
+	{
+		height: 65vh;
+	}
+}
+
+@media only screen and (min-width:301px) and (max-width: 1280px) /* Tablets only */
+{
+
+	.doc-noDisplay
+	{
+		margin-top: 150px;
+	}
+
+	.documents-container
+	{
+		height: 400px;
+	}
+
+	.landholding-table
+	{
+		font-family: "SourceSP";
+		font-size: 12px;
+	}
+
+	.white-cell
+	{
+		font-family: "SourceSP-BoldIt";
+		font-size: 16px;
+	}
+
+	.landholding-table2
+	{
+		margin-right: 25px;
+	}
+
+	.harvest-left
+	{
+		margin-top: 50px;
+		max-width: 330px;
+	}
+	.harvest-right
+	{
+		/*border : 1px solid blue;*/
+	}
+
+	#crops-market
+	{
+		margin-right: -50px;
+	}
+
+	.harvest { overflow-x: hidden; }
+}

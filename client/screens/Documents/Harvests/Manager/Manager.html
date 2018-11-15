@@ -1,0 +1,53 @@
+<template name="Manager">
+{{#if $.Session.equals 'document-tab' 'manager'}}
+    {{#if Template.subscriptionsReady}}
+      <div class="tab-content" id="villages">
+        <div class="title-harvest-village">
+          Harvest Revenues
+        </div>
+        <div class="villages-harvest">
+          {{#each arrayHarvestVillagesThisSeason}}
+              {{> ResultHarvestVillage}}
+          {{/each}}
+        </div>
+        <div class="title-harvest-village space">
+          Net Revenues
+        </div>
+        <div class="villages-harvest">
+          {{#each arrayNetReturnVillagesThisSeason}}
+              {{> ResultNetReturnVillage}}
+          {{/each}}
+        </div>
+      </div>
+
+      <div class="tab-content" id="manager">
+        <table class="manager-table">
+          <thead style="text-align: center;">
+            <td class="white-cell">
+              Season
+            </td>
+            <td class="white-cell">
+              Water Manager
+            </td>
+            <td class="white-cell">
+              Gini index harvest
+            </td>
+            <td class="white-cell">
+              Tot. revenues
+            </td>
+          </thead>
+          <tbody>
+            {{#each waterManagersDocs}}
+              {{> ResultWaterManager}}
+          {{/each}}
+          </tbody>
+        </table>
+      </div>
+    {{/if}}
+{{else}}
+    <div class="waiting-for-harvest doc-title">
+      This harvest is not available yet...
+    </div>
+{{/if}}
+  
+</template>

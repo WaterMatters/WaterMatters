@@ -1,0 +1,39 @@
+<template name="Header">
+  <nav id="main-nav" class="navbar navbar-expand-lg navbar-light">
+      {{#if currentUser}}
+          {{#if isInRole 'controller'}}
+            {{timer}}
+         {{/if}}
+          <img src="/Logo/Wm_logo_Small.png" class="navbar-brand"><h1 class="toTop">Water Matters {{name}}</h1>
+          
+          <div class="timer">
+            <img src="/Menu/Clock_background_full.png" class="timer-drop-full">
+            <div id="timerEraser" class="timer-eraser"></div>
+            <img src="/Menu/Clock_background_empty.png" class="timer-drop-empty">
+            <img id="timerNeedle" src="/Menu/Clock_needle_top.png" class="timer-needle">
+            <span class="timeLeft"></span>
+          </div>
+
+          {{#if isInRole 'controller'}}
+          {{else}}
+          <div class="ready">
+              <span class="endturn">End Turn ?</span>
+              <img src="/Menu/End_turn_button_no.png" class="timer-ready">
+          </div>
+          {{/if}}
+      {{/if}}
+    
+      <ul class="navbar-nav ml-auto">
+          {{#if currentUser}}
+                <li class="nav-item"><h1 class="toTop">{{email}}</h1></li>
+                <li class="nav-item">
+                  <a href="" class="logout">
+                    <h1 class="toTop">Logout</h1>
+                  </a>
+                </li>
+          {{/if}}
+      </ul>
+  </nav>
+  <!--<div id="second-nav"></div>  -->
+
+</template>

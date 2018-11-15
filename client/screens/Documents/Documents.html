@@ -1,0 +1,84 @@
+<template name="Documents">
+<!--
+  {{#if isInRole 'village'}}
+      <i class="fas fa-times close-action close-action-village"></i>
+  {{else}}
+      <i class="fas fa-times close-action close-action-manager"></i>
+  {{/if}}
+-->
+  <div class="docsContainer action documents">
+    <div class="docs-leftPart ">      
+      <div class="">
+        {{> DocsNav }}
+      </div>
+    </div>
+    <div class="docs-rightPart">
+    
+  <div class="action documents">
+      <div class="action-header header-market">
+          {{#if isInRole 'controller'}}
+            <select class="select-doc-player docs-select" name="" id="iptDocPlayer">
+              <!--<option value="controller" selected="{{#if $.Session.equals 'documents-player' 'controller'}}selected{{/if}}">- Controller</option>-->
+              <option name="village1" value="village1" selected="{{#if $.Session.equals 'documents-player' 'village1'}}selected{{/if}}">Rivergate</option>
+              <option name="village2" value="village2" selected="{{#if $.Session.equals 'documents-player' 'village2'}}selected{{/if}}">Suncreek</option>
+              <option name="village3" value="village3" selected="{{#if $.Session.equals 'documents-player' 'village3'}}selected{{/if}}">Clearwater</option>
+              <option name="village4" value="village4" selected="{{#if $.Session.equals 'documents-player' 'village4'}}selected{{/if}}">Blueharvest</option>
+              <option name="village5" value="village5" selected="{{#if $.Session.equals 'documents-player' 'village5'}}selected{{/if}}">Starfields</option>
+              <option name="village6" value="village6" selected="{{#if $.Session.equals 'documents-player' 'village6'}}selected{{/if}}">Aquarun</option>
+              <option name="village7" value="village7" selected="{{#if $.Session.equals 'documents-player' 'village7'}}selected{{/if}}">Greenbounty</option>
+              <option name="village8" value="village8" selected="{{#if $.Session.equals 'documents-player' 'village8'}}selected{{/if}}">Moonbanks</option>
+            </select>
+          {{/if}}
+          <select class="select-landhold-season" name="">
+            {{#each seasons}}
+              <option value="{{this.season}}" selected="{{this.selected}}">Season {{this.season}}</option>
+            {{/each}}
+          </select>
+      </div>
+
+      <div class="action-body body-documents">
+        {{#if Template.subscriptionsReady}}
+<!--
+          {{#if $.Session.equals 'documents-player' 'controller'}}
+            <div class="links-documents">
+              <div id="docLink-export" class="{{#if $.Session.equals 'document-tab' 'export'}}selected{{/if}}">Export</div>
+            </div>
+          {{else}}
+            <div class="links-documents">
+              <div id="docLink-landholding" class="{{#if $.Session.equals 'document-tab' 'landholding'}}selected{{/if}}">
+                Landholding
+              </div>
+              <div id="docLink-financial" class="{{#if $.Session.equals 'document-tab' 'financial'}}selected{{/if}}">
+                Finances
+              </div>
+              <div id="docLink-allocation" class="{{#if $.Session.equals 'document-tab' 'allocation'}}selected{{/if}}">Allocation</div>
+              <div id="docLink-harvests" class="{{#if $.Session.equals 'document-tab' 'harvests'}}selected{{/if}}">Harvests</div>
+            </div>
+          {{/if}}
+-->
+          <div class="documents-container tabs-body">
+            {{#if $.Session.equals 'document-tab' 'landholding'}}
+                {{>LandholdingRecord}}
+            {{/if}}
+            {{#if $.Session.equals 'document-tab' 'financial'}}
+                {{>FinancialRecord}}
+            {{/if}}
+            {{#if $.Session.equals 'document-tab' 'allocation'}}
+                {{>DocAllocation}}
+            {{/if}}
+          <!--  {{#if $.Session.equals 'documents-player' 'controller'}}
+              {{>Export}}
+            {{/if}} -->
+            {{#if $.Session.equals 'document-tab' 'harvests'}}
+              {{>Harvests}}
+            {{/if}}
+            {{#if $.Session.equals 'document-tab' 'manager'}}
+              {{>Manager}}
+            {{/if}}
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  </div>
+</template>

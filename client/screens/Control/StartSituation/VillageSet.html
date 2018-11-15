@@ -1,0 +1,19 @@
+<template  name='VillageSet'>
+	<tr class="startsit-border-top">
+		<td class="ss-grey-cell startsit-lbl">{{name}}</td>
+		<td class="ss-grey-cell"><input type="number" class="startSitInput" value={{this.money}}></td>
+		{{#each fields}}
+	        <td class="ss-grey-cell">{{>FieldSet}}</td>
+	    {{/each}}
+	</tr>
+ <!-- <div>
+    <p>village {{this.village}}</p>
+    <p>money</p>
+    <input type="number" class="input-manual money" value={{this.money}}>
+    <p>fields FEF</p>
+    {{#each fields}}
+        {{>FieldSet}}
+    {{/each}}
+  </div>
+-->
+</template>

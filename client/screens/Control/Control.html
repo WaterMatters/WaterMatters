@@ -1,0 +1,84 @@
+<template name="Control">
+<!--  <i class="fas fa-times close-action close-action-manager"></i> -->
+
+<div class="control">
+  {{#if Template.subscriptionsReady}}
+  <div class="control-left">
+    <div class="links-control">
+      {{>ControlNav tab="selectedTab"}}
+    </div>
+  </div>
+  <div class="control-right">
+    <div class="documents-container tabs-body" id="{{selectedTab}}">
+      {{#if $.Session.equals 'control-tab' 'games'}}
+          {{>Games}}
+      {{/if}}
+      {{#if $.Session.equals 'control-tab' 'water'}}
+          {{>WaterControl}}
+      {{/if}}
+      {{#if $.Session.equals 'control-tab' 'events'}}
+          {{>EventControl}}
+      {{/if}}
+      {{#if $.Session.equals 'control-tab' 'maintenance'}}
+          {{>MaintenanceControl}}
+      {{/if}}
+      {{#if $.Session.equals 'control-tab' 'startSituation'}}
+          {{>StartSituation}}
+      {{/if}}
+    </div>
+  </div>
+  {{else}}
+    loading...
+  {{/if}}
+</div>
+<!--
+  <div class="action documents">
+
+      <div class="action-header">
+        Control settings
+      </div>
+
+    {{#if Template.subscriptionsReady}}
+
+      {{#if $.Session.equals 'control-tab' 'games'}}
+          {{#if $.Session.get 'createNewGame'}}
+          {{else}}
+            <button class="btn new-game-button btn-add"><p>+</p></button>
+          {{/if}}
+      {{/if}}
+
+
+      <div class="action-body body-control">
+          <div class="links-control">
+            <div id="controlLink-games" class="{{#if $.Session.equals 'control-tab' 'games'}}selected{{/if}}">Games</div>
+            <div id="controlLink-water" class="{{#if $.Session.equals 'control-tab' 'water'}}selected{{/if}}">Water</div>
+            <div id="controlLink-events" class="{{#if $.Session.equals 'control-tab' 'events'}}selected{{/if}}">Events</div>
+            <div id="controlLink-maintenance" class="{{#if $.Session.equals 'control-tab' 'maintenance'}}selected{{/if}}">Maintenance</div>
+            <div id="controlLink-startSituation" class="{{#if $.Session.equals 'control-tab' 'startSituation'}}selected{{/if}}">Start Situation</div>
+          </div>
+
+          <div class="documents-container tabs-body" id="{{selectedTab}}">
+            {{#if $.Session.equals 'control-tab' 'games'}}
+                {{>Games}}
+            {{/if}}
+            {{#if $.Session.equals 'control-tab' 'water'}}
+                {{>WaterControl}}
+            {{/if}}
+            {{#if $.Session.equals 'control-tab' 'events'}}
+                {{>EventControl}}
+            {{/if}}
+            {{#if $.Session.equals 'control-tab' 'maintenance'}}
+                {{>MaintenanceControl}}
+            {{/if}}
+            {{#if $.Session.equals 'control-tab' 'startSituation'}}
+                {{>StartSituation}}
+            {{/if}}
+          </div>
+      </div>
+
+    {{else}}
+    loading...
+    {{/if}}
+  </div>
+-->
+</template>

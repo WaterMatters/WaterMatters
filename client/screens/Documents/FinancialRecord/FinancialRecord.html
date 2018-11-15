@@ -1,0 +1,123 @@
+<template name="FinancialRecord">
+{{#if $.Session.equals 'document-tab' 'financial'}}
+  {{#if Template.subscriptionsReady}}
+
+    <table class="landholding-table">
+      <thead>
+        <tr class="bold">
+          <td class="no-border"></td>
+          <td class="no-border"></td>
+          <td colspan="4" class="white-cell">Fields (4 x 10ha)</td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr class="bold">
+          <td class="no-border"></td>
+          <td class="no-border"></td>
+          <td class="grey-cell doc-title">1</td>
+          <td class="grey-cell doc-title">2</td>
+          <td class="grey-cell doc-title">3</td>
+          <td class="grey-cell doc-title">4</td>
+        </tr>
+        <tr class="">
+          <td class="no-border"></td>
+          <td class="no-border"></td>
+          {{#each fefFields}}
+            <td class="grey-cell">fef= {{this}}</td>
+          {{/each}}
+        </tr>
+        <tr class="bold">
+          <td class="no-border"></td>
+          <td class="no-border"></td>
+          {{#each cropGrown}}
+            <td class="grey-cell">{{this}}</td>
+          {{/each}}
+        </tr>
+
+  <!-- For Outgoings -->
+        <tr class="top-thick">
+          <td rowspan="5" class="white-cell">Outgoings</td>
+          <td class="lefty grey-cell doc-title">Subsistence Costs</td>
+          <td colspan="4" class="grey-cell">{{subsistence}}</td>
+        </tr>
+        <tr>
+          <td class="lefty grey-cell doc-title">Crop costs</td>
+          {{#if isStage0}}
+              {{#each cropCosts}}
+                <td class="grey-cell">({{this}})</td>
+              {{/each}}
+          {{else}}
+              {{#each cropCosts}}
+                <td class="grey-cell">{{this}}</td>
+              {{/each}}
+          {{/if}}
+        </tr>
+        <tr>
+          <td class="lefty grey-cell doc-title">Maintenance costs</td>
+          <td colspan="4" class="grey-cell">{{maintenanceCosts}}</td>
+        </tr>
+        <tr>
+          <td class="lefty grey-cell doc-title">Other expenses</td>
+          <td colspan="4" class="grey-cell">{{sumOtherExpenses}}</td>
+        </tr>
+        <tr>
+          <td class="lefty grey-cell doc-title">TOTAL COSTS</td>
+          <td colspan="4" class="grey-cell">{{totalCosts}}</td>
+        </tr>
+
+
+  <!-- For Incomes -->
+        <tr class="top-thick">
+          <td rowspan="5" class="white-cell">Income</td>
+          <td class="lefty grey-cell doc-title">Final crop yield (t/10ha)</td>
+          {{#each finalCropYield}}
+            <td class="grey-cell">{{this}}</td>
+          {{/each}}
+        </tr>
+        <tr>
+          <td class="lefty grey-cell doc-title">Crop price (Pz/t)</td>
+          {{#each cropPrice}}
+            <td class="grey-cell">{{this}}</td>
+          {{/each}}
+        </tr>
+        <tr>
+          <td class="lefty grey-cell doc-title">Crop Revenue (Pz.)</td>
+          {{#each cropRevenue}}
+            <td class="grey-cell">{{this}}</td>
+          {{/each}}
+        </tr>
+        <tr>
+          <td class="lefty grey-cell doc-title">Other income</td>
+          <td colspan="4" class="grey-cell">{{sumOtherIncome}}</td>
+        </tr>
+        <tr>
+          <td class="lefty grey-cell doc-title">GROSS RETURN</td>
+          <td colspan="4" class="grey-cell">{{grossReturn}}</td>
+        </tr>
+
+  <!-- Balance -->
+        <tr class="top-thick">
+          <td rowspan="4" class="white-cell">Balance</td>
+          <td class="lefty grey-cell doc-title">Net return</td>
+          <td colspan="4" class="grey-cell">{{netReturn}}</td>
+        </tr>
+        <tr>
+          <td class="lefty grey-cell doc-title">Cash assets</td>
+          <td colspan="4" class="grey-cell">{{cashAssets}}</td>
+        </tr>
+        <tr>
+          <td class="lefty grey-cell doc-title">TOTAL ASSETS</td>
+          <td colspan="4" class="grey-cell">{{totalAssets}}</td>
+        </tr>
+
+      </tbody>
+
+
+
+    </table>
+
+  {{/if}}
+{{/if}}
+
+</template>

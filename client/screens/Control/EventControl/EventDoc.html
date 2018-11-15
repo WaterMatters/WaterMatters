@@ -1,0 +1,15 @@
+<template name="EventDoc">
+
+        <tr class="control-event-season-headers {{#if active}}active{{/if}}">
+          <td class="grey-cell e-item">{{stage}}</td>
+          <td class="grey-cell e-item" title="{{eventName.title}}">{{eventName.name}}</td>
+          <td class="grey-cell e-item">{{modification}}</td>
+          <td class="grey-cell e-item">{{priceReparation}}</td>
+          <td class="grey-cell e-item" title="{{eventWhere.title}}">{{eventWhere.where}}</td>
+          <td class="grey-cell e-item" title="0='immediately and 1='from next water distribution'">{{timing}}</td>
+          <td class="grey-cell e-item"><i class="fas fa-pencil-alt edit" alt="edit"></i></td>
+          <td class="grey-cell e-item"><i class="far fa-trash-alt delete" alt="delete"></i></td>
+        </tr>
+
+
+</template>

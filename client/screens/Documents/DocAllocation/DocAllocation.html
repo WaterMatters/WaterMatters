@@ -1,0 +1,33 @@
+<template name="DocAllocation">
+{{#if $.Session.equals 'document-tab' 'allocation'}}
+  {{#if Template.subscriptionsReady}}
+
+    <table class="landholding-table doc-alloc-table">
+      <thead>
+        <tr class="bold">
+          <td class="no-border"></td>
+          <td class="white-cell doc-title">Stage 1</td>
+          <td class="white-cell doc-title">Stage 2</td>
+          <td class="white-cell doc-title">Stage 3</td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr class="bottom-thick top-thick">
+          <td class="bold white-cell doc-title">Main Canal</td>
+          <td class="bold grey-cell">{{#if visible.stage1}}{{mainCanalObj.one}}{{/if}}</td>
+          <td class="bold grey-cell">{{#if visible.stage2}}{{mainCanalObj.two}}{{/if}}</td>
+          <td class="bold grey-cell">{{#if visible.stage3}}{{mainCanalObj.three}}{{/if}}</td>
+        </tr>
+        {{#each arrayVillages}}
+
+            {{>DocAllocVillage}}
+
+        {{/each}}
+      </tbody>
+    </table>
+
+  {{/if}}
+{{/if}}
+
+</template>

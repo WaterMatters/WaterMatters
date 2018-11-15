@@ -1,0 +1,13 @@
+<template name="override-atSelectInput">
+  <div class="at-input" style="margin: 15px 0px;">
+  	<div class="input-group">
+	    <!--<label for="at-field-{{_id}}"></label>-->
+	    <select id="at-field-{{_id}}" name="at-field-{{_id}}" class="select-log form-control-lg" style="height: 57px;">
+	    	<option value="{{displayName}}" selected disabled>{{displayName}}</option>
+	      {{#each values}}
+	        <option value="{{value}}">{{text}}</option>
+	      {{/each}}
+	    </select>
+	</div>
+  </div>
+</template>

@@ -1,0 +1,2476 @@
+/* CSS declarations go here */
+normalize-css()
+
+// Material Shadows
+shadow-level(l = 1)
+    if l == -1
+        box-shadow: inset -2px 7px 9px -7px rgba(0,0,0,0.7);
+    if l == 0
+        box-shadow: none;
+    if l == 1
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    if l == 2
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    if l == 3
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    if l == 4
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    if l == 5
+        box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+
+// Common Transition
+trans($sec = 0.3s)
+    transition: all $sec ease
+
+// Grid
+$xsmall = 340px
+$small = 500px
+$med = 723px
+$normal = 823px
+$large = 960px
+$wide = 1200px
+
+// Colors
+black = #222
+blue = #0066FF
+blue-dark = #2952a3
+blue-bright = #0082C8
+blue-light = #99ddff
+blue-lighter = #ccebff
+green = #CBE56C
+green-good = #85c669
+green-good-dark = #006600
+green-light = #d3f4bc
+green-lighter = #ecf9f2
+green-dark = #006600
+grey = #cccccc
+grey-dark = #737373
+grey-light = #f2f2f2
+grey-dead = #595959
+maroon = #6A2140
+orange = #ff8000
+pink = #CF256D
+purp = #324e67
+purp-dark = #213445
+red = #E54B4B
+red-light = #CA5765
+red-poor = #ff1a1a
+red-dark = #990000
+teal = #82D8D8
+yellow-desert = #F1EEBB
+yellow-medium = #DAA520
+yellow-medium-dark = #e68a00
+yellow-light = #ffffe6
+
+
+//Color classes
+.blue
+    color blue
+.grey
+    color grey
+
+//Text edit
+.bold
+    font-weight bold
+
+z = {
+    neg: -7,
+    lowest: 1,
+    low: 4,
+    mid: 5,
+    pinfo: 5,
+    nav: 6,
+    header: 7,
+    mini: 10,
+    modal: 11,
+    highest: 12
+}
+
+//Bloc arrangement
+.flex-horiz
+    display flex
+.space-around
+    justify-content space-around
+.flex-start
+    justify-content flex-start
+
+
+social = {
+    twitter: #00aced,
+    facebook: #3b5998,
+    google: #dd4b39,
+    youtube: #bb0000
+}
+
+/* ANIMATIONS */
+
+/*Animation to unblur something*/
+  @-webkit-keyframes unblur {
+    from {-webkit-filter: blur(50px);
+          -moz-filter: blur(50px);
+          -o-filter: blur(50px);
+          -ms-filter: blur(50px);
+          filter: blur(50px); }
+    to   {-webkit-filter: blur(0px);
+          -moz-filter: blur(0px);
+          -o-filter: blur(0px);
+          -ms-filter: blur(0px);
+          filter: blur(0px); }
+  }
+/*Animation for the harvest panel to go down*/
+  @-webkit-keyframes rollDown {
+    from {position: relative;
+          top: -30px;
+    }
+    to   {position: relative;
+          top: 0px;
+    }
+  }
+
+
+$side-nav = 100px
+$screen = 723px
+
+
+html
+    box-sizing: border-box
+    overflow: auto
+    width $med
+    +above($normal)
+      width $normal
+
+*, *:before, *:after
+    box-sizing: inherit
+
+*
+  cursor default
+
+a:hover
+  cursor pointer
+  *:hover
+    cursor pointer
+
+
+body
+    padding none
+    overflow auto
+    width $med
+    +above($normal)
+      width $normal
+
+
+
+header
+    position relative
+    z-index: z.header
+    display flex
+    justify-content flex-start
+    align-items center
+    color #FFF
+    background: purp
+    margin none
+    padding 0px 20px
+    width 100%
+    height 70px
+    shadow-level(1)
+    clearfix()
+    h1
+        margin 0
+        font-size 1.6em
+        flex 3
+    .login-box
+        flex 2
+        display flex
+        justify-content flex-end
+        justify-self end
+        .email-logged
+            color grey
+            margin 0px 15px
+        .login-toggle, .logout
+            min-width 50px
+            cursor pointer
+            margin 0px
+
+p
+    color #333
+
+.page-title
+    text-transform uppercase
+    text-align center
+    margin-bottom 0px
+
+.billboard
+    display flex
+    flex-direction column
+    align-items center
+    justify-content center
+    height 670px
+    background purp-dark
+    color #FFF
+    font-size 2em
+    text-align center
+    padding 60px
+    h2
+        margin 0
+
+.main-layout
+    position relative
+    z-index: z.lowest
+    lost-center 100%
+    margin none
+    +above($normal)
+        lost-center 100%
+        padding-left $side-nav
+
+.btn, button
+    display inline-block
+    cursor pointer
+    background purp
+    color #FFF
+    text-decoration none
+    text-transform uppercase
+    padding 5px 15px
+    border solid 3px purp
+    border-radius 2px
+    font-weight 800
+    shadow-level(1)
+    trans()
+    &:hover
+        background @background - 20
+        border-color @background
+        shadow-level(2)
+    &.btn-primary
+        background teal
+        border-color teal
+        color purp-dark
+        &:hover
+            background @background - 40
+            border-color @background
+    &.btn-deny
+        background red
+        border solid 3px @background
+        &:hover
+            background @background - 20
+            border-color @background
+    &.btn-text
+        color purp
+        background transparent
+        border solid 2px purp
+        shadow-level(0)
+        &:hover
+            background teal
+            border-color @background
+            shadow-level(1)
+    &.btn-text-dark
+        color #FFF
+        background transparent
+        border solid 2px #FFF
+        shadow-level(0)
+        &:hover
+            background #FFF
+            color purp-dark
+            border-color @background
+            shadow-level(1)
+    &.btn-confirmation
+        color black
+        background green
+        border solid 2px @background
+        &:hover
+            background @background - 20
+            border-color purp-dark
+    &.btn-cancel
+        color #FFF
+        background transparent
+        border solid 2px #FFF
+        opacity 0.4
+        shadow-level(-1)
+        &:hover
+            background red
+            color #FFF
+            opacity 1
+            shadow-level(2)
+            border-color @background
+    &.btn-add
+        font-size 40px
+        padding 0px
+        background blue-dark
+        border solid 2px #FFF
+        opacity 0.7
+        shadow-level(-1)
+        text-align center
+        text-decoration none
+        margin-top -50px
+        height 50px
+        width 50px
+        border-radius 50%
+        &:hover
+            opacity 1
+            shadow-level(2)
+            border-color @background
+        p
+          position relative
+          top -12px
+          color white
+          margin 0px
+          padding 0px
+          display inline-block
+          *display inline
+          vertical-align middle
+          &:hover
+            cursor pointer
+    &.btn-green
+        text-align center
+        width 120px
+        padding 5px
+        border 2px solid grey-dark
+        shadow-level(1)
+        display flex
+        flex-direction column
+        justify-content space-around
+        align-items center
+        background green-good
+        &:hover
+          shadow-level(2)
+          background green-light
+    &.btn-inactive
+        color grey
+        background grey-light
+        border solid 2px grey-dark
+        opacity 0.4
+        shadow-level(-1)
+        &:hover
+            cursor default
+            background grey-light
+            shadow-level(-1)
+
+
+
+input, select, textarea
+    color purp
+    background #FFF
+    border solid 2px grey-light
+    border-radius 2px
+    font-weight 800
+    width 100%
+    padding 6px 10px
+    margin-bottom 10px
+    &.static-input
+        border none
+        background transparent
+    &.input-subsistence
+        width 100px
+    &:hover
+        cursor pointer
+
+.list-group
+    list-style none
+    padding 0
+
+.panel-body
+    .form-group
+        lost-column 1/2
+
+.autoform-remove-item.btn
+    background grey-light
+    box-shadow none
+    border none
+    border-radius 50%
+    font-size 1em
+    height: 25px
+    width: 25px
+    text-align: center
+    display: block
+    padding: 0
+
+.autoform-add-item.btn
+    width 100%
+    border-radius 0
+    border none
+    box-shadow none
+    background grey-light
+
+
+.autoform-remove-item-wrap
+    vertical-align middle
+
+
+.side-nav
+    position relative
+    z-index: z.nav
+    height 100px
+    width 100%
+    background purp-dark
+    color #FFF
+    shadow-level(3)
+    ul
+        margin 0
+        padding 0
+        display flex
+        justify-content space-around
+        list-style none
+        shadow-level(2)
+    .LinkNav
+        color grey-dark
+        text-decoration none
+        padding 20px 20px
+        display block
+        text-align center
+        cursor default
+        *
+          cursor default
+        &.active
+          color #FFF
+          trans()
+          &:hover
+            cursor pointer
+            background purp
+        &.action-active
+          color #FFF
+          trans()
+          &:hover
+            background purp
+    .NotLinkNav
+        color grey-dark
+        text-decoration none
+        padding 20px 20px
+        display block
+        text-align center
+    i
+        display block
+        font-size 2em
+        margin-bottom 10px
+    +above($normal)
+        height 100%
+        z-index: z.mid
+        padding 80px 0
+        fixed top left
+        width $side-nav
+        ul
+            display block
+        shadow-level(-1)
+        .LinkNav
+            padding 20px 10px
+            &.active
+                &:hover
+                  border-left 4px solid teal
+
+
+
+
+.playerInfo
+    position relative
+    z-index: z.pinfo
+    height 70px
+    width 100%
+    max-width 723px
+    background white
+    display flex
+    justify-content space-between
+    align-items center
+    padding-left 10px
+    shadow-level(2)
+    .container-info
+      height 70px
+      display flex
+      align-items center
+      .timeline-and-todo
+        height 70px
+        display flex
+        flex-direction column
+        justify-content space-around
+        p
+          margin 0px
+        .info-season
+          border 1px solid grey-dark
+          border-radius 3px
+          padding 3px 6px
+          background white
+          font-weight bold
+        .info-stage
+          border 1px solid grey
+          border-radius 3px
+          padding 2px 6px
+          min-width 80px
+          width 80px
+          &.past
+            background grey-light
+            border 1px solid grey-light
+            color grey
+          &.present
+            background blue-lighter
+            border 1px solid grey-dark
+            shadow-level(1)
+          &.future
+            background white
+        .to-do-text
+          font-weight bold
+          /* background-color green-lighter
+          padding 2px 7px
+          border 1px solid grey-dark
+          border-radius 3px */
+    .img-water-manager
+      width 30px
+      margin-right 10px
+      img
+        width 100%
+        height auto
+    .fa-arrow-alt-circle-right
+        &:hover
+          color blue
+          cursor pointer
+    .credits
+        /* width 45% */
+        height 80%
+        display flex
+        align-items center
+        margin-right 10px
+        padding none
+    .credit.money-credit
+        min-width 130px
+    .credit
+        min-width 80px
+        height 100%
+        margin none
+        display flex
+        align-items center
+        justify-content space-around
+        border-left 1px solid black
+        .time-cards-credit
+            width 23px
+            width 23px
+            height 30px
+            border 2px solid grey-dark
+            shadow-level(1)
+            text-align center
+    .fa-money-bill-alt
+        color green-dark
+    .fa-unlock-alt
+        color green-dark
+    &.map-info
+        height 35px
+        div
+          display flex
+          p
+            margin-right 10px
+
+.dot-notif
+  width 20px
+  height 20px
+  margin-top -20px
+  border-radius: 50%
+  position relative
+  z-index: z.modal
+  shadow-level(1)
+  border 1px solid black
+  cursor pointer
+  background blue-light
+  color black
+  &.dot-map
+    top -25px
+    left 20px
+    +above($normal)
+      top -25px
+      left 44px
+  &.dot-village
+    top -25px
+    left 20px
+    +above($normal)
+      top -25px
+      left 42px
+
+.dot-event
+  width 20px
+  height 20px
+  margin-top -20px
+  border-radius: 50%
+  position relative
+  z-index: z.low
+  shadow-level(1)
+  border 1px solid black
+  cursor pointer
+  &:hover
+    width 22px
+    height 22px
+    margin-top -22px
+    shadow-level(3)
+    border 2px solid white
+  &.red
+    background red
+  &.green
+    background green
+  &.blue
+    background blue
+    &.dot-rain
+      top 65px
+      left 33px
+      cursor default
+
+.dot-crops-market
+  width 16px
+  height 16px
+  margin-top -16px
+  border-radius: 50%
+  position relative
+  z-index: z.modal
+  shadow-level(1)
+  border 1px solid black
+  background green
+
+
+
+.playerView
+    position relative
+    z-index: z.low
+    max-width 723px
+    width 100%
+    height 530px
+    background: yellow-desert
+
+
+.login-buttons-dropdown-align-
+    #login-dropdown-list
+        right 0
+        left auto
+        a
+            color purp-dark
+
+.screenManager
+    height 530px
+    padding 0.5%
+    display flex
+    flex-direction column
+    justify-content center
+    align-items center
+
+.screenVillage
+    height 530px
+    display flex
+    flex-direction column
+    width 100%
+
+.upperScreenVillage
+    min-height 340px
+    height 340px
+    padding 0.5%
+    display flex
+    flex-direction column
+    justify-content center
+    align-items center
+    .rain-on-screen
+          display flex
+          flex-direction column
+          align-items center
+          position absolute
+          top 30px
+          left 320px
+          .dark-cloud
+                color grey-dark
+          .rain-text-in-cloud
+                color grey-light
+                font-size 0.8em
+          .rain-drops
+                position relative
+                top -10px
+                width 80%
+                display flex
+                justify-content space-between
+                .fa-tint
+                      color blue-dark
+          .rain-under
+                justify-content space-around
+    .storage
+        position absolute
+        width 70px
+        top 270px
+        left 75px
+        .img-storage
+            width 70px
+        div
+          height 20px
+          margin-top -20px
+          position relative
+          font-weight bold
+          text-align center
+          &.stored
+            top -25px
+          &.capacity
+            top -4px
+
+
+
+.map
+      position relative
+      z-index: z.low
+      width 100%
+      height 100%
+      margin 0
+      padding-top 1px
+      background none
+
+      /* villages position
+      //////////////////////////////////// */
+      .map-village-container:nth-child(1)
+        position relative
+        left 50px
+        top 160px
+      .map-village-container:nth-child(2)
+        position relative
+        left 50px
+        top 410px
+      .map-village-container:nth-child(3)
+        position relative
+        left 220px
+        top 195px
+      .map-village-container:nth-child(4)
+        position relative
+        left 240px
+        top 490px
+      .map-village-container:nth-child(5)
+        position relative
+        left 375px
+        top 150px
+      .map-village-container:nth-child(6)
+        position relative
+        left 390px
+        top 360px
+      .map-village-container:nth-child(7)
+        position relative
+        left 560px
+        top 190px
+      .map-village-container:nth-child(8)
+        position relative
+        left 570px
+        top 470px
+
+      /* village structure
+      //////////////////////////////////// */
+      .map-village-container
+        z-index: z.header
+        margin -115px 0px
+        padding 0
+        width 132px
+        height 115px
+        .map-village-header
+          margin 0
+          padding 0
+          width 132px
+          height 60px
+          display flex
+          flex-direction column
+          align-items center
+          .img-water-manager
+            position relative
+            margin-top -20.48px
+            width 25px
+          img
+            width 100%
+            height auto
+        .map-fields-area
+          height 45px
+          width 132px
+          display flex
+          flex-wrap wrap
+          justify-content space-around
+          align-items space-around
+          .map-field
+            background #cc9966
+            border 1px solid #663300
+            width 30px
+            display flex
+            justify-content center
+            align-items center
+            shadow-level(1)
+            img
+              width 100%
+              height auto
+
+      /* Canal elements
+      //////////////////////////////////// */
+      .map-canal
+        position relative
+        z-index: z.low
+        top 150px
+        margin -400px 0px
+      /*
+      .line
+        transform-origin: 0% 0%
+      .main-canal
+        height 7px
+        margin -7px 0px
+        background-color blue-dark
+      .mc1
+        width: 112px
+        transform: rotate(30deg)
+        position: relative
+        left -5px
+        top 250px
+      .mc2
+        background red
+        width: 112px
+        transform: rotate(30deg)
+        position: relative
+        left -5px
+        top 255px
+        */
+      .map-eye
+          width 50px
+          height 50px
+          margin-top -50px
+          position relative
+          z-index: z.low
+          top 28%
+          left 93%
+          *
+            cursor pointer
+            color grey-dark
+
+
+
+
+
+.fields
+    position relative
+    z-index: z.low
+    max-width 720px
+    height 190px
+    min-height 190px
+    display flex
+    justify-content space-around
+    padding 10px 75px 20px 75px
+    .field::-webkit-scrollbar
+        display none
+    .field
+        width 120px
+        height 100%
+        background #cc9966
+        border 1px solid #663300
+        box-shadow 0px 0px 3px 1px #663300;
+        text-align center
+        img
+          width 30%
+          height auto
+        div
+          height 21px
+        .cropName
+            height 24px
+            font-weight bold
+            font-size large
+            display flex
+            flex-direction column
+            align-items center
+            justify-content center
+        .fef
+            color #663300
+            *
+              cursor pointer
+            &.hover-fef
+              font-weight bold
+              shadow-level(2)
+              cursor pointer
+            &:hover
+              font-weight bold
+              shadow-level(2)
+              cursor pointer
+        .yield-graph
+            shadow-level(1)
+            color #663300
+            &:hover
+              font-weight bold
+              shadow-level(2)
+              cursor pointer
+    .fieldNormal
+        background #cc9966
+        & div
+            border-top 0.5px solid #663300
+    .fieldGood
+        background #85e085
+        border 1px solid #004d00
+        box-shadow 0px 0px 3px 1px #004d00
+        & div
+            border-top 0.5px solid #004d00
+    .fieldMedium
+        background #ffe680
+        border 1px solid #b38f00
+        box-shadow 0px 0px 3px 1px #b38f00
+        & div
+            border-top 0.5px solid #b38f00
+    .fieldPoor
+        background #ff9999
+        border 1px solid #990000
+        box-shadow 0px 0px 3px 1px #990000
+        & div
+            border-top 0.5px solid #990000
+    .fieldDead
+        background #ccccb3
+        border 1px solid #4d4d4d
+        box-shadow 0px 0px 3px 1px #4d4d4d
+        & div
+            border-top 0.5px solid #4d4d4d
+
+
+.unblur
+    /* Animation to unblur gradually the element with this class*/
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px);
+    animation-name: unblur;
+    animation-duration: 0.3s;
+
+.info-modal{
+        &.closed {
+            display: none;
+            max-height:0px;
+            max-width: 0px;
+            margin: none;
+            padding: none;
+        }
+        &.open{
+          z-index: z.modal;
+          background: white;
+          shadow-level(2);
+          border: 3px solid purp;
+          border-radius: 15px;
+          color: black;
+          font-weight: bold;
+          text-align: center;
+          padding: 10px;
+          width: 140px;
+        }
+        &.maintenance{
+          position: absolute;
+          left: 385px;
+          &.must-pay{
+            top: 10px;
+            width: 155px;
+          }
+          &.paid{
+            top: 25px;
+            width: 140px;
+          }
+        }
+        &.reservoir {
+          position: absolute;
+          top: 65px;
+          left: 560px;
+          width: 140px;
+        }
+        &.crops{
+          position: absolute;
+          left: 245px;
+          width: 140px;
+          &.must-pay{
+            top: 10px;
+          }
+          &.paid{
+            top: 65px;
+          }
+        }
+        &.subsistence{
+          position: absolute;
+          top: 85px;
+          left: 90px;
+          width: 140px;
+        }
+        &.eventRain{
+          position: absolute;
+          top: 40px;
+          left: 405px;
+          width: 200px;
+        }
+}
+
+.yield-graph-modal {
+        &.closed {
+            display: none;
+        }
+        &.open {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+            z-index: z.highest;
+            border: none;
+            top: -530px;
+            left: 50%;
+            padding: 0px;
+            width: 100%;
+            min-height: 530px;
+            height: 530px;
+            transform: translate3d(25%, -80%, 0) scale(0.5);
+            background: rgba(100,100,100,0);
+            @include trans();
+            @include card(4);
+            background: rgba(0,0,0,0.4);
+            transform: translateX(-50%) scale(1);
+            h2{
+                margin: 0px;
+            }
+            p{text-align: center;}
+            input{width: 90px;}
+            .yield-graph-block {
+                margin-top: 20px;
+                width: 380px;
+                height: 410px;
+                opacity: 1;
+                background: white;
+                padding: 0px 0px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                shadow-level(3);
+                img {
+                  width: 100%;
+                  height: auto;
+                }
+                .fig-yield-header {
+                  height: 20px
+                  margin-top: -20px;
+                  position: relative;
+                  top: 30px;
+                  left: 0px;
+                  font-size: 1.5em;
+                }
+                .close-yield-graph {
+                    width: 11px;
+                    height: 14px;
+                    margin-top: -14px;
+                    position: relative;
+                    top: 22px;
+                    left: 175px;
+                    z-index: z.modal;
+                    &:hover {
+                      cursor: pointer;
+                    }
+                }
+                .dot-stage {
+                    height: 18px;
+                    width: 18px;
+                    border-radius: 9px;
+                    margin-top: -18px;
+                    position: relative;
+                    border: 2px solid black;
+                    background: blue;
+                    &.stage0 {
+                        top: 26%;
+                        left: -39%;
+                    }
+                    &.stage1 {
+                        left: -13.7%;
+                    }
+                    &.stage2 {
+                        left: 11.3%;
+                    }
+                    &.stage3 {
+                        left: 36.5%;
+                    }
+                }
+                .fig-supply {
+                    position: relative;
+                    top: 300px
+                    left: -5px;
+                    display: flex;
+                    height: 65px;
+                    width: 290px;
+                    margin-top: -65px;
+                    dispay: flex;
+                    justify-content: space-around;
+                    .fig-supply-box {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        max-height: 65px;
+                        min-height: 65px;
+                        min-width: 60px;
+                        background-color: white;
+                        border: 1px solid black;
+                        &.shadow {
+                          shadow-level(3);
+                          font-weight: bold;
+                        }
+                        p {
+                          margin: 0px;
+                          &.fig-supply-good{color:green-good}
+                          &.fig-supply-medium{color:yellow-medium}
+                          &.fig-supply-poor{color:red}
+                        }
+                    }
+                }
+            }
+        }
+}
+
+.map-event-modal {
+        &.closed {
+            display: none;
+        }
+        &.open {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+            z-index: z.modal;
+            border: none;
+            top: 620px;
+            left: 50%;
+            padding: 0px;
+            width: 102%;
+            min-height: 530px;
+            height: 530px;
+            margin-top: -530px;
+            transform: translate3d(25%, -80%, 0) scale(0.5);
+            background: rgba(100,100,100,0);
+            @include trans();
+            @include card(4);
+            background: rgba(0,0,0,0.4);
+            transform: translateX(-50%) scale(1);
+            h2{
+                margin: 0px;
+            }
+            p{text-align: center;}
+            input{width: 90px;}
+            .yield-graph-block {
+                margin-top: 20px;
+                width: 380px;
+                height: 410px;
+                opacity: 1;
+                background: white;
+                padding: 5px 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                shadow-level(3);
+                p {
+                  margin-top:0px;
+                  margin-bottom: 15px;
+                }
+                .fig-yield-header {
+                  margin-top: 15px;
+                  font-size: 1.5em;
+                }
+                .close-map-event {
+                    width: 11px;
+                    height: 14px;
+                    margin-top: -14px;
+                    position: relative;
+                    top: 17px;
+                    left: 175px;
+                    z-index: z.modal;
+                    &:hover {
+                      cursor: pointer;
+                    }
+                }
+                .bloc-funding{
+                  width 100%
+                  display flex
+                  justify-content space-around
+                  .participations{
+                      p{margin:0px;padding-top:3px;}
+                      display: flex;
+                      flex-direction: column;
+                      .village-participation {
+                          display:flex;
+                          input {
+                            margin 0px 2px 2px 7px
+                            padding 2px
+                            text-align: center;
+                            &.disabled {
+                              background: grey;
+                            }
+                          }
+                      }
+                  }
+                  .totalization{
+
+                  }
+                }
+                button{
+                  margin-top: 5px;
+                }
+            }
+        }
+}
+
+.login-modal {
+          position: absolute;
+          border: solid 4px $dblue;
+          top: 200px;
+          left: 200px;
+          padding: 20px;
+          width: 400px;
+          /*transform: translate3d(25%, -80%, 0) scale(0.5);*/
+          background: #FFF;
+          opacity: 0;
+          @include trans();
+          @include card(4);
+          &.open {
+              opacity: 1;
+              /*transform: translateX(-50%) scale(1);*/
+          }
+          &.closed {
+              display: none
+          }
+          h3 {
+              margin-top: 0;
+          }
+          .close-login {
+              position: absolute;
+              top: 0;
+              right: 0;
+              display: block;
+              cursor: pointer;
+              font-size: 2em;
+              padding: 10px 15px;
+              opacity: 0.2;
+          }
+}
+
+.at-input {
+          margin-bottom: 10px;
+}
+
+.close-action
+    width 11px
+    height 14px
+    margin-top -14px
+    position relative
+    top 25px
+    left 340px
+    z-index: z.mini
+    &:hover
+      cursor pointer
+
+
+.action, .trade
+    width 100%
+    height 100%
+    background white
+    shadow-level(2)
+    z-index: z.header
+    border-radius 4px
+    display flex
+    flex-direction column
+    align-items center
+    justify-content space-around
+
+
+.startGame
+    justify-content center
+
+.irrig-inputs
+    max-width 110px
+    display flex
+    flex-direction column
+    align-items center
+
+.purchase-seeds
+      .seed-choice-panel
+          width 78%
+          display flex
+          justify-content space-between
+      .total-price
+          margin-bottom 10px
+          border 2px solid black
+          border-radius 2px
+          padding 5px
+          font-weight bold
+      .OptionSeeds
+          select
+            width 100%
+
+.validate-request
+    margin-bottom 10px
+
+.availability, .event-cards, .tab-content
+    width 100%
+    overflow auto
+    .weatherCards,
+        overflow auto
+        width 90%
+    .event-description
+        text-align justify
+        margin auto
+        overflow auto
+    .info-card
+        display flex
+        justify-content space-between
+        padding 0px 30px
+    .availability-container
+        width 80%
+        margin-bottom 50%
+    .new-weather-card-button, .new-event-card-button
+        height 50px
+        position relative
+        top 60%
+        left 30%
+        z-index: z.low
+    .weatherCards
+        height 400px
+        margin 10px 0px
+    .weather-card, .event-card,
+            background #FFF
+            padding 0 20px 20px
+            margin-bottom 20px
+            position relative
+            z-index 1
+            shadow-level(1)
+            trans()
+            .btn-primary, .btn-deny
+                display block
+            &.in-menu
+                background teal
+                color #FFF
+                h3
+                    border-bottom: rgba(255,255,255, 0.6) solid 3px
+            h3
+                font-size: 2.3em;
+                opacity: 0.3;
+                border-bottom: rgba(0,0,0, 0.3) solid 3px
+                margin-top 0
+                margin-bottom 10px
+            .fa-trash, .fa-pencil-alt, .weather-card-play, .event-card-play, .activate-game-button
+                opacity 0.5
+                cursor pointer
+                position absolute
+                top 0
+                right 0
+                font-size 1.6em
+                display block
+                padding 18px
+                color black
+                trans()
+                &:hover
+                    cursor pointer
+                    color red
+                    opacity 0.6
+            .fa-pencil-alt
+                right 45px
+                &:hover
+                    color purp
+            .weather-card-play, .event-card-play
+                right 110 px
+                top 15px
+                padding 0px 5px
+                border 1pt solid grey
+                background none
+                font-size 1.2em
+                &:hover
+                    background blue
+                    border 1pt solid blue
+                    color white
+            .eventToPlay
+                background green-dark
+                border 1pt solid green-dark
+                color white
+            .ingredient
+                display inline-block
+                margin-right 10px
+                font-size 1.2em
+            &:hover
+                shadow-level(3)
+                // animation card 0.6s ease 1 forwards
+    .new-weather-card-container, .new-event-card-container ,.new-game-container
+            width 70%
+            position relative
+            background #FFF
+            padding 20px
+            margin-bottom 20px
+            shadow-level(2)
+            .fa-times
+                position absolute
+                top 0
+                right 0
+                padding 20px
+                &:hover
+                    color red
+            label
+                display block
+                margin-bottom 10px
+            textarea, input
+                width 100%
+            h3
+                font-size: 2em;
+                opacity: 0.3;
+                border-bottom: rgba(0,0,0, 0.3) solid 3px
+                margin-top 0
+                margin-bottom 10px
+      .validate-event-cards
+            margin-bottom 10px
+
+.new-event-card-container
+  overflow auto
+
+
+table
+      border-collapse: collapse
+      width: 90%
+      .useless, .no-border
+          border: none
+      .clickable
+        &:hover
+          cursor pointer
+      .tots
+          border-top: 2px solid black
+      .totals-request
+          background blue-lighter
+          &.all-request
+            font-weight bold
+      .prices
+          background green-light
+          &.total-prices
+            font-weight bold
+      thead th
+          padding 0px 5px
+      th
+          min-width: 70px
+          border: 1px solid black
+          font-size: 1.1em
+      td
+          min-width: 70px
+          border: 1px solid black
+          text-align: center
+      input, select
+          width 100%
+          box-sizing border-box
+          text-align center
+          margin 0px
+      select
+        border: 0
+        width: 100%
+        text-align-last: center
+        font-size: 1.1em
+table.water-request
+      width 98%
+      height 210px
+      margin-top: 40px
+      tr
+        min-height 30px
+        height 30px
+      td.good-supply
+        background-color #e6f5ff
+        *
+          background-color #e6f5ff
+      #linePrices
+        border-top: double
+      input[type=number]::-webkit-inner-spin-button,
+      input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      #lineArrows
+        height 40px
+        *
+          border: none
+        .arrow-down{
+          width: 0;
+          height: 0;
+          border-width: 6px;
+          border-style: solid;
+          border-bottom-color: transparent;
+          border-left-color: transparent;
+          margin-top: 10px;
+          &:before{
+            right: 0px;
+            top: -3px;
+            position: absolute;
+            height: 4px;
+            box-shadow: inset 0 0 0 32px;
+            transform: rotate(-45deg);
+            width: 15px;
+            transform-origin: right top;
+          }
+          transform: rotate(135deg);
+          position: relative;
+          display: inline-block;
+          vertical-align: middle;
+          color: #666;
+          box-sizing: border-box;
+          &:after, &:before {
+            content: "";
+            box-sizing: border-box;
+          }
+        }
+
+
+.allocation
+        .table-allocation
+            margin-bottom 20px
+            .gateSelect
+                width 100px
+            .backBlue
+                background-color #cce6ff
+            tbody th
+                height 35px
+        .validate-allocation
+            margin-bottom 10px
+        .disabled
+            background grey-light
+            color grey-dark
+
+
+
+
+
+#box {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    background-color: #2196F3;
+    color: white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius: 10px;
+    #handle {
+        background-color: #727272;
+        width: 20px;
+        height: 10px;
+        cursor: pointer;
+        position:absolute;
+        top: 0;
+    }
+}
+
+.end-stage
+    justify-content center
+
+.finish-season
+    margin-bottom 10px
+
+
+.event-play
+    .event-play-description
+          width 80%
+    .validate-event-play
+          margin-bottom 10px
+
+.time-card
+    width 100%
+    .gate-setting-conditions-panel
+        width 100%
+        display flex
+        height 220px
+        .time-card-choice
+            width 60%
+            color grey
+            border-right 1px solid grey
+            display flex
+            padding 0% 5%
+            flex-wrap wrap
+            justify-content space-around
+            .time-card-to-play, .time-card-played
+                width 18%
+                height 40%
+                margin 3% 4%
+                text-align center
+                shadow-level(1)
+
+
+            .time-card-played.played, .time-card-to-play.played
+                background white
+                display flex
+                flex-direction column
+                justify-content center
+                *
+                  color black
+                &.caught
+                    background red-light
+                    color white
+                    border 2px solid black
+                &.all-clear
+                    background-color green-light
+                    border 2px solid black
+            .time-card-to-play.not-played, .time-card-played.still-not-played
+                    border 2px solid white
+                    background grey
+                    font-size x-large
+            .time-card-to-play.not-played
+                    &:hover
+                        cursor pointer
+                        width 19%
+                        height 41%
+                        margin 2.5% 3.5%
+                        font-size 1.8em
+                        shadow-level(2)
+
+        .lock-and-gate-setting
+            width 30%
+            display flex
+            flex-direction column
+            align-items center
+            .lock
+                height 150px
+                .fa-lock
+                    color red-dark
+                    cursor pointer
+                    &:hover
+                      color red
+                .fa-unlock-alt
+                    color green-dark
+            .disabled *
+                background grey-light
+                color grey-dark
+
+    button
+        margin-bottom 5px
+        &.btn-inactive
+          color red
+
+.tab-content
+    &.controller
+      height 410px
+    &.village
+      height 230px
+
+
+#water, #events
+    .scroll-all-seasons
+        height 395px
+        width 100%
+        margin-top 10px
+        display flex
+        flex-direction column
+        align-items center
+        overflow auto
+        border 1px solid grey-dark
+        border-radius 5px
+        input, select
+          width 90px
+        .bloc-season.disabled
+            background grey
+            *
+              background grey
+              pointer default
+            select
+              background white
+        .bloc-season
+            width 100%
+            display flex
+            flex-direction column
+            justify-content flex-start
+            align-items center
+            border-bottom 1px solid black
+            border-radius 5px
+            .bloc-season-header
+              margin 10px 0px
+              font-weight bold
+              font-size 1.3em
+            .content
+              display flex
+              justify-content space-around
+              width 100%
+              height 130px
+              border-top 1px solid grey
+              .bloc
+                width 150px
+                display flex
+                flex-direction column
+                justify-content space-around
+                .bloc-title
+                  margin 0px 5px
+                  font-weight bold
+                div
+                  display flex
+                  width 100%
+                  align-content center
+                  *
+                    margin 0px 0px
+                  p
+                    padding 2px
+                  input
+                    height 25px
+                    padding 2px
+                    text-align center
+                  .next
+                    margin-left 30px
+              select
+                background white
+                overflow visible
+                width 120px
+                option
+                  background white
+                &.disabled
+                  background grey
+                  cursor default
+                  option
+                    background grey
+#water
+  .bloc-season
+    min-height 200px
+    &.passed
+      min-height 50px
+  .bloc-season-header
+    color blue-dark
+
+#events
+  .bloc-season
+    min-height 200px
+    &.disabled
+      min-height 50px
+  .bloc-season-header
+    color brown
+  .control-event-season-headers
+    display flex
+    justify-content space-around
+    align-items center
+    width 100%
+    min-height 30px
+    border-bottom 1px solid grey
+    span
+      width 80px
+      text-align center
+    &.active
+      background green
+  .content-events
+    height 150px
+    width 100%
+    display flex
+    flex-direction column
+    align-items center
+    overflow auto
+    border-top 1px solid grey
+    .edit, .delete
+      &:hover
+        cursor pointer
+  .btn-add
+    position relative
+    top 380px
+    left 280px
+  .close
+    width 13.33px
+    margin-top -13.33px
+    position relative
+    top 30px
+    left 315px
+    &:hover
+      cursor pointer
+  .new-event-header
+    margin 10px 0px
+    font-weight bold
+    font-size 1.3em
+    color brown
+  .content-new-event
+    width 100%
+    height 350px
+    border-top 1px solid grey
+    #EventForm
+      display flex
+      flex-direction column
+      align-items center
+    fieldset
+      border none
+      width 100%
+      height 300px
+      display flex
+      flex-direction column
+      align-items center
+      .field
+        display flex
+        align-items center
+        div
+          margin-bottom 10px
+          margin-right 5px
+        select
+          height 32.64px
+          width 200px
+      .field-name
+        width 100%
+        margin-top 10px
+        display flex
+        flex-direction row
+        justify-content space-around
+        div
+          width 60%
+          input
+            width 85%
+      .fields-timing
+        width 100%
+        display flex
+        flex-direction row
+        justify-content space-around
+        select
+          width 150px
+      .field-description
+        width 100%
+        #eventFormDescription
+          width 100%
+
+      .fields-event-specs
+        width 100%
+        padding 10px 0px
+        display flex
+        flex-direction row
+        justify-content space-around
+        .box-specs
+          margin 0px 30px
+          flex 1
+          display flex
+          flex-direction column
+          align-items space-around
+
+
+
+
+
+#games
+  width 95%
+  div
+    width 100%
+    .games-section
+      width 100%
+      min-width 100%
+      display flex
+      flex-direction column
+      align-items center
+      .game-template
+        width 100%
+        margin-top 10px
+        padding 5px
+        border 1px solid grey-dark
+        border-radius 5px
+        shadow-level(1)
+        display flex
+        flex-direction column
+        &.game-active
+            background green-light
+        h3
+          text-align center
+          margin 5px
+        .game-template-body
+          display flex
+          jutify-content space-between
+          .game-details div
+              display flex
+              align-items flex-start
+              *
+                margin 0px 10px
+                padding 0px
+          .game-buttons
+              display flex
+              justify-content flex-end
+              align-items center
+              button
+                margin 0px 5px
+        .fa-trash
+          cursor pointer
+          margin -7px 0px
+          position relative
+          top 14px
+          left 95%
+    .new-game-container
+      height 350px
+      display flex
+      flex-direction column
+      align-items center
+      justify-content space-around
+      .fa-times
+        margin-top -14px
+        position relative
+        top -40px
+        left 29%
+        cursor pointer
+      #insertGameForm
+        width 60%
+.new-game-button
+    position relative
+    top 350px
+    left 200px
+    z-index: z.modal
+
+
+
+
+
+/* Mise en forme de toutes les barres d'onglets */
+ul#tabs
+  list-style-type: none; margin: 5px 0 0 2px; padding: 0 0 0.3em 0;
+  display flex
+  justify-content flex-start
+ul#tabs li
+  display: inline;
+ul#tabs li a
+  color: #42454a; background-color: #dedbde; border: 1px solid #c9c3ba; border-bottom: none; padding: 0.3em; text-decoration: none;
+ul#tabs li a:hover
+  background-color: #f1f0ee;
+  cursor: pointer;
+ul#tabs li a.selected
+  color: #000; background-color: white; font-weight: bold; cursor: default; /* padding: 0.7em 0.3em 0.38em 0.3em; */
+div.tabContent
+  border: 1px solid #c9c3ba; padding: 0.5em; background-color: none;
+div.tabContent.hide
+  display: none;
+
+.harvest
+  width 100%
+  display flex
+  flex-direction column
+  align-items center
+  justify-content flex-start
+  .links-harvests
+    animation-name: rollDown;
+    animation-duration: 0.3s;
+    width 100%
+    display flex
+    justify-content flex-start
+    padding 5px 5px
+    border-bottom 1px solid black
+    box-shadow 0px 0px 0px;
+    div
+      padding 3px 5px
+      margin 0px 4px
+      border 1px solid grey-dark
+      border-radius 2px
+      &.selected
+        /* background green-light */
+        font-weight bold
+        border 2px solid grey-dark
+        shadow-level(1)
+      &:hover
+        cursor pointer
+        shadow-level(1)
+  .tab-content
+    height 370px
+    display flex
+    flex-direction column
+    align-items space-around
+    justify-content center
+    &#villages
+      justify-content space-around
+    .title-harvest-village
+      font-weight bold
+      color green-dark
+      margin-top 5px
+      text-decoration underline
+    .title-net-village
+      font-weight bold
+      color blue
+      text-decoration underline
+    .villages-harvest
+      height 150px
+      padding 0px 10px
+      display flex
+      justify-content space-around
+      .village-doc
+        display flex
+        flex-direction column
+        justify-content space-around
+        align-items center
+        flex 1
+        .boundary-bloc
+          height 110px
+          width 100%
+          background white
+          border-top 1px dashed grey-dark
+          border-bottom 1px solid grey-dark
+          display flex
+          flex-direction column
+          justify-content flex-end
+          align-items center
+          .score-harvest
+            width 50%
+            background green-good
+          .score-netto
+            width 50%
+            background blue-light
+        .result-name
+          font-weight bold
+    &#crops-market
+      align-items center
+      .fig-crop-price
+        width 550px
+  .production, .result-wm, .villages-harvest
+    height 200px
+    margin none
+  .production
+    display flex
+    justify-content space-around
+    padding 5px
+    .production-crop
+      width 210px
+      background-color none
+      padding 5px
+      border 1px solid grey-dark
+      shadow-level(1)
+      display flex
+      flex-direction column
+      justify-content space-around
+      .production-name-crop
+          display flex
+          justify-content space-around
+          align-items center
+          border-bottom 1px solid grey-dark
+          div
+            width 60px
+            img
+              width 100%
+      *
+        margin 0
+      .crop-name
+        font-weight bold
+        text-align center
+        margin 6px 0px
+      .personal
+        border-top 1px solid black
+        font-weight bold
+  .total-revenue
+    margin-top 20px
+    min-height 50px
+    height 50px
+    width 93%
+    display flex
+    flex-direction column
+    align-items center
+    justify-content center
+    border 1px solid grey-dark
+    shadow-level(1)
+    align-self center
+    p
+      margin 0
+  .wm-doc
+      margin-bottom 5px
+      border 1px solid grey-dark
+      border-radius 4px
+      shadow-level(1)
+      display flex
+      justify-content space-between
+      align-items center
+      min-height 40px
+      padding 0 10px
+      span
+        flex 3
+        height 20px
+        &.wm-doc-season
+          flex 2
+        &.wm-doc-revenues
+          flex 4
+          color green-dark
+        &.wm-doc-gini
+          color red-dark
+        &.wm-doc-manager
+          color blue-dark
+  .controls
+    display flex
+    button
+      height 40px
+      margin 0px 3px
+
+
+.trade
+  justify-content flex-start
+  .list-box
+    -webkit-mask-image: -webkit-gradient(linear, left center, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0.4)))
+  .list-box, .transaction-window
+    display flex
+    flex-direction column
+    overflow auto
+    .element-list
+      display flex
+      align-items center
+      justify-content space-between
+      padding-left 10px
+      width 100%
+      height 40px
+      min-height 40px
+      background white
+      border-left 2px solid black
+      border-top 1px solid grey-dark
+      z-index: z.header
+      *
+        margin-right 20px
+      div
+        display flex
+        align-items center
+        margin 0
+        &.timeStamp
+          justify-content space-between
+          div
+            margin-right 15px
+      .fa.notification
+        color blue
+        font-size 1.3 em
+  .transaction-window
+    fieldset
+      height 260px
+      width 300px
+      margin-bottom 5px
+      overflow auto
+      border none
+      .fieldset-flex
+        display flex
+        justify-content space-around
+        .input-block
+          padding 5px
+          width 40%
+          height 200px
+          display flex
+          flex-direction column
+          justify-content space-around
+          overflow auto
+          div, select2
+            width 90%
+          .input-trans-form
+            border 1px solid grey-dark
+            border-radius 5px
+            margin 0px
+            margin-top 5px
+    button, .btn
+      position relative
+      margin -40px
+      left 85%
+      top -40px
+  .btn-add
+    position relative
+    top -10%
+    left 30%
+    z-index: z.mini
+
+.documents
+  .links-documents, .links-water, .links-control
+    width 100%
+    display flex
+    justify-content flex-start
+    padding 5px 5px
+    border-bottom 1px solid black
+    box-shadow 0px 0px 0px;
+    div
+      padding 3px 5px
+      margin 0px 4px
+      border 1px solid grey-dark
+      border-radius 2px
+      &.selected
+        /* background blue-lighter */
+        font-weight bold
+        border 2px solid grey-dark
+        shadow-level(1)
+      &:hover
+        cursor pointer
+        shadow-level(1)
+      &.inactive
+        background grey-light
+        color grey-dark
+        border grey-dark
+        &:hover
+          cursor default
+          shadow-level(0)
+  .documents-container
+    height 412px
+    width 100%
+    padding 0px 0px
+    display flex
+    flex-direction column
+    justify-content flex-start
+    align-items center
+    overflow auto
+    .table-finances
+      width 95%
+      td
+        border-left none
+        border-right none
+      .lefty
+        text-align left
+      .righty
+        text-align right
+    .waiting-for-harvest
+      margin-top 200px
+    .reset-all-button
+      margin-top 10px
+    .start-situation
+      margin-top 15px
+      width 100%
+      display flex
+      justify-content space-around
+      div
+        display flex
+        flex-direction column
+        align-items center
+
+
+.landholding-table
+    margin-top 10px
+    .lefty
+      text-align left
+      font-weight bold
+    .righty
+      text-align right
+    td
+      padding 1px 3px
+      border 1px solid grey-dark
+      &.no-border
+        border none
+    .bold td
+      font-weight bold
+    .top-thick td
+      border-top 3px solid grey-dark
+    .bottom-thick
+      border-bottom 3px solid grey-dark
+    &.doc-alloc-table
+      margin-top 30px
+
+.action
+    display flex
+    flex-direction column
+    align-items center
+    justify-content flex-start
+    .action-header
+        width 95%
+        height 60px
+        display flex
+        align-items center
+        justify-content center
+        &.header-market
+          justify-content flex-start
+        border-bottom 2px solid black
+        font-size 1.5em
+        font-weight bold
+        select
+          max-width 155px
+          margin 0px 0px 0px 10px
+          padding 2px 3px
+          border 1px solid grey-dark
+          border-radius 6px
+          color black
+        a, .close-new-t
+          margin-right 5px
+          color black
+          &:hover
+            color blue-dark
+            text-decoration underline
+            cursor pointer
+        span
+          margin-right 5px
+        &.header-market
+          h2
+            align-self flex-start
+            margin-left 50px
+    .action-body
+        width 95%
+        height 274px
+        display flex
+        flex-direction column
+        align-items center
+        &.body-documents, &.body-water-management, &.body-control
+          height 450px
+        &.body-market, &.body-shop, &.body-water-irrigation
+          .tab-irrigation
+            width 100%
+            margin-top 10px
+            height 215px
+            display flex
+            flex-direction column
+            align-items center
+          ul
+            width 75%
+            display flex
+            justify-content space-around
+            margin-top 0px
+            padding 0px
+            li
+              color #FFF
+              text-decoration none
+              a
+                height 100px
+                width 100px
+                padding 10px
+                display flex
+                flex-direction column
+                align-items center
+                justify-content space-around
+                border 1px solid grey-dark
+                border-radius 5px
+                color black
+                font-weight bold
+                text-align center
+                shadow-level(2)
+                text-decoration none
+                &:hover
+                  color blue-dark
+                  shadow-level(3)
+                &.inactive
+                  background grey
+                  shadow-level(0)
+                  &:hover
+                    cursor default
+                    color black
+                    *
+                      cursor default
+                .img-storage
+                  width 80px
+        &.body-shop, &.body-market
+          justify-content center
+        &.body-shop
+          ul
+            width 90%
+        &.body-water-management
+          .tab-management
+            height 412px
+            display flex
+            flex-direction column
+            align-items flex-start
+          .table-allocation
+              margin-top 15px
+              .control-vis-modif div
+                  height 50px
+                  display flex
+                  flex-direction column
+                  align-items space-around
+                  justify-content flex-start
+              .gateSelect
+                  width 100px
+              .backBlue
+                  background-color #cce6ff
+              tbody th
+                  height 35px
+                  .inputAlloc
+                    width 100px
+                  *
+                    height 35px
+              .pre-write
+                  border 2px solid blue-dark
+                  font-size 0.9em
+                  width 80px
+                  shadow-level(1)
+                  &:hover
+                    cursor pointer
+                    background blue-lighter
+                    shadow-level(2)
+          .validate-allocation
+              margin-bottom 10px
+          .disabled
+              background grey-light
+              color grey-dark
+        &.body-water-irrigation
+          height 265px
+          .irrigationFiller
+              height 130px
+              display flex
+              justify-content space-between
+              align-items center
+              width 80%
+              .information
+                padding 4px
+                border 1px solid grey-dark
+              .manage-water
+                padding 4px
+                border 1px solid blue-dark
+                *
+                  color blue-dark
+                input
+                  width 120px
+          .water-irrigation
+              width 100%
+              height 80px
+              display flex
+              justify-content space-around
+              padding 0px 55px
+              .form-supply
+                display flex
+                .field-irrig
+                    width 100px
+                    text-align center
+                    color blue-dark
+                div
+                  display flex
+                  flex-direction column
+                  justify-content space-between
+                  .irrig-shortcut
+                      border 1px solid grey
+                      border-radius 2px
+                      width 17px
+                      height 17px
+                      margin-left 5px
+                      text-align center
+                      font-size 0.8em
+                      color grey
+                      &.clickable
+                        shadow-level(1)
+                        border 1px solid grey-dark
+                        color grey-dark
+                        &:hover
+                          shadow-level(2)
+                          cursor pointer
+                      &.present
+                        shadow-level(2)
+                        color white
+                        &.good
+                          background-color green-good-dark
+                        &.medium
+                          background-color yellow-medium
+                        &.poor
+                          background-color red-dark
+                        &.dead
+                          background-color grey-dead
+        &.body-maintenance
+          height 260px
+          .maintenanceFiller
+              height 130px
+              display flex
+              justify-content space-between
+              width 100%
+          .maintenanceBox
+              height 130px
+              width 100%
+              display flex
+              justify-content space-around
+              padding 0px 55px
+              .maintenanceSlot
+                text-align center
+                width 120px
+                padding 5px
+                border 1px solid grey-dark
+                border-radius 5px
+                shadow-level(1)
+                display flex
+                flex-direction column
+                justify-content space-around
+                align-items center
+                &.pay-maintenance
+                  background green-good
+                  &:hover
+                    shadow-level(2)
+                    background green-light
+        &.body-reservoir
+          height 260px
+          display flex
+          flex-direction row
+          align-items center
+          justify-content space-around
+          button
+            width 200px
+            .addCapacity
+              &:hover
+                cursor pointer
+                *
+                  cursor pointer
+          .fa-arrow-right
+            color green-good
+          div
+            width 150px
+            display flex
+            flex-direction column
+            align-items center
+            img
+              width 100%
+            .capacity
+              height 30px
+              margin-top -30px
+              position relative
+              top -12px
+              font-weight bold
+              text-align center
+              font-size 1.5em
+
+
+        &.body-subsistence
+          height 260px
+          display flex
+          flex-direction column
+          justify-content space-around
+          .subsistence-cost
+            padding 5px
+            font-size 1.5em
+            border 1px solid grey-dark
+            background green-light
+        &.body-trade
+          height 260px

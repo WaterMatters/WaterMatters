@@ -1,0 +1,41 @@
+<template name="ControlNav">
+	<div class="header_menu">
+		<img src="/Control/Control_label.png">
+	</div>
+
+	<div id="controlLink-games" class="{{#if $.Session.equals 'control-tab' 'games'}}selected{{/if}}">
+		{{#if $.Session.equals 'control-tab' 'games'}}
+			<img src="/Control/Control_button_Games_down.png" class="btn-market btn img-responsive">
+		{{else}}
+			<img src="/Control/Control_button_Games_up.png" class="btn-market btn img-responsive">
+		{{/if}}
+	</div>
+	<div id="controlLink-water" class="{{#if $.Session.equals 'control-tab' 'water'}}selected{{/if}}">
+		{{#if $.Session.equals 'control-tab' 'water'}}
+			<img src="/Control/Control_button_Water_down.png" class="btn-market btn img-responsive">
+		{{else}}
+			<img src="/Control/Control_button_Water_up.png" class="btn-market btn img-responsive">
+		{{/if}}
+	</div>
+	<div id="controlLink-events" class="{{#if $.Session.equals 'control-tab' 'events'}}selected{{/if}}">
+		{{#if $.Session.equals 'control-tab' 'events'}}
+			<img src="/Control/Control_button_Events_down.png" class="btn-market btn img-responsive">
+		{{else}}		
+			<img src="/Control/Control_button_Events_up.png" class="btn-market btn img-responsive">
+		{{/if}}
+	</div>
+	<div id="controlLink-maintenance" class="{{#if $.Session.equals 'control-tab' 'maintenance'}}selected{{/if}}">
+		{{#if $.Session.equals 'control-tab' 'maintenance'}}
+			<img src="/Control/Control_button_maintenance_down.png" class="btn-market btn img-responsive">
+		{{else}}
+			<img src="/Control/Control_button_maintenance_up.png" class="btn-market btn img-responsive">
+		{{/if}}
+	</div>
+	<div id="controlLink-startSituation" class="{{#if $.Session.equals 'control-tab' 'startSituation'}}selected{{/if}}">
+		{{#if $.Session.equals 'control-tab' 'startSituation'}}
+			<img src="/Control/Control_button_StartSituation_down.png" class="btn-market btn img-responsive">
+		{{else}}
+			<img src="/Control/Control_button_StartSituation_up.png" class="btn-market btn img-responsive">
+		{{/if}}
+	</div>
+</template>

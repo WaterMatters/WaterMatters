@@ -1,0 +1,447 @@
+.control{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	/*border: 1px solid green;*/
+	margin-top: 100px;
+}
+
+.control-left
+{
+	/*border: 1px solid blue;*/
+	width: 25%;
+	height: 100%;
+	float : left;  
+}
+
+.control-right
+{
+	/*border: 1px solid red;*/
+	width: 75%;
+	height: 100%;
+	float: left;
+}
+
+.message
+{
+	width: 100%;
+	text-align: center;
+	font-family: "SourceSP-BoldIt";
+	font-size: 22px;
+	color : #0f667d;
+	background-color: #e6e6da;
+}
+
+.gamesContainer
+{
+	width: 100%;
+	/*border : 2px solid red;*/
+	height: 600px;
+	/*overflow-y: scroll;*/
+}
+
+.gamesPanel table
+{
+	margin-left: 10%;
+	margin-top: 15px; 
+	width: 80%;
+}
+
+.game-grey-cell{
+	background-color: #e6e6da;
+    height: 51px;
+    padding-left : 30px;
+    color: #0F667D;
+}
+
+.gameTitle
+{
+	font-family: "SourceSP-BoldIt";
+	font-size: 18px;
+	text-align: center;
+	color: #0f667d;
+}
+
+.gameLeft 
+{
+	font-family: "SourceSP";
+	font-size: 18px;
+	width: calc(100% - 195px);
+}
+.gameRight {width: 195px; background-color: #F2F2E7;}
+.gameReset {
+	background-image: url("/Control/Games_ResetGame_up.png"); 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+}
+
+.gameDelete {
+	background-image: url("/Control/Games_DeleteGame_up.png"); 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+}
+
+.gameGo {
+	background-image: url("/Control/Games_Gotothisgame_up.png"); 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+}
+
+.nogameDelete {
+	background-image: url("/Control/Games_DeleteGame_down.png"); 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+}
+
+.export-game-button {
+	background-image: url("/Control/Games_exportdata_up.png"); 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+}
+
+.export-game-button : focus {
+	background-image: url("/Control/Games_exportdata_down.png"); 
+}
+
+.iptTime {
+	font-family: "SourceSP-xlight";
+	font-size: 18px;
+	width: 50px;
+}
+
+.nogameGo {
+	background-image: url("/Control/Games_Gotothisgame_down.png"); 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+}
+
+.gameBtn
+{
+	width: 196px;
+	height: 51px;
+	margin: 0;
+	padding: 0;
+	border: none;
+	border-radius: 0px;
+}
+
+.submit-ng
+{
+	margin-left: 10%;
+	width: 80%;
+}
+
+
+.btn-add {
+	left:0;
+	/*border : 1px solid red;*/
+}
+
+.btn-deny{
+	/*border : 1px solid purple;*/
+	float : right;
+}
+
+.submission{
+	/*background-image: url("/Control/NewGame_button_submit_up.png");
+	background-repeat: no-repeat;
+	background-position: center;*/
+	background-color: transparent;
+	width: 170px;
+	height: 67px;
+}
+
+.event-input
+{
+	/*min-width: 100px;*/
+	min-height: 50px;
+	width: 100%;
+}
+
+.event-lbl
+{
+	min-width: 120px;
+	padding-left : 15px;
+}
+
+.table-newEvent
+{
+	width: 100%;
+}
+
+.table-newEvent select:focus, 
+.table-newEvent select option:focus, 
+.table-newEvent input:focus, 
+#eventFormDescription:focus
+{
+	background-color : #e6e6da;
+}
+
+.table-newEvent input:-webkit-autofill,
+.table-newEvent input:-webkit-autofill:hover,
+.table-newEvent input:-webkit-autofill:focus,
+.table-newEvent input:-webkit-autofill:active {
+	background-color : #e6e6da;
+}
+
+.event-border
+{
+	border : 5px solid #C9A87D;
+}
+
+.event-border-left
+{
+	border-left: 5px solid #C9A87D;
+}
+
+.white-eventCell
+{
+	font-family: "SourceSP-xlight";
+    font-size: 18px;
+    color: #0f667d;
+    background-color: #fcfcf0;
+    height: 50px;
+}
+
+.startsit-lbl
+{
+	font-family: "SourceSP";
+	font-size: 16px;
+	padding-left: 15px;
+	color: #0F667D;
+}
+
+.startsit-border-top
+{
+	border-top : 5px solid #C9A87D;
+}
+
+.startSitInput, .startSitInput input, .startSitInput input:focus{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	background-color: #e6e6da;
+	font-size: 16px;
+	font-family: "SourceSP-light";
+}
+
+.startsittable
+{
+	margin-left: 10%;
+	width: 80%;
+}
+
+.startsittable input, .startsittable input:focus
+{
+	/*background-color: #e6e6da;;*/
+}
+
+.ss-grey-cell
+{
+	background-color: #e6e6da;
+    border: 1px solid #d1d1c6;
+    height: 50px;
+}
+
+.add-event
+{
+	background-image: url("/Event/Events_NewEvents_up.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 170px;
+	height: 68px;
+}
+
+
+.newGame-title{text-align: center; color : #0f667d;}
+.white-GameCell
+{
+	font-family: "SourceSP-xlight";
+	font-size: 18px;
+	color: #0f667d;
+	background-color: #fcfcf0;
+	border : 1px solid #ddd0b8;
+	height: 25px;
+}
+.blue-ng
+{
+	font-family: "SourceSP-xlight";
+	font-size: 18px;
+	color: #0f667d;
+}
+
+.newGameInput
+{
+	font-family: "SourceSP-xlight";
+	font-size: 18px;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+.newGame-subtitle
+{
+	width: 25%;
+	padding-left: 25px;
+}
+
+.weatherControl
+{
+	width: 90%;
+	font-family: "SourceSP-xlight";
+	font-size: 18px;
+	display: table;
+	margin-top: 15px;
+}
+
+.weatherControl-title
+{
+	font-family: "SourceSP-BoldIt";
+	font-size: 18px;
+	text-align: center; 
+	color : #0f667d;
+}
+
+.weatherSubtitle
+{
+	font-weight: bold;
+	color : #0f667d;
+	text-align: center;
+}
+
+.select-wm option
+{
+	font-family: "SourceSP-xlight";
+	font-size: 18px;
+	text-align: center;
+	background-color: #fcfcf0;
+}
+
+.selection
+{
+	width: 100px;
+	display: table-cell;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.event-white-cell
+{
+	font-family: "SourceSP-xlight";
+	font-size: 18px;
+	text-align: center;
+	background-color: #fcfcf0;
+    border: 1px solid #ddd0b8;
+    height: 25px;
+}
+
+.event-grey-cell
+{
+	
+}
+
+.eventTitle
+{
+	font-family: "SourceSP-BoldIt";
+	font-size: 18px;
+	text-align: center; 
+	color : #0f667d;
+}
+
+.eventSubtitle
+{
+	font-family: "SourceSP-xlight";
+	font-size: 14px;
+	text-align: center; 
+	color : #0f667d;
+}
+
+.event-table
+{
+	width: 80%;
+	margin : 15px 0 0 10%;
+}
+
+
+
+.content-new-event
+{
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 10%;
+}
+
+.e-item
+{
+	font-family: "SourceSP";
+	font-size: 14px;
+	text-align: center; 
+	color : #0f667d;
+}
+
+.exportDocs {
+	width: 100%;
+	height: 300px;
+}
+
+.exportDB{
+	margin-top: 110px;
+	margin-left : 300px;
+	width: 411px;
+	height: 91px;
+	background-image: url("/Documents/Documents_ExportDatabase_up.png"); 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+}
+
+.docs-select
+{
+	font-family: "SourceSP-xlight";
+	font-size: 18px;
+	text-align: center;
+	background-color: #fcfcf0;
+}
+
+.header-market
+{
+	/*margin-top: 50px;
+	margin-left: 100px;*/
+}
+
+@media (min-width : 1600px) /* large screens only*/
+{
+	.scroll-all-seasons
+	{
+		height : 600px;
+		overflow-y: scroll;
+	}
+}
+
+@media only screen and (min-width:1281px) and (max-width: 1600px) /* Medium screens only */
+{
+	.gamesContainer
+	{
+		height: 450px;
+	}
+}
+
+@media only screen and (min-width:301px) and (max-width: 1280px) /* Tablets only */
+{
+	.gamesContainer
+	{
+		height: 400px;
+	}
+
+	.exportDB{
+		margin-top: 110px;
+		margin-left : 200px;
+	}
+
+}

@@ -1,0 +1,519 @@
+/* @media (min-width:320px)  {  smartphones, iPhone, portrait 480x320 phones }*/
+/* @media (min-width:481px)  { portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. } */
+/* @media (min-width:641px)  { portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones } */
+/* @media (min-width:961px)  { tablet, landscape iPad, lo-res laptops ands desktops } */
+/* @media (min-width:1025px) { big landscape tablets, laptops, and desktops } */
+/* @media (min-width:1281px) { hi-res laptops and desktops } */
+
+.map
+{
+	/*border : 1px solid red;*/	
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top : 8%;
+	overflow: visible;
+	font-family: "SourceSP-BoldIt";
+}
+
+.stream
+{
+	z-index: 500;
+	position : relative;
+	top: 0;
+}
+
+.map-fields-area
+{
+	/*border : 1px solid red;*/
+	display: grid;
+	grid-template-columns: auto auto;
+	width: 100%;
+	height : 60%;
+}
+
+.map-field
+{
+	position: relative;
+	/*border : 1px solid blue;*/
+	padding: 3%;
+}
+
+.village-name
+{
+	font-family: "SourceSP-BoldIt";
+	color: white;
+	height: 50px;
+	position: relative;
+	text-align: center;
+}
+
+.img-village-map
+{
+	/*border : 1px solid blue;*/
+	
+}
+
+.hastank{background-image: url('/Map/Village_empty_waterTank.svg');}
+.hasnotank{background-image: url('/Map/Village_empty.svg');}
+
+.map-village-container
+{
+	/*background-image: url('/Map/Village_empty.svg');*/
+	background-repeat : no-repeat;
+	background-position : center;
+	background-size : contain; 
+	/*border : 1px solid yellow;*/
+	z-index: 501;
+	position: absolute;
+} 
+
+.map-village-header
+{
+	/*border : 1px solid green;*/ 
+	
+}
+
+.map-eye
+{
+	position: absolute;
+	top: 0;
+	right : 50px;
+	font-size: 18px;
+}
+
+.eye-opened
+{
+	/*color : #0fd37d;*/
+	color : #0F667D;
+}
+
+.eye-closed
+{
+	color: #ff4c42;
+}
+
+.money
+{
+	font-family: "SourceSP";
+	font-size: 18px;
+	text-align: center;
+	margin-left: 15px;
+	margin-top : 15%;
+	color: white;
+}
+
+.money-amount
+{
+	font-family: "SourceSP";
+	font-size: 20px;
+	text-align: center;
+	margin-left: 15px;
+	color: white;
+}
+
+.village-water-manager
+{
+	position: relative;
+	margin-left: 75%;
+	margin-top: -30px;
+	z-index: 99;
+	background-image: url("/Map/Water_Manager_crown_label.png") no-repeat;
+	background-size: 100%;
+	width: ;
+	height: ;
+}
+
+.img-cap-map
+{
+	position: relative;
+	width: 77px;
+	height: 35px;
+	z-index: 100;
+}
+
+.modal-content-event-red
+{
+	background-color: transparent;
+	background-image: url('/Map/Canal_Maintenance_pannel.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: auto 800px;
+	border : 0px solid transparent;
+	font-family: "SourceSP";
+	height: 850px;
+}
+
+.modal-content-event-green
+{
+	background-color: transparent;
+	background-image: url('/Map/Canal_Maintenance_pannel_green.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 467px 300px;
+	border : 0px solid transparent;
+	font-family: "SourceSP";
+	height: 300px;
+	width : 467px;
+}
+
+
+.eventClose
+{
+	background-color: transparent;
+	background-image: url('/Map/Canal_Maintenance_quit.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 35px 40px;
+	width: 35px;
+	height: 40px;
+	right : -15px;
+	top : 75px;
+	position: absolute;
+}
+
+.eventClose-green
+{
+	background-color: transparent;
+	background-image: url('/Map/Canal_Maintenance_quit.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 35px 40px;
+	width: 35px;
+	height: 40px;
+	right : -15px;
+	top : 40px;
+	position: absolute;
+}
+
+.event-content
+{
+	/*margin-top : 200px;*/
+	padding : 25px;
+	font-family: "SourceSP";
+	font-size: 12px;
+}
+
+.event-header
+{
+	margin-top: 125px;
+}
+
+.event-title
+{
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	color : red;
+}
+
+.event-header-green
+{
+	margin-top: 70px;
+}
+
+.event-title-green
+{
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	color : green;
+}
+
+.event-message
+{
+	text-align: center;
+	font-size: 14px;
+	color : black;
+}
+
+.dot-event 
+{
+	position: absolute;
+	z-index: 4;
+	cursor: pointer;
+	z-index: 550;
+}
+
+.participations
+{
+	position: relative;
+	padding-top : 125px;
+	margin-top: 50px;
+	margin-left : 25px;
+	margin-bottom: 50px;
+	width: 205px;
+	/*border : 1px solid red;*/
+}
+
+.village-participation
+{
+	width: 200px;
+	height: auto;
+	/*border : 1px solid purple;*/
+}
+
+.village-participation input
+{
+	pointer-events: all;
+	text-align: center;
+	width: 50px;
+}
+
+.event-village-name
+{
+	float: left;
+	width: 70px;
+	display: inline-block;
+	/*border : 1px solid red;*/
+}
+
+.event-village-input
+{
+	width: 150px;
+	/*border : 1px solid blue;*/
+}
+
+.totalization
+{
+	display: flex;
+}
+
+.event-need
+{
+	position: absolute;
+	padding-top : 65px;
+	margin-left: 5px;
+	text-align: center;
+	/*border : 1px solid red;*/
+	width: 150px;
+	font-size: 16px;
+}
+
+.event-raised
+{
+	position: absolute;
+	padding-top : 65px;
+	margin-left: 250px;
+	text-align: center;
+	/*border : 1px solid red;*/
+	width: 150px;
+	font-size: 16px;
+}
+
+.funds-raised
+{
+	margin: 0 20px;
+	border-radius: 50px;
+}
+
+.repair
+{
+	background-image : url("Map/Canal_Maintenance_repair_button.png");
+	background-repeat: no-repeat;
+	background-size: 80px 27px;
+	height: 27px;
+	width: 82px;
+	position: absolute;
+	z-index: 999;
+	pointer-events: all;
+	border-radius: 25px;
+	margin-top : -200px;
+	margin-left : 250px;
+}
+
+@media (min-width : 1601px) /* large screens only*/
+{
+	.map {
+		top : 9%;
+	}
+
+	.stream {
+		left: -60px;
+		width: calc(100% + 60px);
+		margin-top : 200px;
+	}
+
+	.map-village-container
+	{
+		width: 236px;
+		height: 248px;
+	} 
+
+	.map-field
+	{	
+		width: 60px;
+	}
+
+	.village-name
+	{
+		padding-top: 31%;
+		font-size: 22px;
+	}
+
+	.map-fields-area
+	{
+		margin-top : 5%;
+		padding : 10% 22%;
+	}
+
+	.dot-event 
+	{
+		width: 104px;
+		height: 103px;
+	}
+
+	.event-exclam
+	{
+		width: 80px;
+		height: 79px;
+	}
+}
+
+@media only screen and (min-width:301px) and (max-width: 1280px) /* Tablets only */
+{
+	.map {
+		top : 9%;
+	}
+
+	.stream {
+		margin-top: 130px;
+		left: -30px;
+		width: calc(100% + 30px);
+	}
+
+	.map-village-container
+	{
+		width: 136px;
+		height: 148px;
+	} 
+
+	.map-field
+	{	
+		width: 30px;
+	}
+
+	.village-name
+	{
+		padding-top: 32%;
+		font-size: 14px;
+	}
+
+	.map-fields-area
+	{
+		margin-top : 5%;
+		padding : 8% 25%;
+	}
+
+	.dot-event 
+	{
+		width: 50px;
+		height: 49px;
+	}
+
+	.event-exclam
+	{
+		width: 50px;
+		height: 49px;
+	}
+
+	.money
+	{
+		margin-left: 0px;
+		margin-top : 10%;
+	}
+
+	.money-amount
+	{
+		font-size: 16px;
+		margin-left: 0px;
+	}
+}
+
+@media only screen and (min-width:1281px) and (max-width: 1600px) /* Medium screens only */
+{
+	.map {
+		
+	}
+
+	.stream {
+		margin-top : 150px;
+		left: -41px;
+		width: calc(100% + 41px);
+	}
+
+	.map-village-container
+	{
+		width: 170px;
+		height: 178px;
+	} 
+
+	.map-field
+	{	
+		width: 40px;
+	}
+
+	.village-name
+	{
+		padding-top: 31%;
+		font-size: 16px;
+	}
+
+	.map-fields-area
+	{
+		margin-top : 10%;
+		padding : 5% 25%;
+	}
+
+	.dot-event 
+	{
+		width: 90px;
+		height: 89px;
+	}
+	
+	.event-exclam
+	{
+		width: 70px;
+		height: 69px;
+	}
+
+	.money
+	{
+		margin-left: 5px;
+		margin-top : 10%;
+	}
+
+	.money-amount
+	{
+		font-size: 16px;
+		margin-left: 2px;
+	}
+}
+
+@media only screen 		/* ================ IPAD ================ */
+	and (min-device-width : 768px) 
+	and (max-device-width : 1024px) 
+	and (orientation : landscape) 
+{ 
+	.map-fields-area
+	{
+		/*border : 1px solid red;*/
+		display: grid;
+		width: 100%;
+		height : 60%;
+	}
+
+	.stream
+	{
+		margin-top: 150px;
+		left : -20px;
+	}
+
+	.modal-backdrop {
+		display: none;
+	}
+
+	.map-fields-area{
+		
+	}
+}

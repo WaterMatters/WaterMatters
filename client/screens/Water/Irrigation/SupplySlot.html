@@ -1,0 +1,24 @@
+<template name="SupplySlot">
+  <form class="form-supply col-6">
+    <div class="row square">
+        <span class="field-supply col">
+          <div>Supply Field {{this.field}}</div>
+          <input type="number" name={{this.field}} min={{rain}} class="field-irrig input-manual" value={{this.supply}}>
+        </span>
+        <div class="field-col col">
+          <div id="G" class="irrig-shortcut simple {{#if $eq this.supplyCategory 'G'}}good{{/if}} {{#if clickable.good}}btn clickable{{/if}}" title="good supply">
+            G
+          </div>
+          <div id="M" class="irrig-shortcut simple {{#if $eq this.supplyCategory 'M'}}medium{{/if}} {{#if clickable.medium}}btn clickable{{/if}}" title="medium supply">
+            M
+          </div>
+          <div id="P" class="irrig-shortcut simple {{#if $eq this.supplyCategory 'P'}}poor{{/if}} {{#if clickable.poor}}btn clickable{{/if}}" title="poor supply">
+            P
+          </div>
+          <div id="D" class="irrig-shortcut simple {{#if $eq this.supplyCategory 'D'}}dead{{/if}}" title="death of your crop">
+            D
+          </div>
+        </div>
+    </div>
+  </form>
+</template>

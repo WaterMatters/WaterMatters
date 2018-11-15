@@ -1,0 +1,166 @@
+<template name="PaySubsistence">
+
+  <div class="marketContainer">
+    <div class="market-leftPart">      
+ <!--     <div class="header_menu">
+        <img src="/Documents/Market/Market_title.png">
+      </div>-->
+      <div class="{{#if isInRole 'controller'}}inactive{{/if}}">
+        {{> MarketNav btn="1"}}
+      </div>
+    </div>
+    <div class="market-rightPart">
+      {{#if stage0Time}}
+        <!--{{#if isInRole 'village'}}
+            <i class="fas fa-times close-action close-action-village"></i>
+        {{else}}
+            <i class="fas fa-times close-action close-action-manager"></i>
+        {{/if}}-->
+        <div class="action pay-subsistence" style="height: 100%;">
+                <!--<div class="action-header header-market">
+                  <a href="/market">Market</a>
+                  <span class="">/</span>
+                  <a href="/market/shop">Shop</a>
+                  <span class="">/</span>
+                  <span class="">Food & Housing</span>
+                </div>-->
+
+                <div class="pay-text">
+                  <div class="sub-text">
+                    <p>Pay the seasonal costs for the housing and <br> the food of your farmers :</p>
+
+                    <div class="sub-cost">
+                      {{subsistence}} Pz.
+                    </div>
+                  </div>
+
+                  {{#if enoughToPay}}
+                      <div class="pay-button btn pay-subsistence-button">
+                        <img src="/Documents/Food&Housing/Food&Housing_button.png">
+                      </div>
+                    {{else}}
+                      <div class="pay-button enough">
+                          Not enough to pay
+                      </div>
+                    {{/if}}
+                  
+                </div>
+        </div>
+      {{else}}
+      {{/if}}
+    </div>
+  </div>
+
+  <!-- The Housing Modal -->
+<div class="modal" id="housingModal" data-backdrop="false">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Subsistence costs</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h3>You already paid for this season.</h3>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- The Crop Seeds Modal -->
+<div class="modal" id="cropModal" data-backdrop="false">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Crop Seeds</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h3>
+          {{#if subsistenceActive}}
+            You must pay the subsistence costs of your villagers before being able to buy your crops.
+          {{else}}
+            You can only do that at the start of a season.
+          {{/if}}
+        </h3>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- The maintenance Modal -->
+<div class="modal" id="maintenanceModal" data-backdrop="false">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Maintenance Counters</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h3>
+          {{#if subsistenceActive}}
+            You must pay the subsistence costs of your villagers before being able to maintain your fields.
+          {{else}}
+            Maintenance is possible only during the start of the season, from season n°2.
+          {{/if}}
+        </h3>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- The tank Modal -->
+<div class="modal" id="tankModal" data-backdrop="false">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Tank</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h3>Storing water is only available from season n°2.</h3>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</template>

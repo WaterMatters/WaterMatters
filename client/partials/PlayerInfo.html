@@ -1,0 +1,44 @@
+<template name="PlayerInfo">
+  <div class="playerInfo">
+    <!-- {{#if Template.subscriptionsReady}} -->
+
+          <div class="playerInfo-left">
+
+                  <div class="row">
+                     {{#if displayCap}}
+                      <div class="img-water-manager">
+                        <img src="/PlayerInfo/Water_Manager_crown.svg" alt={{cap}} class="img-cap">
+                      </div>
+                    {{/if}}
+                    <span class="info-season">Season {{presentAction.season}}</span>
+                    {{#if $eq presentAction.season 0}}
+                      {{#if isController}}
+                        <i class="btn far fa-arrow-alt-circle-right arrow" title="Click to begin the game!"></i>
+                      {{/if}}
+                    {{/if}}
+                    {{#each infoStages}}
+                    <span class="info-stage {{this.status}} ">{{this.text}}</span>
+                      {{#if $eq this.status 'present'}}
+                        {{#if isController}}
+                          <i class="btn far fa-arrow-alt-circle-right arrow" title="Next stage"></i>
+                        {{/if}}
+                      {{/if}}
+                    {{/each}}
+                  </div>
+                  <div class="row">
+                    <!-- - {{getCountdown}} -->
+                    <span class="todo col-12">{{toDoText}}</span>
+                  </div>
+          </div>
+          <div class="playerInfo-right">
+              {{#if isInRole 'village'}}
+                  <img src="/PlayerInfo/Cash.svg" class="player-credit">
+                  <div id="money" class="player-info">{{village.money}} Pz.</div>
+
+                  <img src="/PlayerInfo/Drop.svg" class="player-credit">
+                  <div id="water" class="player-info">{{village.waterCredit}}</div>
+              {{/if}}
+          </div>
+
+  </div>
+</template>

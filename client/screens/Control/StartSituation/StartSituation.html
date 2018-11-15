@@ -1,0 +1,48 @@
+<template name="StartSituation">
+  <div class="start-situation">
+  	{{#if active}}
+  	<table class="startsittable table-newGame">
+  		<thead>
+  			<tr>
+  				<td class="white-cell newGame-title" style="height: 50px;">
+  					Village
+  				</td>
+  				<td class="white-cell newGame-title">
+  					Money
+  				</td>
+  				<td class="white-cell newGame-title">
+  					Fields 1 FEF
+  				</td>
+  				<td class="white-cell newGame-title">
+  					Fields 2 FEF
+  				</td>
+  				<td class="white-cell newGame-title">
+  					Fields 3 FEF
+  				</td>
+  				<td class="white-cell newGame-title">
+  					Fields 4 FEF
+  				</td>
+  			</tr>
+  		</thead>
+  		<tbody>
+  			{{#each villages}}
+	          {{>VillageSet}}
+	        {{/each}}
+  		</tbody>
+  	</table>
+<!--
+    {{#if active}}
+
+        {{#each villages}}
+          {{>VillageSet}}
+        {{/each}}
+-->
+    {{else}}
+
+        <div class="message"> Only available before the beginning of the game </div>
+
+    {{/if}}
+
+  </div>
+
+</template>

@@ -1,0 +1,124 @@
+<template name="WeatherDoc">
+  <!-- {{#if isSubsequentSeason}} -->
+        <div class="bloc-season {{#if isSubsequentSeason}}{{else}}disabled{{/if}} {{#if isPresentOrSubsequentSeason}}{{else}}passed{{/if}}">
+          <table class="weatherControl">
+            <thead>
+              <tr>
+                <td colspan="3" class="white-cell weatherControl-title">
+                    Season {{this.season}}
+                </td>
+              </tr>
+            </thead>
+            {{#if isPresentOrSubsequentSeason}}
+            <tbody>
+              <tr>
+                <td class="grey-cell weatherSubtitle">
+                  Water manager
+                </td>
+                <td class="grey-cell weatherSubtitle">
+                  Rain
+                </td>
+                <td class="grey-cell weatherSubtitle">
+                  Main canal
+                </td>
+              </tr>
+              <tr>
+                <td rowspan="3" class="grey-cell selection">
+                   <select class="select-wm {{#if isPastSeason}}disabled{{/if}}" name="" value="{{waterManager.village}}" disabled="{{#if isPastSeason}}disabled{{/if}}">
+                        <option value="0" selected="{{#if $eq selection 0}}selected{{/if}}">Nobody</option>
+                        <option value="1" selected="{{#if $eq selection 1}}selected{{/if}}">Village 1</option>
+                        <option value="2" selected="{{#if $eq selection 2}}selected{{/if}}">Village 2</option>
+                        <option value="3" selected="{{#if $eq selection 3}}selected{{/if}}">Village 3</option>
+                        <option value="4" selected="{{#if $eq selection 4}}selected{{/if}}">Village 4</option>
+                        <option value="5" selected="{{#if $eq selection 5}}selected{{/if}}">Village 5</option>
+                        <option value="6" selected="{{#if $eq selection 6}}selected{{/if}}">Village 6</option>
+                        <option value="7" selected="{{#if $eq selection 7}}selected{{/if}}">Village 7</option>
+                        <option value="8" selected="{{#if $eq selection 8}}selected{{/if}}">Village 8</option>
+                      </select>
+                </td>
+                <td class="grey-cell">
+                  Stage 1: <input class="input-manual st1r" type="number" name="" id="s{{this.season}}st1r" value="{{this.rain1}}" disabled="{{#if isSubsequentSeason}}{{else}}disabled{{/if}}">
+                </td>
+                <td class="grey-cell">
+                  Stage 1: <input class="input-manual st1mc" type="number" name="" id="s{{this.season}}st1mc" value="{{this.mainCanal1}}" disabled="{{#if isSubsequentSeason}}{{else}}disabled{{/if}}">
+                </td>
+              </tr>
+              <tr>
+                <td class="grey-cell">
+                  Stage 2: <input class="input-manual st2r" type="number" name="" id="s{{this.season}}st2r" value="{{this.rain2}}" disabled="{{#if isSubsequentSeason}}{{else}}disabled{{/if}}">
+                </td>
+                <td class="grey-cell">
+                  Stage 2: <input class="input-manual st2mc" type="number" name="" id="s{{this.season}}st2mc" value="{{this.mainCanal2}}" disabled="{{#if isSubsequentSeason}}{{else}}disabled{{/if}}">
+                </td>
+              </tr>
+              <tr>
+                <td class="grey-cell">
+                  Stage 3: <input class="input-manual st3r" type="number" name="" id="s{{this.season}}st3r" value="{{this.rain3}}" disabled="{{#if isSubsequentSeason}}{{else}}disabled{{/if}}">
+                </td>
+                <td class="grey-cell">
+                  Stage 3: <input class="input-manual st3mc" type="number" name="" id="s{{this.season}}st3mc" value="{{this.mainCanal3}}" disabled="{{#if isSubsequentSeason}}{{else}}disabled{{/if}}">
+                </td>
+              </tr>
+            </tbody>
+            {{/if}}
+          </table>
+<!--          <div class="bloc-season-header">
+            Season {{this.season}}
+          </div>
+          {{#if isPresentOrSubsequentSeason}}
+              <div class="content">
+                  <p>
+                    <div class="">
+                      Water Manager =
+                      <br>
+                      <select class="select-wm {{#if isPastSeason}}disabled{{/if}}" name="" value="{{waterManager.village}}" disabled="{{#if isPastSeason}}disabled{{/if}}">
+                        <option value="0" selected="{{#if $eq selection 0}}selected{{/if}}">Nobody</option>
+                        <option value="1" selected="{{#if $eq selection 1}}selected{{/if}}">Village 1</option>
+                        <option value="2" selected="{{#if $eq selection 2}}selected{{/if}}">Village 2</option>
+                        <option value="3" selected="{{#if $eq selection 3}}selected{{/if}}">Village 3</option>
+                        <option value="4" selected="{{#if $eq selection 4}}selected{{/if}}">Village 4</option>
+                        <option value="5" selected="{{#if $eq selection 5}}selected{{/if}}">Village 5</option>
+                        <option value="6" selected="{{#if $eq selection 6}}selected{{/if}}">Village 6</option>
+                        <option value="7" selected="{{#if $eq selection 7}}selected{{/if}}">Village 7</option>
+                        <option value="8" selected="{{#if $eq selection 8}}selected{{/if}}">Village 8</option>
+                      </select>
+                    </div>
+                  </p>
+
+
+                  <div class="rain-bloc bloc">
+                      <p class="bloc-title">Rain:</p>
+                      <div>
+                        <p>Stage 1: </p>
+                        <input class="input-manual st1r" type="number" name="" id="s{{this.season}}st1r" value="{{this.rain1}}" disabled="{{#if isSubsequentSeason}}{{else}}disabled{{/if}}">
+                      </div>
+                      <div>
+                        <p>Stage 2: </p>
+                        <input class="input-manual st2r" type="number" name="" id="s{{this.season}}st2r" value="{{this.rain2}}" disabled="{{#if isSubsequentSeason}}{{else}}disabled{{/if}}">
+                      </div>
+                      <div>
+                        <p>Stage 3: </p>
+                        <input class="input-manual st3r" type="number" name="" id="s{{this.season}}st3r" value="{{this.rain3}}" disabled="{{#if isSubsequentSeason}}{{else}}disabled{{/if}}">
+                      </div>
+                  </div>
+                  <div class="main-canal-bloc bloc">
+                      <p class="bloc-title">Main Canal:</p>
+                      <div>
+                        <p>Stage 1: </p>
+                        <input class="input-manual st1mc" type="number" name="" id="s{{this.season}}st1mc" value="{{this.mainCanal1}}" disabled="{{#if isSubsequentSeason}}{{else}}disabled{{/if}}">
+                      </div>
+                      <div>
+                        <p>Stage 2: </p>
+                        <input class="input-manual st2mc" type="number" name="" id="s{{this.season}}st2mc" value="{{this.mainCanal2}}" disabled="{{#if isSubsequentSeason}}{{else}}disabled{{/if}}">
+                      </div>
+                      <div>
+                        <p>Stage 3: </p>
+                        <input class="input-manual st3mc" type="number" name="" id="s{{this.season}}st3mc" value="{{this.mainCanal3}}" disabled="{{#if isSubsequentSeason}}{{else}}disabled{{/if}}">
+                      </div>
+                  </div>
+                </div>
+            {{/if}}
+            -->
+          </div>
+
+</template>

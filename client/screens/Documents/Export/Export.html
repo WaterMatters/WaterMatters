@@ -1,0 +1,12 @@
+<template name="Export">
+<!--  <div>Export</div>
+  <p>To export your data, click the button below.</p>
+  <button class="export-data btn btn-success" data-loading-text="Exporting...">Export Data Base</button>
+-->
+	{{#if $.Session.equals 'documents-player' 'controller'}}
+	<div class="exportDocs">
+		<div class="btn exportDB export-data"></div>
+	</div>
+	{{/if}}
+	
+</template>

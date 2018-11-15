@@ -1,0 +1,46 @@
+<template name="Water">
+<!--
+  {{#if isInRole 'village'}}
+      <i class="fas fa-times close-action close-action-village"></i>
+  {{else}}
+      <i class="fas fa-times close-action close-action-manager"></i>
+  {{/if}}
+-->
+  <div class="waterPnl">
+    <div class="water-right">
+      {{>Irrigation}}
+    </div>
+    <div class="water-left">
+      {{>Management}}
+    </div>
+  </div>
+<!--
+  <div class="action documents">
+      <div class="action-header">
+          Water
+      </div>
+
+      <div class="action-body {{#if $.Session.equals 'water-tab' 'irrigation'}}body-water-irrigation{{/if}} {{#if $.Session.equals 'water-tab' 'management'}}body-water-management{{/if}}">
+
+
+          <div class="links-water">
+            <div id="waterLink-irrigation" class="{{#if $.Session.equals 'water-tab' 'irrigation'}}selected{{/if}} {{#if noIrrigation}}inactive{{/if}}">Irrigation</div>
+            <div id="waterLink-management" class="{{#if $.Session.equals 'water-tab' 'management'}}selected{{/if}} {{#if managementAccessible}}{{else}}inactive{{/if}}">Management next stage</div>
+          </div>
+
+        {{#if Template.subscriptionsReady}}
+          <div class="{{#if $.Session.equals 'water-tab' 'irrigation'}}tab-irrigation{{/if}} {{#if $.Session.equals 'water-tab' 'management'}}tab-management{{/if}}">
+            {{#if $.Session.equals 'water-tab' 'irrigation'}}
+                {{>Irrigation}}
+            {{/if}}
+            {{#if $.Session.equals 'water-tab' 'management'}}
+                {{>Management}}
+            {{/if}}
+          </div>
+        {{/if}}
+
+      </div>
+
+  </div>
+-->
+</template>

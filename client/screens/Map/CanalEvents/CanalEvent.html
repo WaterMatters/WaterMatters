@@ -1,0 +1,125 @@
+<template name="CanalEvent">
+    {{#if $lt this.modification 0}}
+        <div class="map-canal-event dot-event red" title="there is a problem!" style="{{styleWhere}}" data-toggle="modal" data-target="#modalEventRed-{{genID}}">
+          <img src="/Map/Canal_Maintenance_exclamation.png" class="event-exclam">
+        </div>
+
+         <!--  Modal  Red Event-->
+        <div class="modal fade" id="modalEventRed-{{genID}}">
+          <div class="modal-dialog">
+            <div class="modal-content-event-red">
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                <div class="btn eventClose" data-dismiss="modal"></div>
+                <div class="event-content">
+                  {{#if Template.subscriptionsReady}}
+                    <div class="event-header">
+                      <p class="event-title">
+                        {{eventModal.name}}
+                      </p>
+                      <p class="event-message">
+                        {{eventModal.description}}
+                      </p>
+                    </div>
+                    {{#if $lt eventModal.modification 0}}
+                        <div class="totalization">
+                            <div class="event-need">
+                              <div class="event-funds-needed" style="font-weight:bold;">
+                                Funds needed :
+                              </div>
+                              <div class="">
+                                {{eventModal.priceReparation}} Pz.
+                              </div> 
+                            </div>
+                            <div class="event-raised">
+                              <div class="event-funds-raised">
+                                Funds raised :
+                              </div>
+                              <div class="funds-raised" style="font-weight:bold;background:{{#if isEnough}}#d3f4bc{{else}}#ff9999{{/if}};">   {{total}} Pz.
+                              </div>
+                            </div>
+                        </div>
+                        <div class="participations">
+                            {{#each eventModal.participation}}
+                                {{>ParticipationEvent}}
+                            {{/each}}
+                            {{#if waterManager}}
+                              <button type="button" class="btn {{btnInactive}} {{#if isEnough}}repair{{/if}}" name="button"></button>
+                            {{else}}
+                            {{/if}}
+                        </div>
+                    {{/if}}
+
+                  {{else}}
+
+                    ...Loading
+
+                  {{/if}}
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    {{else}}
+        <div class="map-canal-event dot-event green" title="good news from the main canal" style="{{styleWhere}}" data-toggle="modal" data-target="#modalEventGreen-{{genID}}">
+          <img src="/Map/Canal_Maintenance_exclamation_green.png" class="event-exclam">
+        </div>
+
+        <!--  Modal Green Event-->
+        <div class="modal fade" id="modalEventGreen-{{genID}}">
+          <div class="modal-dialog">
+            <div class="modal-content-event-green">
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                <div class="btn eventClose-green" data-dismiss="modal"></div>
+                <div class="event-content">
+                  {{#if Template.subscriptionsReady}}
+                    <div class="event-header-green">
+                      <p class="event-title-green">
+                        {{eventModal.name}}
+                      </p>
+                      <p class="event-message">
+                        {{eventModal.description}}
+                      </p>
+                    </div>
+                    {{#if $lt eventModal.modification 0}}
+                        <div class="totalization">
+                            <div class="event-need">
+                              <div class="event-funds-needed" style="font-weight:bold;">
+                                Funds needed :
+                              </div>
+                              <div class="">
+                                {{eventModal.priceReparation}} Pz.
+                              </div> 
+                            </div>
+                            <div class="event-raised">
+                              <div class="event-funds-raised">
+                                Funds raised :
+                              </div>
+                              <div class="funds-raised" style="font-weight:bold;background:{{#if isEnough}}#d3f4bc{{else}}#ff9999{{/if}};">   {{total}} Pz.
+                              </div>
+                            </div>
+                        </div>
+                        <div class="participations">
+                            {{#each eventModal.participation}}
+                                {{>ParticipationEvent}}
+                            {{/each}}
+                        </div>
+                    {{/if}}
+
+                  {{else}}
+
+                    ...Loading
+
+                  {{/if}}
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    {{/if}}
+</template>

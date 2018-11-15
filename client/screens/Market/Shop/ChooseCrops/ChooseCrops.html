@@ -1,0 +1,207 @@
+<template name="ChooseCrops">
+  {{#if cropsActive}}
+<!--    <i class="fas fa-times close-action close-action-village"></i>
+    <div class="action">
+
+        <div class="action-header header-market">
+          <a href="/market">Market</a>
+          <span class="">/</span>
+          <a href="/market/shop">Shop</a>
+          <span class="">/</span>
+          <span class="">Crop seeds</span>
+        </div>
+-->
+    <div class="marketContainer">
+      <div class="market-leftPart">    
+        {{> MarketNav btn="2"}}  
+      </div>
+      <div class="market-rightPart">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              {{#if Template.subscriptionsReady}}
+                <table class="crops-table">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th class="border-white">Field 1</th>
+                      <th class="border-white">Field 2</th>
+                      <th class="border-white">Field 3</th>
+                      <th class="border-white">Field 4</th>
+                    </tr>
+                    <tr class="header">
+                      <th class="useless"></th>
+                      {{#each fields}}
+                            <th class="border-white header-crops">{{>OptionSeeds}}</th>
+                      {{/each}}
+                      <th class="border-white crops-total">Total <i class="fas fa-tint blue"></i></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr id="stage1">
+                      <th class="border-white">Stage 1</th>
+                      {{#each fieldsSt1}}
+                            <td class="border-grey"><input class="input-manual" type="number" min=0 id="s1f{{field}}" value={{request}}></td>
+                      {{/each}}
+                      <td class="totals-request border-white crops-data-total">{{stagesRequests.stageOne}}</td>
+                    </tr>
+                    <tr id="stage2">
+                      <th class="border-white">Stage 2</th>
+                      {{#each fieldsSt2}}
+                            <td class="border-grey"><input class="input-manual" type="number" min=0 id="s2f{{field}}" value={{request}}></td>
+                      {{/each}}
+                      <td class="totals-request border-white crops-data-total">{{stagesRequests.stageTwo}}</td>
+                    </tr>
+                    <tr id="stage3">
+                      <th class="border-white">Stage 3</th>
+                      {{#each fieldsSt3}}
+                            <td class="border-grey"><input class="input-manual" type="number" min=0 id="s3f{{field}}" value={{request}}></td>
+                      {{/each}}
+                      <td class="totals-request border-white crops-data-total">{{stagesRequests.stageThree}}</td>
+                    </tr>
+                    <tr id="totCrop">
+                      <th class="border-white crops-total">Total <i class="fas fa-tint blue"></i></th>
+                      <td class="totals-request border-white crops-data-total">{{fieldsRequests.field1}}</td>
+                      <td class="totals-request border-white crops-data-total">{{fieldsRequests.field2}}</td>
+                      <td class="totals-request border-white crops-data-total">{{fieldsRequests.field3}}</td>
+                      <td class="totals-request border-white crops-data-total">{{fieldsRequests.field4}}</td>
+                      <td class="totals-request border-white crops-data-total all-request">{{totalRequest}}</td>
+                    </tr>
+                    <tr id="linePrices">
+                      <th class="border-white">Price</th>
+                      <td class="prices border-grey crops-money">{{fieldsPrices.field1}} Pz.</td>
+                      <td class="prices border-grey crops-money">{{fieldsPrices.field2}} Pz.</td>
+                      <td class="prices border-grey crops-money">{{fieldsPrices.field3}} Pz.</td>
+                      <td class="prices border-grey crops-money">{{fieldsPrices.field4}} Pz.</td>
+                      <td class="prices border-grey crops-money total-prices">{{totalPrice}}</td>
+                    </tr>
+                    <tr id="lineArrows">
+                      <th></th>
+                      <td><div class="arrow-down"></div></td>
+                      <td><i class="arrow-down"></i></td>
+                      <td><i class="arrow-down"></i></td>
+                      <td><i class="arrow-down"></i></td>
+                    </tr>
+                  </tbody>
+                </table>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{else}}
+  {{/if}}
+
+     <!-- The Housing Modal -->
+<div class="modal" id="housingModal" data-backdrop="false">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Subsistence costs</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h3>You already paid for this season.</h3>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- The Crop Seeds Modal -->
+<div class="modal" id="cropModal" data-backdrop="false">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Crop Seeds</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h3>
+          {{#if subsistenceActive}}
+            You must pay the subsistence costs of your villagers before being able to buy your crops.
+          {{else}}
+            You can only do that at the start of a season.
+          {{/if}}
+        </h3>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- The maintenance Modal -->
+<div class="modal" id="maintenanceModal" data-backdrop="false">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Maintenance Counters</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h3>
+          {{#if subsistenceActive}}
+            You must pay the subsistence costs of your villagers before being able to maintain your fields.
+          {{else}}
+            Maintenance is possible only during the start of the season, from season n°2.
+          {{/if}}
+        </h3>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- The tank Modal -->
+<div class="modal" id="tankModal" data-backdrop="false">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Tank</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h3>Storing water is only available from season n°2.</h3>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+</template>

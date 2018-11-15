@@ -1,0 +1,250 @@
+@media only screen and (min-width:301px) /*Smartphones*/
+{
+	@supports not (-webkit-overflow-scrolling: touch) {
+		/* CSS specific for Android devices */
+		
+		.img-village {
+			height: 208px;
+			width: 754px;
+			position: relative; 
+			top : 0; 
+			left: 0;
+			/*border : 2px solid red;*/
+		}
+
+		.cloud
+		{
+			position: relative;  
+			top : -370px; 
+			width: 130px;
+			height : 81px;
+			margin : auto;
+			text-align: center;
+		}
+
+		.text-in-cloud
+		{
+			color : #099dce; 
+			font-family: 'Pingwing';
+			font-size: 48px;
+			position : relative;
+			text-align: center;
+			left : 5px;
+			top : -80px;
+		}
+
+		.cloud-panel
+		{
+			display: none;
+			
+			border-radius: 5px;
+			width : 150px;
+			height : 75px;
+			background-color: #f2f2e7;
+			margin : auto;
+			margin-top: -40px;
+		}
+
+		.cloud-info-title
+		{
+			color: #0f667d;
+			font-family: "SourceSP-xlight";
+			font-size: 16px;
+			font-weight: bold;
+			text-align: center;
+		}
+
+		.cloud-info
+		{
+			color: #0f667d;
+			font-family: "SourceSP-xlight";
+			font-size: 12px;
+			text-align: center;
+		}
+
+		/* PlayerInfo */
+
+		.info-season
+		{
+			color: white;
+			font-family: 'SourceSP-xlight';
+
+			background-image: url('/PlayerInfo/Button_Stroke.svg');
+			background-repeat: no-repeat;
+			background-size: cover;
+			font-size: 24px;
+			white-space:nowrap;
+			margin : 5px;
+			width: 119px;
+			height: 32px;
+			/*width: 185px;
+			height: 50px;*/
+			text-align: center;
+		}
+
+		.info-stage
+		{
+			color: white;
+			font-family: 'SourceSP';
+
+			background-image: url('/PlayerInfo/Button_full_Down.svg');
+			background-repeat: no-repeat;
+			background-size: cover;
+			font-size: 22px;
+			white-space:nowrap;
+			margin : 5px;
+			width: 88px;
+			height: 32px;	
+			text-align: center;
+		}
+
+		.img-cap
+		{
+			width: 25px;
+			height: 25px;
+		}
+
+		.credits
+		{
+			white-space: nowrap;
+			line-height: 100px;
+			color : white;
+			font-size: 26px;
+		}
+
+		.player-credit
+		{
+			height: 50px;
+			width: 50px;
+			margin-top: 25px;
+		}
+
+		.playerView
+		{
+			margin-top: 50px;
+		}
+
+		.village-banner
+		{
+			position : relative;
+			width : 279px;
+			height : 79px;
+			top : -75px;
+			margin : auto;
+		}
+
+		.village-banner-text
+		{
+			position : absolute;
+			color : #099dce; 
+			font-family: 'Pingwing';
+			font-size: 30px;
+			margin : auto;
+			top : -60px;
+			left : 0;
+			text-align: center;
+			width: 100%;
+		}
+
+		.fields
+		{
+			top : -180px;	
+		}
+
+		.field
+		{
+			height: 282px;
+			width: 193px;
+			padding-top: 25px;
+			/*border : 5px solid red;*/
+		}
+
+		.fieldDead
+		{
+			background-image: url('/Village/Crop_village_yellow.png');
+			background-size: 80%;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+
+		.fieldNormal
+		{
+			background-image: url('/Village/Crop_village_blue.png');
+			background-size: 80%;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+
+		.field-text
+		{
+			color : white;
+			text-align: center;
+			font-family: 'SourceSP-xlight';
+			font-size: 12px;
+		}
+
+		.canalNav
+		{
+			top:0;
+			left:0;
+			bottom: 0;
+			position: relative;
+		}
+
+		.drop
+		{
+			z-index : 2;
+			width: 98px;
+			height: 127px;	
+			margin-top: 15px;
+			margin-bottom: 15px;
+		}
+
+		.todo
+		{
+			color : white;
+			font-family: 'SourceSP-xlight';
+			font-size: 24px;
+			border-left : 1px solid white;
+			padding-left: 15px;
+		}
+
+		.player-info
+		{
+			color : white;
+			font-family: 'SourceSP-xlight';
+			font-size: 30px;
+		}
+
+		.playerInfo
+		{
+			margin-left: 20px;
+		}
+
+		.cropTitle
+		{
+			color: white;
+			font-family: 'SourceSP-xlight';
+			font-size: 22px;
+			padding-left: 70px;
+			text-align: center;
+		}
+
+		.cropInfo
+		{
+			font-size: 18px;
+		}
+
+		.cropImage
+		{
+			height : 72px; 
+			width : 64px;
+		}
+
+
+		.LinkNav
+		{
+
+		}
+	}
+}

@@ -1,0 +1,30 @@
+<template name="Games">
+  <div class="gamesContainer">
+    <div>
+      {{#if $.Session.get 'createNewGame'}}
+        {{else}}
+          <div>
+              <div class="btn new-game-button btn-add"><img src="/Control/Games_NewGame_up.png"></div>
+              <div class="btn reset-all-button btn-deny"><img src="/Control/Games_ResetApp_up.png"></div>
+          </div>
+        {{/if}}
+      <div class="gamesPanel">
+        
+        {{#if $.Session.get 'createNewGame'}}
+            {{> NewGame}}
+        {{else}}
+      
+            <section class="games-section">
+              {{#if Template.subscriptionsReady}}
+                    {{#each games}}
+                        {{> Game}}
+                    {{/each}}
+              {{else}}
+                <div class="loading">Loading ...</div>
+              {{/if}}
+            </section>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</template>

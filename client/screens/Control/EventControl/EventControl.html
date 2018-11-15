@@ -1,0 +1,36 @@
+<template name="EventControl">
+  {{#if $.Session.equals 'eventView' 'normal'}}
+  <!--<button type="button" class="btn-add" name="button"><p>+</p></button>-->
+  <div class="btn add-event"></div>
+  {{/if}}
+  <!-- {{#if newEvent}}{{else}}<button type="button" class="btn-add" name="button"><p>+</p></button>{{/if}} -->
+  <div class="scroll-all-seasons">
+    {{#if $.Session.equals 'eventView' 'normal'}}
+      {{#each seasons}}
+        {{> EventSeason}}
+      {{/each}}
+    {{/if}}
+
+    {{#if $.Session.equals 'eventView' 'new'}}
+    <!--<i class="fas fa-times close"></i>
+      <div class="new-event-header">
+              New event
+      </div>-->
+      <div class="content-new-event">
+        {{>FormEvent}}
+      </div>
+    {{/if}}
+
+    {{#if $.Session.equals 'eventView' 'edit'}}
+      <!--<i class="fas fa-times close"></i>
+      <div class="new-event-header">
+              Edit event
+      </div>-->
+      <div class="content-new-event">
+        {{>FormEvent}}
+      </div>
+    {{/if}}
+
+
+  </div>
+</template>

@@ -1,0 +1,45 @@
+<template name="TransactionDoc">
+  {{#if receiver}}
+  <tr>
+    <td><i class="fa fa-arrow-left {{#if notification}}notification{{/if}}"></i></td>
+    <td>{{textTransaction}}</td>
+    <td>{{season}}</td>
+    <td>{{stage}}</td>
+    <td>{{hour}}</td>
+  </tr>
+  {{else}}
+  <tr>
+    <td><i class="fa fa-arrow-right {{#if notification}}notification{{/if}}"></i></td>
+    <td>{{textTransaction}}</td>
+    <td>{{season}}</td>
+    <td>{{stage}}</td>
+    <td>{{hour}}</td>
+  </tr>
+  {{/if}}
+<!--
+
+  <div class="element-list">
+    {{#if receiver}}
+      <div>
+        <i class="fa fa-arrow-left {{#if notification}}notification{{/if}}"></i>
+        <p>{{textTransaction}}</p>
+      </div>
+      <div class="timeStamp">
+        <div>{{season}}</div>
+        <div>{{stage}}</div>
+        <div>{{hour}}</div>
+      </div>
+    {{else}}
+      <div>
+        <i class="fa fa-arrow-right {{#if notification}}notification{{/if}}"></i>
+        <p>{{textTransaction}}</p>
+      </div>
+      <div class="timeStamp">
+        <div>{{season}}</div>
+        <div>{{stage}}</div>
+        <div>{{hour}}</div>
+      </div>
+    {{/if}}
+  </div>
+-->
+</template>

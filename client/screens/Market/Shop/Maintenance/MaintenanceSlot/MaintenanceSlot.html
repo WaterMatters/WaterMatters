@@ -1,0 +1,27 @@
+<template name="MaintenanceSlot">
+      <div class="col-3">
+        <div class="maintenance">
+          <div class="maintenance-title">
+            Field {{fields}}
+          </div>
+          <div class="maintenance-field">
+            <img src="/Village/{{fieldContent fields}}.svg" class="crop-type">
+          </div>
+          <div class="maintenanceSlot {{#if btnInactive}}inactive{{else}}pay-maintenance{{/if}}">
+            {{#if fefMax}}
+              You are at the maximum FEF value for this field
+            {{else}}
+
+              <a href="">
+                <img src="/Documents/MaintenanceCounter/MaintenanceCounter_button_up.png" class="maintenance-slot center">
+              </a>
+              <!--<p>
+                <span>+ 0,1 FEF</span>
+                <br>
+                <span>(1000 Pz.)</span>
+              </p>-->
+            {{/if}}
+          </div>
+        </div>
+      </div>
+</template>

@@ -1,0 +1,61 @@
+<template name="Field">
+
+    <!--<article class="field {{#if $eq cropNameText 'Dead'}}fieldDead{{else}}fieldNormal{{/if}} ">-->
+    <article class="field">
+              <!-- //images
+              ///////////////// -->
+                
+                <img src="/Village/Crop_village_blue.png" class="fieldBg">
+                
+            <div class="field-text">
+              
+              <!-- //Name of the crop
+              //////////////////// -->
+                  <div class="field-title">{{cropNameText}}</div>
+                  <div class="cropField">
+                    {{#if cropRice}}
+                      <img src="/Village/Crop_Rice.svg" alt={{this.crop}} class="cropImage">
+                    {{else}}
+                      {{#if cropMaize}}
+                        <img src="/Village/Crop_corn.svg" alt={{this.crop}} class="cropImage">
+                      {{else}}
+                        {{#if cropSoybean}}
+                          <img src="/Village/Crop_beans.svg" alt={{this.crop}} class="cropImage">
+                        {{else}}
+                          <img src="/Village/Crop_fallow.svg" alt={{this.crop}} class="cropImage">
+                        {{/if}}
+                      {{/if}}
+                    {{/if}}
+                  </div>
+
+              <!-- //FEF of the field
+              /////////////////// -->
+              <div class="cropInfo"><span>FEF = </span>{{this.fef}}</div>
+
+              <!-- //Supply of the field during irrigation
+              ////////////////////////////////////////// -->
+              <!-- //Potential yield / Expected yield / final yield
+              //////////////////////////////////////////////// -->
+                {{#if isStageZero}}
+                  <div class="yield cropInfo" title='potential yield'><span>Pot. Yield = </span>{{this.yield}}</div>
+                {{else}}
+                  {{#if isStageFour}}
+                    <div class="yield cropInfo" title='final yield'><span>Final Yield = </span>{{this.yield}}</div>
+                  {{else}}
+                    <div class="waterSupply cropInfo" style="{{#if fitToField}}font-size:0.9em;{{/if}}"><span>Water Supply = </span>{{this.supply}}</div>
+                    <div class="yield cropInfo" title='expected yield'><span>Exp. Yield = </span>{{this.yield}}</div>
+                  {{/if}}
+                {{/if}}
+            
+
+              <!-- //Link toward the graph-yield if not fallow
+              ///////////////////////////////////////////////////// -->
+                {{#if $eq this.crop 'fallow'}}
+                {{else}}
+                  <div class="btn yield-graph yield-graph-btn" data-toggle="modal" data-target="#yieldGraph">
+                    Yield Graph
+                  </div>
+                {{/if}}
+            </div>
+    </article>
+</template>

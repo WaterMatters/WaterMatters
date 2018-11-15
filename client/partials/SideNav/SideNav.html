@@ -1,0 +1,86 @@
+<template name="SideNav">
+  <div class="">
+    <!-- <img src="/Canal_alone.svg" class="canalNav"> -->
+      {{#if Template.subscriptionsReady}}
+          <ul class="left-nav">
+
+                {{#if isInRole 'village'}}
+                      <li class="left-nav-el">
+                        <a class="LinkNav link-home active drop" href="/village-home">
+                          <img src="/Menu/Button_drop_house.svg">
+                          {{#if thereIsARainEvent}}
+                            <div class="dot-notif dot-village"></div>
+                          {{/if}}
+                        </a>
+                      </li>
+                {{/if}}
+                
+                <li class="left-nav-el">
+                  <a class="LinkNav link-map active drop" href="/map">
+                    <img src="/Menu/Button_drop_map.svg">
+                    {{#if $gt eventsMap 0}}
+                      <span class="dot-notif">{{eventsMap}}</span>
+                    {{/if}}
+                     
+                  </a>
+                </li>
+
+                <!-- {{#if isInRole 'village'}}
+                    {{#if $.Session.equals 'view' 'map'}}
+                      <li>
+                        <a class="LinkNav link-home active" href="/village-home">
+                          <i class="fa fa-home"></i>
+                          {{#if thereIsARainEvent}}
+                            <div class="dot-notif dot-village"></div>
+                          {{/if}}
+                           Home
+                        </a>
+                      </li>
+                    {{else}}
+                        <li>
+                          <a class="LinkNav link-map active" href="/map">
+                            <i class="fa fa-map"></i>
+                            {{#if $gt eventsMap 0}}
+                              <div class="dot-notif dot-map">{{eventsMap}}</div>
+                            {{/if}}
+                             Map
+                          </a>
+                        </li>
+                    {{/if}}
+                {{else}}
+                    <li>
+                      <a class="LinkNav link-map active" href="/map">
+                        <i class="fa fa-map"></i>
+                        {{#if $gt eventsMap 0}}
+                          <div class="dot-notif dot-map">{{eventsMap}}</div>
+                        {{/if}}
+                         Map
+                      </a>
+                    </li>
+                {{/if}} -->
+
+                {{#if isInRole 'village'}}
+                    <li class="left-nav-el">
+                      <a class="LinkNav link-water {{#if isNotSeasonZero}}active{{/if}} drop" href="{{#if isNotSeasonZero}}/water{{/if}}">
+                        <img src="/Menu/Button_drop_water.svg" style="z-index: 9999;">
+                      </a>
+                    </li>
+                {{/if}}
+
+                <li class="left-nav-el">
+                  <a class="LinkNav link-market {{#if isNotSeasonZero}}active{{/if}} drop" href="{{#if isNotSeasonZero}}{{marketPath}}{{/if}}"><img src="/Menu/Button_drop_shop.svg"></a>
+                </li>
+
+                <li class="left-nav-el">
+                  <a class="LinkNav link-docs {{#if isNotSeasonZero}}active{{/if}} drop" href="{{#if isNotSeasonZero}}/documents{{/if}}"><img src="/Menu/Button_drop_files.svg"></a>
+                </li>
+
+                {{#if isInRole 'controller'}}
+                    <li class="left-nav-el">
+                      <a class="LinkNav link-control active drop" href="/control"><img src="/Menu/Button_control.svg"></a>
+                    </li>
+                {{/if}}
+          </ul>
+      {{/if}}
+  </div>
+</template>

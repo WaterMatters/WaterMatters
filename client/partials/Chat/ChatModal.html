@@ -1,0 +1,31 @@
+<template name="ChatModal">
+	<!-- Modal -->
+	<div class="modal fade" id="ChatModal">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<div class="modal-title">CHAT</div>
+					<button type="button" class="btn close-chatmodal" data-dismiss="modal"></button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="container">
+						<div class="row">
+							<div class="col-12 col-sm-3 userCol">
+									{{> UsersList}}
+							</div>
+							<div class="col-12 col-sm-9">
+								{{> ChatBox}}						
+							</div>
+						</div>
+					</div>
+					
+				</div>
+
+			</div>
+		</div>
+	</div>
+</template>

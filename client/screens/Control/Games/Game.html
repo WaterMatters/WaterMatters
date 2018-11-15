@@ -1,0 +1,85 @@
+<template name="Game">
+  <article class="game-template {{#if gameActive}}game-active{{/if}}">
+<!--    {{#if gameActive}}
+    {{else}}
+      {{#if notInitialGame}}
+        <i class="fa fa-trash"></i>
+      {{/if}}
+    {{/if}} -->
+    <table>
+      <thead>
+        <tr>
+          <td class="white-cell gameTitle" colspan="2">
+            Game: {{this.name}}
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="gameLeft game-grey-cell">
+            <span class="bold">Access code: </span>{{this.code}}
+          </td>
+          <td class="gameRight">
+            {{#if gameActive}}
+              <div class="btn gameBtn nogameGo"></div>
+            {{else}}
+                <div class="btn gameBtn activate-game-button gameGo"></div>
+            {{/if}}
+          </td>
+        </tr>
+        <tr>
+          <td class="gameLeft game-grey-cell">
+            <span class="bold">Created: </span>{{createdWhen}}
+          </td>
+          <td class="gameRight">
+            <div class="btn gameBtn reset-game-button gameReset"></div>
+          </td>
+        </tr>
+        <tr>
+          <td class="gameLeft game-grey-cell">
+            <span class="bold">About: </span>{{description}}
+          </td>
+          <td class="gameRight">
+            {{#if gameActive}}
+            {{else}}
+              {{#if notInitialGame}}
+                <div class="btn gameBtn del-game-button gameDelete"></div>
+                <!--<i class="fa fa-trash"></i>
+              {{else}}
+                <div class="btn gameBtn del-game-button nogameDelete"></div>-->
+              {{/if}}
+
+            {{/if}}
+          </td>
+        </tr>
+        <tr>
+          <td class="gameLeft game-grey-cell">
+            Time per season (minutes) <input type="number" class="iptTime" value="{{seasonTime}}" min="5">
+          </td>
+          <td class="gameRight">
+            {{#if gameActive}}
+              <div class="btn gameBtn export-game-button export-data"></div>
+            {{/if}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+<!--
+    <h3>Game: {{this.name}}</h3>
+    <div class="game-template-body">
+      <div class="game-details">
+        <div><span class="bold">Access code: </span>{{this.code}}</div>
+        <div><span class="bold">Created: </span>{{createdWhen}}</div>
+        <div><span class="bold">About: </span>{{description}}</div>
+      </div>
+      <div class="game-buttons">
+        {{#if gameActive}}
+        {{else}}
+            <button class="btn-primary activate-game-button">Go to this Game</button>
+        {{/if}}
+            <button type="button" name="button" class="reset-game-button btn-deny">Reset Game</button>
+      </div>
+    </div>
+-->
+  </article>
+</template>

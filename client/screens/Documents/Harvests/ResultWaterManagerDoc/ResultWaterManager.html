@@ -1,0 +1,25 @@
+<template name='ResultWaterManager'>
+
+	<tr>
+		<td class="grey-cell marge">
+			Season {{this.season}}
+		</td>
+		<td class="grey-cell marge">
+			{{name this.villageManager}}
+		</td>
+		<td class="grey-cell marge">
+			{{giniIndex}}
+		</td>
+		<td class="grey-cell marge">
+			{{this.totalRevenuesSeason}} Pz.
+		</td>
+	</tr>
+<!--
+  <div class="wm-doc">
+      <span class="wm-doc-season">Season {{this.season}}</span>
+      <span class="wm-doc-manager">Water manager = vil. {{this.villageManager}}</span>
+      <span class="wm-doc-gini">Gini index harvest = {{giniIndex}}</span>
+      <span class="wm-doc-revenues">Tot. revenues = {{this.totalRevenuesSeason}} Pz.</span>
+  </div>
+-->
+</template>

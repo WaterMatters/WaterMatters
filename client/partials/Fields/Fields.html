@@ -1,0 +1,14 @@
+<template name="Fields">
+		<div class="fieldsContainer">
+		    {{#each fields}}
+		    	<div class="fields fields-tab">
+		        	{{> Field}}
+		        </div>
+		    {{/each}}
+		</div>
+
+  <!-- {{> MaintenanceModal}} -->
+  {{#if $.Session.equals 'yieldGraph-toggle.state' 'open'}}
+      {{>YieldGraphModal}}
+  {{/if}}
+</template>

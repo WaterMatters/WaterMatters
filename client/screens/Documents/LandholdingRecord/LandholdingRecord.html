@@ -1,0 +1,128 @@
+<template name="LandholdingRecord">
+{{#if $.Session.equals 'document-tab' 'landholding'}}
+  {{#if Template.subscriptionsReady}}
+
+    <table class="landholding-table">
+      <thead>
+        <tr class="bold">
+          <td class="no-border"></td>
+          <td class="no-border"></td>
+          <td colspan="4" class="white-cell">Fields (4 x 10ha)</td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr class="bold">
+          <td class="no-border"></td>
+          <td class="no-border"></td>
+          <td class="grey-cell doc-title">1</td>
+          <td class="grey-cell doc-title">2</td>
+          <td class="grey-cell doc-title">3</td>
+          <td class="grey-cell doc-title">4</td>
+        </tr>
+        <tr class="">
+          <td class="no-border"></td>
+          <td class="no-border"></td>
+          {{#each fefFields}}
+            <td class="grey-cell">fef= {{this}}</td>
+          {{/each}}
+        </tr>
+        <tr class="bold">
+          <td class="no-border"></td>
+          <td class="no-border"></td>
+          {{#each cropGrown}}
+            <td class="grey-cell">{{this}}</td>
+          {{/each}}
+        </tr>
+
+  <!-- For stage 1 -->
+        <tr class="top-thick">
+          <td rowspan="4" class="white-cell">Stage 1</td>
+          <td class="lefty grey-cell doc-title">Request</td>
+          {{#each request.stage1}}
+            <td class="grey-cell">{{this}}</td>
+          {{/each}}
+        </tr>
+        <tr>
+          <td class="lefty grey-cell doc-title">Supply</td>
+          {{#each supply.stage1}}
+            <td class="grey-cell">{{#if visible.stage1}}{{this}}{{else}}{{/if}}</td>
+          {{/each}}
+        </tr>
+        <tr>
+          <td class="lefty grey-cell doc-title">Supply Category</td>
+          {{#each supplyCategory.stage1}}
+            <td class="grey-cell">{{#if visible.stage1}}{{this}}{{else}}{{/if}}</td>
+          {{/each}}
+        </tr>
+        <tr>
+          <td class="lefty grey-cell doc-title">Yield Potential (t/10ha)</td>
+          {{#each potentialYield.stage1}}
+            <td class="grey-cell">{{#if visible.stage1}}{{this}}{{else}}{{/if}}</td>
+          {{/each}}
+        </tr>
+
+  <!-- For stage 2 -->
+        <tr class="top-thick">
+          <td rowspan="4" class="white-cell">Stage 2</td>
+          <td class="lefty grey-cell doc-title">Request</td>
+          {{#each request.stage2}}
+            <td class="grey-cell">{{this}}</td>
+          {{/each}}
+        </tr>
+        <tr>
+          <td class="lefty grey-cell doc-title">Supply</td>
+          {{#each supply.stage2}}
+            <td class="grey-cell">{{#if visible.stage2}}{{this}}{{else}}{{/if}}</td>
+          {{/each}}
+        </tr>
+        <tr>
+          <td class="lefty grey-cell doc-title">Supply Category</td>
+          {{#each supplyCategory.stage2}}
+            <td class="grey-cell">{{#if visible.stage2}}{{this}}{{else}}{{/if}}</td>
+          {{/each}}
+        </tr>
+        <tr>
+          <td class="lefty grey-cell doc-title">Yield Potential (t/10ha)</td>
+          {{#each potentialYield.stage2}}
+            <td class="grey-cell">{{#if visible.stage2}}{{this}}{{else}}{{/if}}</td>
+          {{/each}}
+        </tr>
+
+  <!-- For stage 3 -->
+        <tr class="top-thick">
+          <td rowspan="4" class="white-cell">Stage 3</td>
+          <td class="lefty grey-cell doc-title">Request</td>
+          {{#each request.stage3}}
+            <td class="grey-cell">{{this}}</td>
+          {{/each}}
+        </tr>
+        <tr>
+          <td class="lefty grey-cell doc-title">Supply</td>
+          {{#each supply.stage3}}
+            <td class="grey-cell">{{#if visible.stage3}}{{this}}{{else}}{{/if}}</td>
+          {{/each}}
+        </tr>
+        <tr>
+          <td class="lefty grey-cell doc-title">Supply Category</td>
+          {{#each supplyCategory.stage3}}
+            <td class="grey-cell">{{#if visible.stage3}}{{this}}{{else}}{{/if}}</td>
+          {{/each}}
+        </tr>
+        <tr>
+          <td class="lefty grey-cell doc-title">Final Yield (t/10ha)</td>
+          {{#each potentialYield.stage3}}
+            <td class="grey-cell">{{#if visible.stage3}}{{this}}{{else}}{{/if}}</td>
+          {{/each}}
+        </tr>
+
+      </tbody>
+
+
+
+    </table>
+
+  {{/if}}
+{{/if}}
+
+</template>

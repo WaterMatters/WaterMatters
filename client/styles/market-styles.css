@@ -1,0 +1,436 @@
+.marketContainer{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	/*border: 1px solid green;*/
+	margin-top: 100px;
+}
+
+.market-leftPart
+{
+	/*border: 1px solid blue;*/
+	width: 25%;
+	height: 100%;
+	float : left;
+}
+
+.market-rightPart
+{
+	/*border: 1px solid red;*/
+	width: 75%;
+	height: 100%;
+	float: left;
+}
+
+.inactive
+{
+	display: none;
+}
+
+#housingModal, 
+#cropModal,
+#maintenanceModal,
+#tankModal
+{
+    font-family: "SourceSP";
+}
+
+.pay-text 
+{
+	background-image: url("/Documents/Food&Housing/Food&Housing_background_notext.png");
+	background-repeat: no-repeat;
+	background-size: auto;
+	background-position: 50% 30%;
+	text-align: center;
+	/*border: 1px solid green;*/
+	height: 100%;
+}
+
+.pay-button
+{
+	margin-top: 5%;
+}
+
+.sub-text
+{
+	margin-top: 30%;
+	font-family: 'SourceSP';
+	font-size: 28px;
+	color : #0f667d;
+}
+
+.sub-cost
+{
+	text-align: center;
+	margin : 0 auto;
+	/*background-color: white;*/
+	border: 5px solid #e6e6da;
+	width : 150px;
+}
+
+.body-reservoir
+{
+	/*border: 2px solid purple;*/
+	height: 100%;
+	width: 100%;
+}
+
+.img-storage
+{
+	margin: 80px auto 40px auto;
+	width: 338px;
+	/*border: 2px solid maroon;*/
+}
+
+.tank
+{
+	/*border: 2px solid white;*/
+	width: 30%;
+	height: 100%;
+	float: left;
+}
+
+.tank img
+{
+	text-align: center;
+	margin: 150px 0 0 50%;
+}
+
+.tank-info
+{
+	/*border: 2px solid black;*/
+	width: 50%;
+	height: 100%;
+	float: left;
+	text-align: center;
+}
+
+.capacity
+{
+	background-image: url("/Documents/Reservoir/Reservoir_Quantity.png");
+	background-repeat : no-repeat;
+	background-size: 259px 74px; 
+	background-position: center;
+	text-align: center;
+	/*border: 2px solid yellow;*/
+	width: 259px;
+	height: 74px;
+	margin: 0 auto;
+	font-family: 'SourceSP';
+	font-size: 48px;
+	color : white;
+	line-height: 65px;
+}
+
+.enough
+{
+	margin: 0 auto;
+	font-family: 'SourceSP';
+	font-size: 48px;
+	color : #0f667d;
+}
+
+.trade
+{	
+	color : #0f667d;
+	font-family: 'SourceSP';
+	font-size: 16px;
+}
+
+.trade-historic
+{
+	background-color: #fcfcf0;
+	overflow-y: scroll;
+	text-align: center;
+}
+
+.trade-historic table
+{
+	display: table;
+	table-layout: fixed;
+}
+
+.trade-form
+{
+	text-align: center;
+}
+
+.trade-form-title
+{
+	background-image: url("/Documents/Trade/Trade_title.png");
+	background-repeat: no-repeat;
+	background-size: 153px 50px;
+	background-position: center;
+	margin: 15px 0;
+	color: white;
+	font-size: 22px;
+}
+
+.selection, .select2-container .select2-selection--single {
+	height: 50px;
+}
+
+.trade-form-input, .select2-container .select2-selection--single
+{
+	background-color: #fcfcf0;
+	text-align: center;
+	color : #0f667d;
+	font-family: 'SourceSP';
+	font-size: 18px;
+	height: 50px;
+	width: 200px;
+	margin: 0 auto;
+	padding-top : 10px;
+}
+
+.no-border { border : none; background-color: none; }
+.crops-table { text-align: center; font-family: 'SourceSP-xlight'; color : #0f667d; font-size: 28px; width: 100%; display: table;}
+.crops-table input {font-family:'SourceSP-bold'; font-size: 22px; color : #0f667d; text-align: center; width: 100%; height: 100%; background-color: #fcfcf0; border : none; }
+.crops-table select {font-family:'SourceSP-xlight'; color : #0f667d; font-size: 26px; text-align: center; width: 100%; height: 100%; background-color: #e0e0d5; border : none; }
+.crops-table select option {text-align: center; text-align-last:center;}
+.blue { color: #64d3de; }
+.crops-table th, .crops-table td { width : 119px; height : 48px; }
+.crops-total { font-family: 'SourceSP-BoldIt'; }
+.crops-data-total { color : #099dce; font-family: 'SourceSP-BoldIt'; }
+.crops-money { font-family: 'SourceSP-BoldIt'; color : #e6be79; }
+
+.maintenanceBox { background-color: #e6e6da; border-radius: 25px; }
+.maintenance-slot {width: 100px; background-color: transparent; padding-bottom : 30px;}
+.maintenance-field {width: 100px; height: 100px; background-color: #0f667d; margin: 15px auto; text-align: center; font-size: 18px; font-family: "SourceSP-xlight"; color: white; padding: 10px}
+.maintenance-title 
+{
+	font-family: "SourceSP-xlight"; 
+	color: white; 
+	background-image: url("/Documents/MaintenanceCounter/Maintenance_title.png");
+	background-repeat: no-repeat;
+	background-position: center; 
+	text-align: center;
+	font-size: 28px;
+	margin-top: -25px;
+}
+
+.crop-type { width: 80px; height: 80px;}
+
+.header-crops
+{
+	font-family: "SourceSP-xlight";
+	font-size: 24px;
+	text-align: center;
+}
+
+@media (min-width : 1600px) /* large screens only*/
+{
+	.header_menu img
+	{
+		display: block;
+		width: 250px;
+		margin: 40px auto;
+	}
+
+	.btn-market
+	{
+		display: block;
+		margin: 20px auto;
+		width: 350px;
+	}
+
+	.pay-text 
+	{
+		background-position: 50% 150px;
+		border: 1px solid transparent; /*Border prevent from position bugs*/
+	}
+
+	.pay-button
+	{
+		margin-top: 10%;
+	}
+
+	.sub-text
+	{
+		margin-top: 15%;
+	}
+
+	.img-storage
+	{
+		margin: 80px auto 40px auto;
+	}
+
+	.tank img
+	{
+		text-align: center;
+		margin: 150px 0 0 100%;
+	}
+
+	.trade { margin-top: 50px; max-height: 500px;}
+
+	.trade-send 
+	{
+		margin-top : 25px;
+		width: 125px;
+		height: auto;
+	}
+
+	.crops-table { margin-top : 120px; }
+	.maintenanceBox {margin-top: 150px;}
+
+}
+
+@media only screen and (min-width:301px) and (max-width: 1280px) /* Tablets only */
+{
+	.header_menu img
+	{
+		display: block;
+		width: 150px;
+		margin: 15px auto;
+	}
+	
+	.btn-market
+	{
+		display: block;
+		margin: 10px auto;
+		width: 260px;
+	}
+
+	.pay-text 
+	{
+		background-position: 50% 75px;
+		border: 1px solid transparent;
+	}
+
+	.pay-button
+	{
+		margin-top: 50px;
+	}
+
+	.sub-text
+	{
+		margin-top: 15%;
+		/*border: 1px solid red;*/
+	}
+
+	.img-storage
+	{
+		margin: 30px auto 40px auto;
+	}
+
+	.tank img
+	{
+		text-align: center;
+		margin: 150px 0 0 30%;
+	}
+
+	.trade-historic 
+	{
+		/*border : 1px solid red;*/
+		margin-right: 0px;
+	}
+
+	.trade-historic table
+	{
+		width: 100%;
+		margin-right: 15px;
+	}
+
+	.trade-form
+	{
+		/*border : 1px solid red;*/
+		margin-left: -10px;
+	}
+	
+	.trade { /*margin-top: 25px;*/  max-height: 400px;}
+	.trade-send 
+	{
+		margin-top : 10px;
+		width: 75px;
+		height: auto;
+	}
+	.maintenanceBox {margin-top: 100px;}
+
+}
+
+@media only screen and (min-width:1281px) and (max-width: 1900px) /* Medium screens only */
+{
+	.header_menu img
+	{
+		display: block;
+		width: 200px;
+		margin: 15px auto;
+	}
+	
+	.btn-market
+	{
+		display: block;
+		margin: 10px auto;
+		width: 300px;
+	}
+
+	.pay-text 
+	{
+		background-position: 50% 75px;
+		border: 1px solid transparent;
+	}
+
+	.pay-button
+	{
+		margin-top: 10%;
+	}
+
+	.sub-text
+	{
+		margin-top: 12%;
+	}
+
+	.img-storage
+	{
+		margin: 80px auto 40px auto;
+	}
+
+	.tank img
+	{
+		text-align: center;
+		margin: 150px 0 0 50%;
+	}
+
+	.trade { /*margin-top: 50px; */ max-height: 450px;}
+	.trade-send 
+	{
+		margin-top : 25px;
+		width: 75px;
+		height: auto;
+	}
+
+	.trade-form
+	{
+		/*margin-left : 10px;*/
+	}
+	.maintenanceBox {margin-top: 100px;}
+	
+}
+
+
+@media only screen 		/* ================ IPAD ================ */
+	and (min-device-width : 768px) 
+	and (max-device-width : 1024px) 
+	and (orientation : landscape) 
+{ 
+	.tank img {
+		margin-left: 0px;
+	}
+
+	.sub-text{
+		margin-top : 20%;
+	}
+
+	.crops-table .border-white, .crops-table select {
+		font-weight: normal;
+	}
+
+	.maintenanceBox {
+		min-width: 515px;
+	}
+
+	.trade-historic {
+		height: 450px;
+		overflow-y: scroll;
+	}
+}

@@ -1,0 +1,20 @@
+<template name="FormTransaction">
+    {{#autoForm collection="Transactions" id="TransactionForm" type="insert"}}
+              <fieldset>
+                <div class="fieldset-flex">
+                  <div class="input-block">
+                    <div class="trade-form-title">To who</div>
+                    {{> afFieldInput name="toWhom" class="input-trans-form trade-form-input" id="transactionFormToWhom" type="select2" options=toWhomOptions}}
+                    <div class="trade-form-title">What</div>
+                    {{> afFieldInput name="what" class="input-trans-form trade-form-input" id="transactionFormWhat" type="select2" options=whatOptions}}
+                    <div class="trade-form-title">How much</div>
+                    {{> afFieldInput name="quantity" class="input-trans-form trade-form-input" id="transactionFormHowMuch" step="1" size="5"}}
+                    <!-- {{> afQuickField name="quantity" class="input-trans-form" step="1"}} -->
+                  </div>
+                </div>
+              </fieldset>
+                <button type="submit" class="btn" style="background-color: transparent;">
+                  <img src="/Documents/Trade/Trade_button_up.png" class="trade-send">
+                </button>
+  {{/autoForm}}
+</template>

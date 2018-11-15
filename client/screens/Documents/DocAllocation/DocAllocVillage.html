@@ -1,0 +1,15 @@
+<template name="DocAllocVillage">
+  {{#if Template.subscriptionsReady}}
+
+
+          <tr>
+            <td class="bold white-cell doc-title">{{name this}}</td>
+            <td class="grey-cell">{{#if visible.stage1}}{{allocationObj.one}}{{/if}}</td>
+            <td class="grey-cell">{{#if visible.stage2}}{{allocationObj.two}}{{/if}}</td>
+            <td class="grey-cell">{{#if visible.stage3}}{{allocationObj.three}}{{/if}}</td>
+          </tr>
+
+
+  {{/if}}
+
+</template>

@@ -1,0 +1,62 @@
+<template name="Map">
+  {{#if Template.subscriptionsReady}}
+        <div class="unblur">
+
+<!--  The villages -->
+          <div class="map">
+              <div class="map-villages">
+                {{#each villages}}
+                    {{> Map1Village}}
+                {{/each}}
+              </div>
+              <img src="/Map/Canal_Smallcanals.svg" class="stream">              
+          </div>
+
+<!--  The main canal and the connexions to the villages -->
+<!--
+          <svg height="400" width="715" class="map-canal">
+            <polyline points="-5,90 15,110 45,150 55,155 160,160 180,170 230,210 260,210 280,200 300,190 370,170 390,170 550,150 560,150 610,155 715,170"
+            style="fill:none;stroke:#2952a3;stroke-width:7" />
+            <polyline points="15,110 50,52 182,52"
+            style="fill:none;stroke:#2952a3;stroke-width:4"/>
+            <polyline points="45,150 45,300 50,302 182,302"
+            style="fill:none;stroke:#2952a3;stroke-width:4"/>
+            <polyline points="180,170 220,87 352,87"
+            style="fill:none;stroke:#2952a3;stroke-width:4"/>
+            <polyline points="230,210 230,382 372,382"
+            style="fill:none;stroke:#2952a3;stroke-width:4"/>
+            <polyline points="370,170 370,42 504,42"
+            style="fill:none;stroke:#2952a3;stroke-width:4"/>
+            <polyline points="390,170 390,252 522,252"
+            style="fill:none;stroke:#2952a3;stroke-width:4"/>
+            <polyline points="550,150 550,82 691,82"
+            style="fill:none;stroke:#2952a3;stroke-width:4"/>
+            <polyline points="570,150 570,362 702,362"
+            style="fill:none;stroke:#2952a3;stroke-width:4"/>
+          </svg>
+-->
+<!--  The eye that you click on if you are the controller -->
+          {{#if displayEye}}
+            <div class="map-eye">
+              {{#if $.Session.equals 'see-map-toggle' 'opened'}}
+              <i class="fa fa-eye fa-3x eye-opened"></i>
+              {{else}}
+              <i class="fa fa-eye-slash fa-3x eye-closed"></i>
+              {{/if}}
+            </div>
+          {{/if}}
+
+<!--  The events active -->
+          
+
+        </div>
+
+        {{#each eventsCanalActive}}
+            {{>CanalEvent}}
+          {{/each}}
+
+    {{else}}
+        <div class="loading">Loading ...</div>
+    {{/if}}
+
+</template>

@@ -1,0 +1,61 @@
+<template name="DocsNav">
+	<!--<span>Button = {{btn}}</span><br>-->
+
+	
+{{#if Template.subscriptionsReady}}
+
+	{{#if $.Session.equals 'documents-player' 'controller'}}
+<!--		<div class="links-documents">
+			<div id="docLink-export" class="{{#if $.Session.equals 'document-tab' 'export'}}selected{{/if}}">
+				{{#if $.Session.equals 'documents-player' 'controller'}}
+					<img src="/Documents/Documents_manager_down.png" class="btn-market btn img-responsive">
+				{{else}}
+					<img src="/Documents/Documents_manager_up.png" class="btn-market btn img-responsive">
+				{{/if}}
+			</div>
+		</div>
+-->
+	{{else}}
+		<div class="header_menu">
+			<img src="/Documents/documents_title.png">
+		</div>
+		<div class="links-documents">
+			<div id="docLink-landholding" class="{{#if $.Session.equals 'document-tab' 'landholding'}}selected{{/if}}">
+				{{#if $.Session.equals 'document-tab' 'landholding'}}
+					<img src="/Documents/Documents_landholding_down.png" class="btn-market btn img-responsive">
+				{{else}}
+					<img src="/Documents/Documents_landholding_up.png" class="btn-market btn img-responsive">
+				{{/if}}
+			</div>
+			<div id="docLink-financial" class="{{#if $.Session.equals 'document-tab' 'financial'}}selected{{/if}}">
+				{{#if $.Session.equals 'document-tab' 'financial'}}
+					<img src="/Documents/Documents_finances_down.png" class="btn-market btn img-responsive">
+				{{else}}
+					<img src="/Documents/Documents_finances_up.png" class="btn-market btn img-responsive">
+				{{/if}}
+			</div>
+			<div id="docLink-allocation" class="{{#if $.Session.equals 'document-tab' 'allocation'}}selected{{/if}}">
+				{{#if $.Session.equals 'document-tab' 'allocation'}}
+					<img src="/Documents/Documents_water_allocation_down.png" class="btn-market btn img-responsive">
+				{{else}}
+					<img src="/Documents/Documents_water_allocation_up.png" class="btn-market btn img-responsive">
+				{{/if}}
+			</div>
+			<div id="docLink-harvests" class="{{#if $.Session.equals 'document-tab' 'harvests'}}selected{{/if}}">  
+				{{#if $.Session.equals 'document-tab' 'harvests'}}          	
+					<img src="/Documents/Documents_harvest_down.png" class="btn-market btn img-responsive">
+				{{else}}
+					<img src="/Documents/Documents_harvest_up.png" class="btn-market btn img-responsive">
+				{{/if}}
+			</div>
+			<div id="docLink-manager" class="{{#if $.Session.equals 'document-tab' 'manager'}}selected{{/if}}">  
+				{{#if $.Session.equals 'document-tab' 'manager'}}        	
+					<img src="/Documents/Documents_manager_down.png" class="btn-market btn img-responsive">
+				{{else}}
+					<img src="/Documents/Documents_manager_up.png" class="btn-market btn img-responsive">
+				{{/if}}
+			</div>
+		</div>
+	{{/if}}
+{{/if}}
+</template>

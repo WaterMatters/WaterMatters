@@ -1,0 +1,113 @@
+<template name="Shop">
+ <!-- {{#if isInRole 'village'}}
+      <i class="fas fa-times close-action close-action-village"></i>
+  {{else}}
+      <i class="fas fa-times close-action close-action-manager"></i>
+  {{/if}}
+
+  <div class="action market">
+      <div class="action-header header-market">
+        <a class="link" href="/market">Market</a>
+        <span class="">/</span>
+        <span class="">Shop</span>
+      </div>
+
+    {{#if Template.subscriptionsReady}}
+      <div class="action-body body-shop">
+        <ul>
+-->
+          <!-- Link to buy food and housing  -->
+<!--
+          <li>
+            {{#if subsistenceActive}}
+              <a class="active link" href="/market/shop/food&housing">
+                <span>
+                  <i class="fas fa-utensils fa-2x" style="color:maroon;"></i>
+                  <i class="fas fa-home fa-2x" style="color:maroon;"></i>
+                </span>
+                <span>Food & Housing</span>
+              </a>
+            {{else}}
+              <a class="inactive trigger-modal" id="trigger-modal-subsistence" href="">
+                <span>
+                  <i class="fas fa-utensils fa-2x"></i>
+                  <i class="fas fa-home fa-2x"></i>
+                </span>
+                <span>Food & Housing</span>
+              </a>
+              <div class="info-modal subsistence {{#if $.Session.equals 'info-modal' 'trigger-modal-subsistence'}}open{{else}}closed{{/if}}">
+                  You already paid for this season.
+              </div>
+            {{/if}}
+          </li>
+-->
+          <!-- Link to buy crops  -->
+<!--
+          <li>
+            {{#if cropsActive}}
+              <a class="active link" href="/market/shop/crops">
+                <i class="fas fa-leaf fa-3x" style="color:green;"></i>
+                <span>Crop Seeds</span>
+              </a>
+            {{else}}
+              <a class="inactive trigger-modal" id="trigger-modal-crops" href="">
+                <i class="fas fa-leaf fa-3x"></i>
+                <span>Crop Seeds</span>
+              </a>
+              <div class="info-modal crops {{#if $.Session.equals 'info-modal' 'trigger-modal-crops'}}open{{else}}closed{{/if}} {{#if subsistenceActive}}must-pay{{else}}paid{{/if}}">
+                {{#if subsistenceActive}}
+                  You must pay the food and housing of your villagers before being able to buy your crops.
+                {{else}}
+                  You can only do that at the start of a season.
+                {{/if}}
+              </div>
+            {{/if}}
+          </li>
+-->
+          <!-- Link to buy maintenance counters -->
+<!--
+          <li>
+            {{#if maintenanceActive}}
+            <a class="active link" href="/market/shop/maintenance">
+              <span style="font-size:2em;color:maroon;">////</span>
+              <span>Maintenance Counters</span>
+            </a>
+            {{else}}
+            <a class="inactive trigger-modal" id="trigger-modal-maintenance" href="">
+              <span style="font-size:2em;">////</span>
+              <span>Maintenance Counters</span>
+            </a>
+            <div class="info-modal maintenance {{#if $.Session.equals 'info-modal' 'trigger-modal-maintenance'}}open{{else}}closed{{/if}} {{#if subsistenceActive}}must-pay{{else}}paid{{/if}}">
+                {{#if subsistenceActive}}
+                  You must pay the food and housing of your villagers before being able to maintain your fields.
+                {{else}}
+                  Maintenance is possible only during the start of the season, from season n°2.
+                {{/if}}
+            </div>
+            {{/if}}
+          </li>
+-->
+          <!-- Link to build reservoir-->
+<!--
+          <li>
+            {{#if reservoirActive}}
+            <a class="active link" href="/market/shop/reservoir">
+              <img src="/image-storage.svg" alt="" class="img-storage">
+              <span>Reservoir</span>
+            </a>
+            {{else}}
+            <a class="inactive trigger-modal" id="trigger-modal-reservoir" href="">
+              <img src="/image-storage.svg" alt="" class="img-storage">
+              <span>Reservoir</span>
+            </a>
+            <div class="info-modal reservoir {{#if $.Session.equals 'info-modal' 'trigger-modal-reservoir'}}open{{else}}closed{{/if}}">
+                  Storing water is only available from season n°2.
+            </div>
+            {{/if}}
+          </li>
+        </ul>
+      </div>
+    {{/if}}
+  </div>
+-->
+</template>
