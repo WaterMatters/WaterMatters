@@ -1,6 +1,6 @@
 Template.MaintenanceSlot.onCreated(function() {
-  var self = this;
-  self.autorun(function() {
+    var self = this;
+    self.autorun(function() {
     self.subscribe('timeLine');
     self.subscribe('villages');
   });
@@ -12,18 +12,22 @@ Template.MaintenanceSlot.helpers({
     var village = Villages.findOne({village:Number(Meteor.user().roles[1])});
     var price = 1000;
     var btnInactive = false;
-    if(village.money < price || this.fef === 0.9){
+    if(village.money < price || this.fef >= 0.9){
       btnInactive = true;
     }
     return btnInactive;
   },
   fefMax: function(){
-    return(this.fef === 0.9);
+    return(this.fef >= 0.9);
+  },
+  myfef: function() {
+    //console.log(this.fef);
+    return this.fef;
   },
   fieldContent: function(field){
-    var village = Villages.findOne({village:Number(Meteor.user().roles[1])});
+    //var village = Villages.findOne({village:Number(Meteor.user().roles[1])});
     var result = '';
-    switch (village.crops[field-1].crop)
+    switch (/*village.crops[field-1].crop*/this.crop)
     {
       case 'fallow' :
             result = 'Crop_fallow';

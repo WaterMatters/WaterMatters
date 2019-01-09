@@ -36,7 +36,7 @@
 		<div class="newChannel-body">
 			<div class="channelName">
 				<label for="iptChName">Name</label>
-				<input type="text" name="iptChName" id="iptChName" class="iptChName form-control">
+				<input type="text" name="iptChName" id="iptChName" class="iptChName form-control" minlength="1" maxlength="15" pattern="[A-Za-z0-9_/- ]" style="text-align: center;" required>
 			</div>
 			<div class="village-selection">
 				Choose players
@@ -57,7 +57,13 @@
 										</div>
 									{{else}}
 										<div class="col-4">
-											<button class="btn users-item btn-user btn-select" id="{{this._id}}">{{this.profile.name}}</button>
+
+											<button class="btn users-item btn-user btn-select" id="{{this._id}}">
+												{{#if isWM this.roles}}
+													<img src="/PlayerInfo/Water_Manager_crown.svg" alt={{cap}} class="chat-wm">
+												{{/if}}
+												{{this.profile.name}}
+											</button>
 										</div>
 									{{/if}}
 								{{/if}}

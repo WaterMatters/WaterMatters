@@ -28,7 +28,8 @@ Template.FormTransaction.helpers({
     var destinatairesArray = [];
     var villagesArray = [];
     for ( var i=1 ; i<9 ; i++ ){
-      villagesArray.push({label:String("Village " + i), value:String("village" + i)});
+      //villagesArray.push({label:String("Village " + i), value:String("village" + i)});
+      villagesArray.push({label:String(getName(i)), value:String("village" + i)});
     };
     var controllerArray = [];
     if(Meteor.user().roles[0]==='controller'){
@@ -38,7 +39,8 @@ Template.FormTransaction.helpers({
     if(Meteor.user().roles[0]==='village'){
       for( i=1 ; i<9 ; i++ ){
         if(i !== Number(Meteor.user().roles[1])){
-          destinatairesArray.push({label:String("Village " + i), value:String("village" + i)});
+          //destinatairesArray.push({label:String("Village " + i), value:String("village" + i)});
+          destinatairesArray.push({label:String(getName(i)), value:String("village" + i)});
         };
       };
       destinatairesArray.push({label:"Controller", value:"controller"});
@@ -89,3 +91,29 @@ var hooksObject = {
 };
 
 AutoForm.addHooks('TransactionForm', hooksObject);
+
+function getName(nb){
+  var name = "";
+  switch(nb)
+  {
+    case 1 : name += "Rivergate";
+      break;
+    case 2 : name += "Suncreek";
+      break;
+    case 3 : name += "Clearwater";
+      break;
+    case 4 : name += "Blueharvest";
+      break;
+    case 5 : name += "Starfields";
+      break;
+    case 6 : name += "Aquarun";
+      break;
+    case 7 : name += "Greenbounty";
+      break;
+    case 8 : name += "Moonbanks";
+      break;
+    default : name += 'Village ' + nb;
+      break;
+  }
+  return name;
+}

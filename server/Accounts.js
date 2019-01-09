@@ -22,6 +22,9 @@ var postSignUp = function(userId,info) {
               {_id:userId},
               {$set:{
                 "profile.game_id":gameId,
+                "profile.gameCode":info.profile.gameCode,
+                "profile.role":info.profile.role,
+                "profile.name": GetName(info.profile.role)
                 /*"profile.villageName":*/
               }}
             );
@@ -49,14 +52,49 @@ var postSignUp = function(userId,info) {
 AccountsTemplates.configure({
   postSignUpHook: postSignUp
 });
-/*
-Accounts.onLogin(function(test) {
-  console.log('Login complete!');
-  if(test.user.profile.role == "controller") {
-    gameId = test.user.profile.game_id;
-    Meteor.call("setTime", gameId, function (error, result) {
-        console.log("maj");
-    });
-  }
+
+Accounts.onCreateUser(function(options, user) {  
+  user.profile = {};
+
+  // we wait for Meteor to create the user before sending an email
+  Meteor.setTimeout(function() {
+    Accounts.sendVerificationEmail(user._id);
+  }, 2 * 1000);
+
+  return user; 
 });
-*/
+
+function GetName(data){
+  console.log(data);
+  var name = '';
+  if(data != 'controller')
+  {
+    data = data.substr(data.length -1);
+    console.log('data =' +data);
+    switch(data)
+    {
+      case '1' : name += "Rivergate";
+        break;
+      case '2' : name += "Suncreek";
+        break;
+      case '3' : name += "Clearwater";
+        break;
+      case '4' : name += "Blueharvest";
+        break;
+      case '5' : name += "Starfields";
+        break;
+      case '6' : name += "Aquarun";
+        break;
+      case '7' : name += "Greenbounty";
+        break;
+      case '8' : name += "Moonbanks";
+        break;
+      default : name += 'Village '+ data;
+        break;
+    }
+  } else {
+    name = "Controller";
+  }
+  
+  return name;
+}

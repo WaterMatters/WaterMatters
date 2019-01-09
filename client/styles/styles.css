@@ -701,6 +701,7 @@ input:-webkit-autofill {
 	font-family: 'SourceSP-xlight';
 	font-size: 30px;
 	white-space: nowrap;
+	margin-left: -20px;
 }
 
 .playerView
@@ -995,7 +996,7 @@ input:-webkit-autofill {
         transform: translate(0,-50%);
     top: 50%;
     margin: 0 auto;
-    z-index: 9999;
+    z-index: 9500;
 }
 
 #ChatBox-Body {
@@ -1003,11 +1004,33 @@ input:-webkit-autofill {
 	color : black;
 }
 
+.channel-header {
+	float : left;
+}
+
 .chat-wm {
 	width: 20px;
 	height: 20px;
-	margin-left: -10px;
+	margin-left: 0px;
     margin-top: -10px;
+}
+
+#chUsers, #chName {
+	display: inline-block;
+	font-family: 'SourceSP';
+	color: #0F667D;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+#chName { font-size: 24px; }
+#chUsers { font-size: 14px; }
+
+.btnDelete { color: #0F667D; position: absolute; margin-left : -20px; margin-top : 7px; color : grey; border : none; background-color: transparent; z-index: 9999}
+
+.chMembers {
+	color: #0F667D;
+	text-decoration: none;
 }
 
 .card-body{
@@ -1072,6 +1095,7 @@ input:-webkit-autofill {
  	width: 107px;
  	display: inline-block;
  	word-wrap: nowrap;
+ 	overflow-x: hidden;
  }
 
  .users-item:focus, .btn-chat-global:focus{
@@ -1097,7 +1121,7 @@ input:-webkit-autofill {
  	animation: bounce 0.35s ease infinite alternate;
  }
 
- .CB-dot-notifs {
+ .CB-dot-notifs, .CB-notifs {
  	width: 18px;
  	height: 58px;
  	background-image: url('/Chat/ExclamationPoint_RedStroke.png');
@@ -1344,4 +1368,3 @@ input:-webkit-autofill {
 	}
 
 }
-

@@ -24,7 +24,6 @@ Template.Header.helpers({
         tm = Timer.findOne({"gameId" : Meteor.user().profile.game_id});
         gm = Games.findOne({"code" : Meteor.user().profile.gameCode});
         st = gm.seasonTime;
-        //console.log(tm);
         if(typeof tm !== "undefined")
         {
           count = tm.ellapsed;
@@ -65,12 +64,11 @@ Template.Header.helpers({
             } 
             else 
             {
-              //Passage de saison ici !
-              Timer.update({"_id" : tm._id},{$set:{"ellapsed" : 0, "needle" : 1, "fill" : 0, "ready" : []}});
-              
               var presentAction = TimeLine.findOne({});
               // call the function nextStage in Index.js
               nextStage(presentAction);
+              //Passage de saison ici !
+              Timer.update({"_id" : tm._id},{$set:{"ellapsed" : 0, "needle" : 1, "fill" : 0, "ready" : []}}); 
               
               count = 0;
               needle = 1;
@@ -166,7 +164,7 @@ Timer.find().observe({
             break;
       }
 
-     /* var max = Games.findOne({"code" : String(Meteor.user().profile.gameCode)});
+      /* var max = Games.findOne({"code" : String(Meteor.user().profile.gameCode)});
       if(typeof max !== "undefined")
       {
         var timeLeft = (max.seasonTime*60)-newDoc.ellapsed;
@@ -185,7 +183,13 @@ Timer.find().observe({
       {
         isReady = false;
         $('.timer-ready').attr('src', '/Menu/End_turn_button_no.png'); //Set checkbox to false
-      }    
+      }  
+
+      if(newDoc.ellapsed == 0)
+      {
+        count = 0;
+        pos = 1;
+      }  
     }
   }
 });

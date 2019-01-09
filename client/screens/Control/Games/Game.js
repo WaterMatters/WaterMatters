@@ -27,7 +27,7 @@ Template.Game.helpers({
     return(this._id !== 'one')
   },
   createdWhen: function(){
-    var date = String(this.createdAt.getDate() + '/' + this.createdAt.getMonth() + '/' + this.createdAt.getFullYear());
+    var date = String(this.createdAt.getDate() + '/' + ((this.createdAt.getMonth() < 10 ? '0' : '') + (this.createdAt.getMonth()+1)) + '/' + this.createdAt.getFullYear());
     return date;
   },
   seasonTime:function(){
@@ -120,7 +120,7 @@ Template.Game.events({
       });
       //I do not do that for weatherCards because the controller could like the settings he/she chose
 
-      document.location.reload();
+      //document.location.reload();
     };
   },
   'click .export-data': function ( ) {

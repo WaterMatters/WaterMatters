@@ -8,7 +8,6 @@ import 'select2';
 import 'select2/dist/css/select2.css';
 
 
-
 Template.MainLayout.events({
   // the two functions concern all inputs of the game where the player will have to write an amount manually.
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////

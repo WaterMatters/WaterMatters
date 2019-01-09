@@ -12,7 +12,16 @@ newChannel['ids'] = [];
 
 var btnDown = "/Chat/Chat_village_button_down.png";
 var btnUp = "/Chat/Chat_village_button_up.png";
-
+var predefChan = [];
+predefChan[0] = "Rivergate";
+predefChan[1] = "Suncreek";
+predefChan[2] = "Clearwater";
+predefChan[3] = "Blueharvest";
+predefChan[4] = "Starfields";
+predefChan[5] = "Aquarun";
+predefChan[6] = "Greenbounty";
+predefChan[7] = "Moonbanks";
+predefChan[8] = "Controller";
 
 
  Template.ChatBox.helpers({
@@ -20,7 +29,9 @@ var btnUp = "/Chat/Chat_village_button_up.png";
     if(Meteor.user())
     {
       var ch = Session.get("activeRoom");
-  		return Messages.find({"gameId" : Meteor.user().profile.game_id, "channel": ch});
+      var msg = Messages.find({"gameId" : Meteor.user().profile.game_id, "channel" : ch});
+
+      return msg;
     }
 	},
   getUsers() {
@@ -36,8 +47,17 @@ var btnUp = "/Chat/Chat_village_button_up.png";
   },
   isController: function(player){
     return(player.profile.role === 'controller');
-  }
-     
+  },
+  isWM : function(role)
+  {
+    if(role[0] === "village"){
+      var village = Villages.findOne({village:Number(role[1])});
+      if(village.waterManager === true){
+        return true;
+      };
+    };
+    return false;
+  }     
 });
 
  Template.ChatBox.events({
@@ -79,10 +99,13 @@ var btnUp = "/Chat/Chat_village_button_up.png";
      $('#ChatBox-Body').scrollTop($('.media-list').height());
 	},
      'click .btn-create' : function(event, template){
+      if($('#iptChName').val().trim().length != 0)
+      {
         let room = Session.get('activeRoom');
         let game = Meteor.user().profile.game_id;
 
         Channels.insert({
+          owner : Meteor.userId(),
           name : newChannel['name'],
           users: newChannel['ids'],
           gameId : game
@@ -95,6 +118,9 @@ var btnUp = "/Chat/Chat_village_button_up.png";
         resetNewChannel();
 
         $("#newChannel").css("visibility", "hidden"); //Close window new channel
+      } else {
+        alert('Please, enter a name for this channel.');
+      }       
      },
      'click .close-newChannel' : function(event){
       $("#newChannel").css("visibility", "hidden"); //Close window new channel
@@ -115,16 +141,13 @@ var btnUp = "/Chat/Chat_village_button_up.png";
           newChannel['ids'] = removeA(newChannel['ids'], id);
           $('#'+id).css({"background-image" : 'url('+btnUp+')'}); //Set btn up if not
         }
-
-        //console.log(newChannel['ids']);
      }
  });
 
 
  Notifications.find().observe({
   added : function(doc) //Check if user is in channel. Then, check if he already saw the message
-  {
-    
+  {    
     var ch = Channels.findOne({"_id" : doc.channel, "gameId" : Meteor.user().profile.game_id}); 
     var inChannel = false;
     var sawMsg = false;
@@ -149,8 +172,7 @@ var btnUp = "/Chat/Chat_village_button_up.png";
           showNotif(ch._id, false)
       }
       BubbleChatNotif();
-    }
-    
+    }    
   },
   changed : function(newDoc, oldDoc)
   {
@@ -196,10 +218,12 @@ var btnUp = "/Chat/Chat_village_button_up.png";
   if(flag)
   {
     $(".CB-dot-notifs").css({"visibility" : "visible"});
+    $("#chatbubble-notifs").css({"visibility" : "visible"});
   }
   else
   {
     $(".CB-dot-notifs").css({"visibility" : "hidden"});
+    $("#chatbubble-notifs").css({"visibility" : "hidden"});
   }
  }
 
@@ -212,6 +236,7 @@ var btnUp = "/Chat/Chat_village_button_up.png";
   else
   {
     $("#n-"+id).css({"visibility" : "hidden"});
+    $("#chatbubble-notifs").css({"visibility" : "hidden"});
   }
  }
  function name(fonc, id) {
@@ -253,7 +278,6 @@ function alreadyChoosen(id) {
   return false
 }
 
-
 //Remove an element from an array
 function removeA(arr) {
     var what, a = arguments, L = a.length, ax;
@@ -271,4 +295,18 @@ function resetNewChannel() {
   newChannel['name'] = "";
   newChannel['ids'] = [];
   newChannel['ids'][0] = Meteor.user()._id;
+}
+
+function getID(name)
+{
+  if(Meteor.user())
+  {
+    var gid = Meteor.user().profile.game_id;
+    //console.log(gid);
+    var user = Meteor.users.findOne({"profile.game_id" : String(gid), "profile.name" : String(name)});
+    //console.log(user);
+    if(user !== undefined)
+      return user._id;
+  }
+  return;
 }

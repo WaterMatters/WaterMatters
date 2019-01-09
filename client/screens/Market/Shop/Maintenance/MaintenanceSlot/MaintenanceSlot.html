@@ -7,21 +7,24 @@
           <div class="maintenance-field">
             <img src="/Village/{{fieldContent fields}}.svg" class="crop-type">
           </div>
-          <div class="maintenanceSlot {{#if btnInactive}}inactive{{else}}pay-maintenance{{/if}}">
-            {{#if fefMax}}
-              You are at the maximum FEF value for this field
-            {{else}}
-
-              <a href="">
-                <img src="/Documents/MaintenanceCounter/MaintenanceCounter_button_up.png" class="maintenance-slot center">
-              </a>
-              <!--<p>
-                <span>+ 0,1 FEF</span>
-                <br>
-                <span>(1000 Pz.)</span>
-              </p>-->
-            {{/if}}
-          </div>
+          <div class="fieldFEF">FEF : {{myfef}}</div>
+          {{#if fefMax}}
+              <div class="fieldFEF">You are at the maximum FEF value for this field</div>
+          {{else}}
+            <div class="maintenanceSlot {{#if btnInactive}}inactive{{else}}pay-maintenance{{/if}}">
+              
+                
+                <a href="">
+                  <img src="/Documents/MaintenanceCounter/MaintenanceCounter_button_up.png" class="maintenance-slot center">
+                </a>
+                <!--<p>
+                  <span>+ 0,1 FEF</span>
+                  <br>
+                  <span>(1000 Pz.)</span>
+                </p>-->
+              
+            </div>
+          {{/if}}
         </div>
       </div>
 </template>

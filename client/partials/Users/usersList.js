@@ -90,9 +90,7 @@ Template.UsersList.helpers({
  },
  isWM : function(role)
  {
-    /*  console.log('passe isWM ====================');*/
     if(role[0] === "village"){
-      //console.log("isWM : " +role[1]);
       var village = Villages.findOne({village:Number(role[1])});
       if(village.waterManager === true){
         return true;
@@ -131,22 +129,12 @@ Template.UsersList.helpers({
       });
     }  
   },
-  createGlobal : function() {
-    var gl = Channels.findOne({"gameId" : Meteor.user().profile.game_id, "name" : "Global", "users" : "all"});
-    console.log(gl);
-    if(!gl)
-    {
-      gl = Channels.insert({
-        name : "Global",
-        users : 'all',
-        gameId : Meteor.user().profile.game_id,
-        owner : "Default"
-      });
-    }
+  isOwner : function(owner) {
+    if(owner == Meteor.userId())
+      return true;
 
-    Session.set('activeRoom', gl._id); //Définition du channel sur "Global Chat"
-    return gl._id;
-  } 
+    return false;
+  }
 });
 
 Template.UsersList.events({
@@ -171,7 +159,6 @@ Template.UsersList.events({
           }
      },
      'click .btn-chat-channel' : function(event){
-      console.log('passe');
         var id = event.currentTarget.id;
         var query = $("#n-"+id)
         var isShown = query.is(":visible");
@@ -181,14 +168,38 @@ Template.UsersList.events({
           if(notif)
           {
             var arr = notif.saw;
-            if($.inArray(String(Meteor.user()._id), arr) == -1)
+            if($.inArray(String(Meteor.user()._id), arr) == -1) {
               Notifications.update({"_id" : notif._id}, {$push: {"saw" : Meteor.user()._id}}); 
-          }          
+            }            
+          }  
+
+          var ch = Channels.findOne({"_id" : Session.get("activeRoom")});
+          $("#chName").html(ch.name); 
+
+          var tmp = '';
+
+          for(var j=0; j<ch.users.length; j++)
+          {
+            var u = Meteor.users.findOne({_id : ch.users[j]});
+            if(u !== undefined) {
+              if(j == ch.users.length-1)
+                tmp += u.profile.name;
+              else
+                tmp += u.profile.name + ', ';
+            }
+          }
+          $("#chUsers").attr('title', tmp); 
         }
         $('.media-list').scrollTop($('.media-list').height());
-     }
+     },
+     'click .btnDelete' : function(event) {
+      var del = confirm("Are you sure that you want to delete this channel ?");
+      if(del) {
+        var tmp = event.currentTarget.parentNode.lastElementChild.id;
+        Channels.remove({_id : String(tmp)})
+      }      
+    }
 });
-
 
 function getName(id)
 {

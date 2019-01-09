@@ -25,7 +25,6 @@ Template.Map.helpers({
     return Events.find({game_id:gameId, active:true, timing:0, event:{$in:['changeMainCanal', 'changeSecondaryCanal']}});
   },
   setVillagePosition: function(){
-    alert('passe');
     var xSize = 10;
     var ySize = 10;
     var mult = 5;

@@ -27,12 +27,12 @@
             <div class="row">
               <div class="maintenanceBox col-8 offset-1">
                 <div class="row">
-                  <!--{{#each fields}}-->
-                    {{>MaintenanceSlot fields="1"}}
-                    {{>MaintenanceSlot fields="2"}}
+                  {{#each fields}}
+                    {{>MaintenanceSlot}}
+                    <!--{{>MaintenanceSlot fields="2"}}
                     {{>MaintenanceSlot fields="3"}}
-                    {{>MaintenanceSlot fields="4"}}
-                  <!--{{/each}}-->
+                    {{>MaintenanceSlot fields="4"}}-->
+                  {{/each}}
                 </div>
               </div>
             </div>

@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
+import { Timer } from '../../imports/api/timer.js';
 
 
 Template.PlayerInfo.onCreated(function() {
@@ -54,7 +55,7 @@ Template.PlayerInfo.helpers({
           text = "Click on the arrow above to start the Game!";
         };
       } else if(presentAction.stage === 0){
-        text = "Buy the crops for this season and plan for water for Stage " + 1;
+        text = "Pay subsistence and buy the crops for this season. Manager plans water for Stage " + 1;
       } else if(presentAction.stage < 3){
         text = "Irrigate your fields and plan for water for Stage " + Number(presentAction.stage + 1);
       } else if(presentAction.stage === 3){
@@ -106,5 +107,8 @@ Template.PlayerInfo.events({
     var presentAction = TimeLine.findOne({});
     // call the function nextStage in Index.js
     nextStage(presentAction);
+
+    var tm = Timer.findOne({"gameId" : Meteor.user().profile.game_id});
+    Timer.update({"_id" : tm._id},{$set:{"ellapsed" : 0, "needle" : 1, "fill" : 0, "ready" : []}});
   },
 });

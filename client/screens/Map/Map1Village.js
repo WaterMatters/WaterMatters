@@ -129,7 +129,6 @@ Template.Map1Village.helpers({
     waterManager: function(nb)
     {
         var village = Villages.findOne({village:Number(nb)});
-      //alert('village = ' + nb + ' / wm = ' + village.waterManager);
         return village.waterManager;
     },
     isController : function()
@@ -145,7 +144,11 @@ Template.Map1Village.helpers({
       return true;
 
     return false;
-  }
+  },
+  isWM : function(v)
+  {
+    return v.waterManager;
+  },
 });
 
 

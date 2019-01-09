@@ -2,7 +2,7 @@
 	{{#if currentUser}}
 	<span class="usersListTitle">{{usersOnlineCount}} people online</span>
 	<div class="usersList">
-		<div class="users">
+		<!--<div class="users">
 		{{#each usersOnline}}
 			<div>
 				<div class="dot-notifs" id="n-{{id roles}}"></div>
@@ -15,11 +15,18 @@
 			</div>
 		{{/each}}
 		</div>
-		<span class="channelsListTitle">Channels</span>
+		<span class="channelsListTitle">Channels</span>-->
 		<div class="channels">
-			<div class="dot-notifs" id="n-9"></div><button type="button" class="btn users-item btn-user" id="9">Global Chat</button>
+			<!--<div class="dot-notifs" id="n-9"></div><button type="button" class="btn users-item btn-user" id="9">Global Chat</button>-->
 			{{#each channelsList}}
-				<div class="dot-notifs" id="n-{{this._id}}"></div><button class="btn btn-chat-channel btn-user users-item" id="{{this._id}}">{{this.name}}</button>
+				<div class="chLine">
+					{{#if isOwner this.owner}}
+						<button class="btnDelete" type="submit" value="{{this._id}}" style="float: left;">
+							<i class="fas fa-trash-alt"></i>
+						</button>
+					{{/if}}
+					<div class="dot-notifs" id="n-{{this._id}}"></div><button class="btn btn-chat-channel btn-user users-item" id="{{this._id}}">{{this.name}}</button>
+				</div>
 			{{/each}}
 		</div>		
 		<button type="button" class="btn btn-chat-newChannel">New Channel</button>

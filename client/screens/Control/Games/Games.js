@@ -68,7 +68,7 @@ Template.Games.events({
           });
       });
 
-      document.location.reload();
+      //document.location.reload();
     };
   },
 });

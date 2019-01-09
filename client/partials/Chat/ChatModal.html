@@ -2,11 +2,21 @@
 	<!-- Modal -->
 	<div class="modal fade" id="ChatModal">
 		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
+			<div class="modal-content"  style="max-height: 80vh;">
 
 				<!-- Modal Header -->
 				<div class="modal-header">
 					<div class="modal-title">CHAT</div>
+					<div class="channel-header">
+						<div>
+							<div id="chName">
+								Global chat 
+							</div>
+							<a id="chUsers" href="#" data-toggle="tooltip" data-placement="bottom" title="">
+								<i class="far fa-user" style="font-size: 16px"></i> 
+							</a>
+						</div>
+					</div>
 					<button type="button" class="btn close-chatmodal" data-dismiss="modal"></button>
 				</div>
 
@@ -14,7 +24,7 @@
 				<div class="modal-body">
 					<div class="container">
 						<div class="row">
-							<div class="col-12 col-sm-3 userCol">
+							<div class="col-12 col-sm-3 userCol" style="max-height: 70vh;">
 									{{> UsersList}}
 							</div>
 							<div class="col-12 col-sm-9">

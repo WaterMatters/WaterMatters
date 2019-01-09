@@ -2,7 +2,6 @@
 
 Template.RecoverPassword.events({
     'submit #change-password': function(event, template) {
-        alert('passe');
         var currentPassword,
             newPassword,
             newPasswordRepeated;

@@ -126,7 +126,6 @@ Template.SupplySlot.events({
     }
   },
   'click .clickable': function(event,template){
-    console.log("passe");
     var gameId = Meteor.user().profile.game_id;
     var village = Villages.findOne({village:Number(Meteor.user().roles[1])});
     var supplyCatDesired = event.target.id;

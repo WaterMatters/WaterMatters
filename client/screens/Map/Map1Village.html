@@ -1,10 +1,12 @@
 <template name="Map1Village">
 {{#if Template.subscriptionsReady}}
-  <div class="map-village-container {{#if storage this.village}}hastank{{else}}hasnotank{{/if}}" id="V{{this.village}}" style="left : {{setLeft this.village}}; top: {{setTop this.village}}">
+  <div class="map-village-container {{#if waterManager this.village}}{{#if storage this.village}}wmhastank{{else}}wmhasnotank{{/if}}{{else}}{{#if storage this.village}}hastank{{else}}hasnotank{{/if}}{{/if}}" id="V{{this.village}}" style="left : {{setLeft this.village}}; top: {{setTop this.village}}">
+
+    
     <div class="map-village-header">
-      <div class="village-name">
-          <!-- Village {{this.village}} --> 
-            {{this.village}}. {{name}}
+      <div class="village-name"  style="{{#if isWM this}}margin-left: -40px;{{/if}}">
+          <!-- Village {{this.village}} 
+            {{this.village}}.-->  {{name}}
             {{#if waterManager this.village}}
               <div class="village-water-manager">
                 <!--<img src="/Map/Water_Manager_crown_label.png" alt={{cap}} class="img-cap-map">-->
@@ -18,7 +20,8 @@
       {{else}}
       {{/if}}-->
     </div>
-    <div class="map-fields-area">
+    
+    <div class="map-fields-area" style="{{#if isWM this}}margin-left: -25px;{{/if}}">
       {{#if $.Session.equals 'see-map-toggle' 'opened'}}
         {{#if isController}}
           <div class="money">
