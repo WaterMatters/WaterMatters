@@ -1,4 +1,4 @@
-//The Game is programmed to last for 10 seasons max 
+//The Game is programmed to last for 10 seasons max
 //The Game is programmed for 4 fields per village
 //There are 8 villages in this game
 
