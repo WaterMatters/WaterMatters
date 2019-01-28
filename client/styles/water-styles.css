@@ -107,54 +107,99 @@
 {
 	height: 123px; 
 	/*border : 1px solid green;*/
+	display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 0px;
 }
 
 .simple 
 { 
 	background : url("/Documents/Irrigation/CropState_empty.png") no-repeat;
-	background-position: center; 
-	width: 26px;
-	height: 25px;
+	background-position: center;
 	text-align: center;
+	font-size: 12px;
 	overflow: hidden;
+	width : 26px;
+	height : 25px;
+	padding-top: 3px;
 }
 
+
 .good 
-{ 
+{ 	
 	background : url("/Documents/Irrigation/CropState_empty.png") no-repeat;
 	background-position: center; 
-	background-size: 110%;
-	background-color: #0fd37d;
+	text-align: center;
+	font-size: 12px;
+	overflow: hidden;
+	/*background-color: #0fd37d;*/
+	width : 26px;
+	height : 25px;
 	border-radius: 15px;
-	line-height: 25px;
-
 }
 .medium 
 { 
 	background : url("/Documents/Irrigation/CropState_empty.png") no-repeat;
 	background-position: center; 
-	background-size: 110%;
-	background-color: #ffd374;
+	text-align: center;
+	font-size: 12px;
+	overflow: hidden;
+	/*background-color: #ffd374;*/
+	width : 26px;
+	height : 25px;
 	border-radius: 15px;
-	line-height: 25px;
 }
 .poor 
 { 
 	background : url("/Documents/Irrigation/CropState_empty.png") no-repeat;
-	background-size: 110%;
-	background-position: center; 
-	background-color: #ff4c42;
+	background-position: center;
+	text-align: center;
+	font-size: 12px;
+	overflow: hidden;
+	/*background-color: #ff4c42;*/
+	width : 26px;
+	height : 25px;
 	border-radius: 15px;
-	line-height: 25px;
 }
 .dead 
 { 
 	background : url("/Documents/Irrigation/CropState_empty.png") no-repeat;
-	background-size: 110%;
-	background-position: center; 
-	background-color: lightgrey;
+	background-position: center;
+	text-align: center;
+	font-size: 12px;
+	overflow: hidden;
+	/*background-color: lightgrey;*/
+	width : 26px;
+	height : 25px;
 	border-radius: 15px;
-	line-height: 25px;
+}
+
+.bgGreen {background-color: #0fd37d;}
+.bgOrange {background-color: #ffd374;}
+.bgRed {background-color: #ff4c42;}
+.bgGrey {background-color: lightgrey;}
+.myBtn {
+	display: inline-block;
+	font-weight: 400;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-webkituser-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border : 1px solid transparent;
+	padding: 0.375rem 0.75rem;
+	line-height: 1.5;
+
+}
+
+.bgGreen, .bgOrange, .bgRed, .bgGrey {
+	margin-top : -5px;
+	margin-left: -8px;
+	width: 26px;
+	height: 25px;
+	padding-top : 5px;
 }
 
 .table-allocation, .table-allocation th, .table-allocation th td

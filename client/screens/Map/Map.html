@@ -1,5 +1,14 @@
 <template name="Map">
   {{#if Template.subscriptionsReady}}
+  {{#each users}}
+        <div class="authorList">
+            <h3>{{username}}</h3>
+            <h3>{{profile.email}}</h3>
+            <h3>{{profile.first_name}}</h3>    
+            <h3>{{profile.last_name}}</h3> 
+            <img src="{{profile.profilePic}}">
+       </div>
+{{/each}}
         <div class="unblur">
 
 <!--  The villages -->

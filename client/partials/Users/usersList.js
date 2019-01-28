@@ -1,5 +1,6 @@
 import { Channels } from '../../../imports/api/channels.js';
 import { Notifications } from '../../../imports/api/notifications.js';
+import { Messages } from '../../../imports/api/messages.js';
 Meteor.subscribe("channels");
 
 var actualWM = [];
@@ -196,7 +197,14 @@ Template.UsersList.events({
       var del = confirm("Are you sure that you want to delete this channel ?");
       if(del) {
         var tmp = event.currentTarget.parentNode.lastElementChild.id;
-        Channels.remove({_id : String(tmp)})
+        Channels.remove({_id : String(tmp)});
+        var notif_id = Notifications.findOne({"channel" : String(tmp)});
+        Notifications.remove({_id : notif_id._id});
+        var msg = Messages.find({channel : String(tmp)});
+        msg.forEach(function(doc){
+          Messages.remove({_id : doc._id});
+        });
+
       }      
     }
 });

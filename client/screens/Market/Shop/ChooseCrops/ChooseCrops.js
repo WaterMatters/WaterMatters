@@ -11,35 +11,44 @@ Template.ChooseCrops.onCreated(function() {
 
 Template.ChooseCrops.helpers({
   fields: function(){
-    var village = Villages.findOne({village:Number(Meteor.user().roles[1])});
+    var village = Villages.findOne({village:Number(Meteor.user().roles[1]), game_id : Meteor.user().profile.game_id});
     var villageNumber = village.village;
     var presentAction = TimeLine.findOne({});
     var season = presentAction.season;
     var stage = presentAction.stage;
-    return Fields.find({village: Number(villageNumber),season:Number(season),stage:Number(stage)});
+    var fields = Fields.find({village: Number(villageNumber),season:Number(season),stage:Number(stage), game_id : Meteor.user().profile.game_id});
+    return fields;
   },
   fieldsSt1: function(){
+    var village = Villages.findOne({village:Number(Meteor.user().roles[1]), game_id : Meteor.user().profile.game_id});
+    var villageNumber = village.village;
     var presentAction = TimeLine.findOne({});
     var season = presentAction.season;
-    return Fields.find({season:Number(season),stage:1});
+    return Fields.find({village: Number(villageNumber), season:Number(season),stage:1, game_id : Meteor.user().profile.game_id});
   },
   fieldsSt2: function(){
+    var village = Villages.findOne({village:Number(Meteor.user().roles[1]), game_id : Meteor.user().profile.game_id});
+    var villageNumber = village.village;
     var presentAction = TimeLine.findOne({});
     var season = presentAction.season;
-    return Fields.find({season:Number(season),stage:2});
+    return Fields.find({village: Number(villageNumber), season:Number(season),stage:2, game_id : Meteor.user().profile.game_id});
   },
   fieldsSt3: function(){
+    var village = Villages.findOne({village:Number(Meteor.user().roles[1]), game_id : Meteor.user().profile.game_id});
+    var villageNumber = village.village;
     var presentAction = TimeLine.findOne({});
     var season = presentAction.season;
-    return Fields.find({season:Number(season),stage:3});
+    return Fields.find({village: Number(villageNumber), season:Number(season),stage:3, game_id : Meteor.user().profile.game_id});
   },
   stagesRequests: function(){
+    var village = Villages.findOne({village:Number(Meteor.user().roles[1]), game_id : Meteor.user().profile.game_id});
+    var villageNumber = village.village;
     var stagesRequestsObject = {};
     var presentAction = TimeLine.findOne({});
     var sumStage = 0;
-    var fieldsStageOne = Fields.find({season:Number(presentAction.season),stage:1});
-    var fieldsStageTwo = Fields.find({season:Number(presentAction.season),stage:2});
-    var fieldsStageThree = Fields.find({season:Number(presentAction.season),stage:3});
+    var fieldsStageOne = Fields.find({village: Number(villageNumber),season:Number(presentAction.season),stage:1, game_id : Meteor.user().profile.game_id}).fetch();
+    var fieldsStageTwo = Fields.find({village: Number(villageNumber),season:Number(presentAction.season),stage:2, game_id : Meteor.user().profile.game_id}).fetch();
+    var fieldsStageThree = Fields.find({village: Number(villageNumber),season:Number(presentAction.season),stage:3, game_id : Meteor.user().profile.game_id}).fetch();
     //for stage 1
     fieldsStageOne.forEach(function(field){
       sumStage += field.request;
@@ -60,11 +69,13 @@ Template.ChooseCrops.helpers({
     return stagesRequestsObject;
   },
   fieldsRequests: function(){
+    var village = Villages.findOne({village:Number(Meteor.user().roles[1]), game_id : Meteor.user().profile.game_id});
+    var villageNumber = village.village;
     var fieldsRequestsArray = [0,0,0,0];
     var fieldsRequestsObject = {field1:0, field2:0, field3:0, field4:0};
     var presentAction = TimeLine.findOne({});
     var season = presentAction.season;
-    var fields = Fields.find({season:Number(season)});
+    var fields = Fields.find({season:Number(season), village : Number(villageNumber), game_id : Meteor.user().profile.game_id});
     fields.forEach(function(field){
       fieldsRequestsArray[Number(field.field-1)] += field.request;
       fieldsRequestsObject[String('field' + field.field)] += field.request;
@@ -72,11 +83,13 @@ Template.ChooseCrops.helpers({
     return fieldsRequestsObject;
   },
   totalRequest: function(){
+    var village = Villages.findOne({village:Number(Meteor.user().roles[1]), game_id : Meteor.user().profile.game_id});
+    var villageNumber = village.village;
     var totalRequest = 0;
     var presentAction = TimeLine.findOne({});
     var season = presentAction.season;
     for(var s=1;s<4;s++){
-      var fields = Fields.find({season:Number(season),stage:s});
+      var fields = Fields.find({season:Number(season),stage:s, village : Number(villageNumber), game_id : Meteor.user().profile.game_id});
       fields.forEach(function(field){
         totalRequest = totalRequest + field.request;
       });
@@ -84,6 +97,8 @@ Template.ChooseCrops.helpers({
     return totalRequest;
   },
   fieldsPrices: function(){
+    var village = Villages.findOne({village:Number(Meteor.user().roles[1]), game_id : Meteor.user().profile.game_id});
+    var villageNumber = village.village;
     var fieldsPricesArray = [];
     var fieldsPricesObject = {field1:0, field2:0, field3:0, field4:0};
     var presentAction = TimeLine.findOne({});
@@ -97,10 +112,12 @@ Template.ChooseCrops.helpers({
     return fieldsPricesObject;
   },
   totalPrice: function(){
+    var village = Villages.findOne({village:Number(Meteor.user().roles[1]), game_id : Meteor.user().profile.game_id});
+    var villageNumber = village.village;
      var presentAction = TimeLine.findOne({});
      var season = presentAction.season;
      var stage = presentAction.stage;
-     var fields = Fields.find({season:season, stage:stage});
+     var fields = Fields.find({season:season, stage:stage, village : Number(villageNumber), game_id : Meteor.user().profile.game_id});
      var totalPrice = 0;
      fields.forEach(function(field){
        var cropField = field.crop;
@@ -145,12 +162,13 @@ Template.ChooseCrops.helpers({
 
 Template.ChooseCrops.events({
   'input input': function(){ // change data base in function of the input
-        var village = Villages.findOne({village:Number(Meteor.user().roles[1])});
+        var village = Villages.findOne({village:Number(Meteor.user().roles[1]), game_id : Meteor.user().profile.game_id});
+        var villageNumber = village.village;
         var playerNumber = village.village;
         var gameId = Meteor.user().profile.game_id;
         var fieldId = String("s"+this.stage+"f"+this.field);
         var newRequest = Number(document.getElementById(fieldId).value);
-        var fieldsOfThisStageDocs = Fields.find({game_id:gameId, season:this.season, stage:this.stage});
+        var fieldsOfThisStageDocs = Fields.find({game_id:gameId, season:this.season, stage:this.stage, village : Number(villageNumber)});
         var stageRequest = 0;
         var fieldNumber = this.field;
         //Compute the water request for this village for this stage

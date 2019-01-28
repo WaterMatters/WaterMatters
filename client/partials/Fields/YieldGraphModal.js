@@ -37,62 +37,67 @@ Template.YieldGraphModal.helpers({
     };
   },
   stylesDotsArray: function(){
-    var stylesDotsArray = {};
-    var presentAction = TimeLine.findOne({});
-    var sessionData = Session.get('yieldGraphVariable');
-    if(typeof sessionData !== "undefined"){
-      var fieldsArray = Fields.find({season:presentAction.season, field:sessionData.field});
-      // put the styles of all four dots
-      var i = 0;
-      fieldsArray.forEach(function(fieldDoc){
-        var stage = fieldDoc.stage;
-        var cropObject = {};
-        //if the stage of the dot it bigger than the present Stage, don't display
-        if(fieldDoc.stage > presentAction.stage){
-          stylesDotsArray["st"+stage] = "display:none;";
-        } else {
-          if(fieldDoc.crop === "maize"){
-                var maize = {};
-                maize.y20="18%";
-                maize.y18="22%";
-                maize.y17="25%";
-                maize.y15="30%";
-                maize.y14="33%";
-                maize.y11="40%";
-                maize.y2="66%";
-                maize["y0"]="70.5%";
-                cropObject = maize;
-          };
-          if(fieldDoc.crop === "rice"){
-                var rice = {};
-                rice.y30="18%";
-                rice.y27="22%";
-                rice.y22="26%";
-                rice.y19="35%";
-                rice.y16="40%";
-                rice.y5="58.5%";
-                rice.y1="66.5%";
-                rice["y0"]="70.5%";
-                cropObject = rice;
-          };
-          if(fieldDoc.crop === "soybean"){
-                var soybean = {};
-                soybean.y10="18%";
-                soybean.y5="43%";
-                soybean.y3="52%";
-                soybean.y1="61.5%";
-                soybean["y0"]="70.5%";
-                cropObject = soybean;
-          };
-          var yieldField = fieldDoc.yield;
-          stylesDotsArray["st"+stage] = "top:" + cropObject[String("y" + yieldField)]+ ";";
+    if(Meteor.isClient)
+    {
+      var stylesDotsArray = {};
+      var presentAction = TimeLine.findOne({});
+      var sessionData = Session.get('yieldGraphVariable');
+      var villageNumber = Meteor.user().roles[1];
+      if(typeof sessionData !== "undefined"){
+        var fieldsArray = Fields.find({season:presentAction.season, field:sessionData.field,village:Number(villageNumber)});
+        // put the styles of all four dots
+        var i = 0;
+        fieldsArray.forEach(function(fieldDoc){
+          //console.log(fieldDoc);
+          var stage = fieldDoc.stage;
+          var cropObject = {};
+          //if the stage of the dot it bigger than the present Stage, don't display
+          if(fieldDoc.stage > presentAction.stage){
+            stylesDotsArray["st"+stage] = "display:none;";
+          } else {
+            if(fieldDoc.crop === "maize"){
+                  var maize = {};
+                  maize.y20="18%";
+                  maize.y18="22%";
+                  maize.y17="25%";
+                  maize.y15="30%";
+                  maize.y14="33%";
+                  maize.y11="40%";
+                  maize.y2="66%";
+                  maize["y0"]="70.5%";
+                  cropObject = maize;
+            };
+            if(fieldDoc.crop === "rice"){
+                  var rice = {};
+                  rice.y30="18%";
+                  rice.y27="22%";
+                  rice.y22="26%";
+                  rice.y19="35%";
+                  rice.y16="40%";
+                  rice.y5="58.5%";
+                  rice.y1="66.5%";
+                  rice["y0"]="70.5%";
+                  cropObject = rice;
+            };
+            if(fieldDoc.crop === "soybean"){
+                  var soybean = {};
+                  soybean.y10="18%";
+                  soybean.y5="43%";
+                  soybean.y3="52%";
+                  soybean.y1="61.5%";
+                  soybean["y0"]="70.5%";
+                  cropObject = soybean;
+            };
+            var yieldField = fieldDoc.yield;
+            stylesDotsArray["st"+stage] = "top:" + cropObject[String("y" + yieldField)]+ ";";
 
-        }
-        i += 1;
-      });
-      console.log(stylesDotsArray);
-      return stylesDotsArray;
-    };
+          }
+          i += 1;
+        });
+        //console.log(stylesDotsArray);
+        return stylesDotsArray;
+      };
+    }
   },
   topFigSupply: function(){
     var sessionData = Session.get('yieldGraphVariable');

@@ -223,8 +223,8 @@ Template.CanalEvent.events({
       Session.set('event-opened-id', '');
     };
   },
-  'click .repair': function(){
-      var idEvent = Session.get('event-opened-id');
+  /*'click .repair': function(event){
+     var idEvent = Session.get('event-opened-id');
       //find which game we're playing
       var gameId = Meteor.user().profile.game_id;
       // Create the transaction doc for each village for the financial records
@@ -233,5 +233,5 @@ Template.CanalEvent.events({
       Meteor.call('setActivityEvent', idEvent, false);
 
       Session.set('map-event-toggle.state','closed');
-  }
+  }*/
 });

@@ -126,13 +126,24 @@ Template.SupplySlot.events({
     }
   },
   'click .clickable': function(event,template){
+    console.log('ICI clickable !!!! id = ' + event.target.innerText);
+    console.log(event);
+    console.log(this);
+    var id = event.target.innerText;
+    if(id!='G'&&id!='M'&&id!='P')
+    {
+      id = event.target.id;
+    }
     var gameId = Meteor.user().profile.game_id;
     var village = Villages.findOne({village:Number(Meteor.user().roles[1])});
-    var supplyCatDesired = event.target.id;
+    var supplyCatDesired = id;//event.target.id;
     var cropObject = Crops.findOne({crop:this.crop});
     var cropSupplyStage = cropObject.supply[this.stage - 1];
     var supplyArray = cropSupplyStage[String("fef0" + 10*this.fef)];
-    var newSupply = supplyArray.find(x => x.supplyCategory === event.target.id).water;
+    console.log(cropSupplyStage);
+    console.log(supplyArray.find(x => x.supplyCategory === id));
+    console.log(id);
+    var newSupply = supplyArray.find(x => x.supplyCategory === String(id)/*event.target.id*/).water;
     var newWaterCredit = village.waterCredit - (newSupply - this.supply);
     // Collection Fields
     Meteor.call('changeSupply', gameId, this.village, this.field, this.season, this.stage, newSupply);

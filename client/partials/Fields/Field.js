@@ -70,6 +70,18 @@ Template.Field.helpers({
     if(this.supply >= 100){
       return true;
     };
+  },
+  potentialRevenue : function() {
+    
+      var price = 0;
+      if(this.crop !== 'fallow'){
+        var productionDoc = Production.findOne({crop:this.crop});
+        price = productionDoc.localMarketPrice;
+      } else {
+        price = 0;
+      };
+
+      return String(this.yield * price) + ' Pz';
   }
 })
 

@@ -447,6 +447,39 @@ input:-webkit-autofill {
 	margin-right: auto;
 }
 
+.iCloud {
+	font-family: "SourceSP-xlight";
+	text-align: center;
+}
+
+.iCloud-text {
+	font-size: 16px;
+	color :#0F667D;
+}
+
+.iCloud-title {
+	font-size: 22px;
+	color :#64D3DE;
+}
+
+.iCloud-event {
+	text-align: left;
+	font-size: 22px;
+	color :#64D3DE;
+}
+
+.iCloud-rain {
+	text-align: center;
+	font-size: 16px;
+	color :#0F667D;
+}
+
+.iCloud-modal-title {
+	font-size: 26px;
+	color :#63D0E6;
+}
+
+
 .cloud
 { 
 	position: absolute;
@@ -472,8 +505,9 @@ input:-webkit-autofill {
 {
 	display: none;
 	border-radius: 5px;
-	width : 150px;
-	height : 75px;
+	width : 300px;
+	height : 150px;
+	left: calc(50% - 150px);
 	background-color: #f2f2e7;
 	text-align: center;
 	margin : auto;
@@ -483,7 +517,7 @@ input:-webkit-autofill {
 {
 	color: #0f667d;
 	font-family: "SourceSP-xlight";
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: bold;
 	text-align: center;
 }
@@ -491,9 +525,10 @@ input:-webkit-autofill {
 .cloud-info
 {
 	color: #0f667d;
-	font-family: "SourceSP-xlight";
-	font-size: 12px;
+	font-family: "SourceSP";
+	font-size: 16px;
 	text-align: center;
+	margin-top : 15px;
 }
 
 /* PlayerInfo */
@@ -720,8 +755,8 @@ input:-webkit-autofill {
 
 .cropImage
 {
-	height : 90px; 
-	width : 76px;
+	height : 68px; 
+	width : 57px;
 }
 
 .cropInfo
@@ -729,7 +764,6 @@ input:-webkit-autofill {
 	width: 100%;
 	color: white;
 	font-family: 'SourceSP-xlight';
-	font-size: 16px;
 	position: relative;
 	top : 0;
 }
@@ -763,9 +797,39 @@ input:-webkit-autofill {
 	top : 0;
 }
 
+.credits-page {
+	text-align: left;
+	font-family: 'SourceSP';
+	font-size: 16px;
+	margin-bottom: 30px;
+
+}
+
+.blue {
+	color : #099DCE ;
+}
+
+.credits-page-img {
+	height : 39px;
+	float : left;
+	
+	margin-right : 10px;
+}
+
+.hc-logo {
+	text-align: center;
+	margin : 0 auto;
+	width : 150px;
+	height: 150px;
+}
+
 
 @media (min-width : 1900px) /* large screens only*/
 {
+
+	.cropInfo {
+		font-size: 16px;
+	}
 	
 
 	.drop{
@@ -818,7 +882,7 @@ input:-webkit-autofill {
 
 	.yield-graph-btn
 	{
-		margin-top : 15px;
+		margin-top : 5px;
 
 	}
 
@@ -839,6 +903,10 @@ input:-webkit-autofill {
 
 @media only screen and (min-width:301px) and (max-width: 1280px) /* Tablets only */
 {
+	.cropInfo {
+		font-size: 12px;
+	}
+
 	.img-village{
 		margin-top : 12%; 
 		width: 60%;
@@ -891,6 +959,10 @@ input:-webkit-autofill {
 
 @media only screen and (min-width:1281px) and (max-width: 1900px) /* Medium screens only */
 {
+	.cropInfo {
+		font-size: 13px;
+	}
+
 	.img-village{
 		margin-top : 12%; 
 		width: 50%;
@@ -998,6 +1070,37 @@ input:-webkit-autofill {
     margin: 0 auto;
     z-index: 9500;
 }
+
+#creditsModal .modal-dialog {
+	background-color: #f2f2e7;
+	color : black;
+    -webkit-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+        transform: translate(0,-50%);
+    top: 50%;
+    margin: 0 auto;
+    z-index: 9500;
+}
+
+.crd {
+	/*position: absolute;
+	bottom: 10px;
+	right: 20px;*/
+	font-family: 'SourceSP';
+	font-size : 18px;
+	text-decoration: underline;
+}
+
+.crd-ingame {
+	position: absolute;
+	bottom: 30px;
+	left: 2vw;
+	font-family: 'SourceSP';
+	font-size : 18px;
+	text-decoration: underline;
+	z-index: 9999;
+}
+
 
 #ChatBox-Body {
 	background-color: #f2f2e7;

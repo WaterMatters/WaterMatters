@@ -13,16 +13,20 @@
               //////////////////// -->
                   <div class="field-title">{{cropNameText}}</div>
                   <div class="cropField">
+                    
                     {{#if cropRice}}
-                      <img src="/Village/Crop_Rice.svg" alt={{this.crop}} class="cropImage">
+                      <img src="/Village/{{#if $eq this.supplyCategory 'D'}}Crop_Rice_black.svg{{/if}}{{#if $eq this.supplyCategory 'P'}}Crop_Rice_red.svg{{/if}}{{#if $eq this.supplyCategory 'M'}}Crop_Rice_orange.svg{{/if}}{{#if $eq this.supplyCategory 'G'}}Crop_Rice_green.svg{{/if}}" alt={{this.crop}} class="cropImage">
                     {{else}}
                       {{#if cropMaize}}
-                        <img src="/Village/Crop_corn.svg" alt={{this.crop}} class="cropImage">
+                      
+                        <img src="/Village/{{#if $eq this.supplyCategory 'D'}}Crop_corn_black.svg{{/if}}{{#if $eq this.supplyCategory 'P'}}Crop_corn_red.svg{{/if}}{{#if $eq this.supplyCategory 'M'}}Crop_corn_orange.svg{{/if}}{{#if $eq this.supplyCategory 'G'}}Crop_corn_green.svg{{/if}}" alt={{this.crop}} class="cropImage">
                       {{else}}
                         {{#if cropSoybean}}
-                          <img src="/Village/Crop_beans.svg" alt={{this.crop}} class="cropImage">
+                        
+                          <img src="/Village/{{#if $eq this.supplyCategory 'D'}}Crop_beans_black.svg{{/if}}{{#if $eq this.supplyCategory 'P'}}Crop_beans_red.svg{{/if}}{{#if $eq this.supplyCategory 'M'}}Crop_beans_orange.svg{{/if}}{{#if $eq this.supplyCategory 'G'}}Crop_beans_green.svg{{/if}}" alt={{this.crop}} class="cropImage">
                         {{else}}
-                          <img src="/Village/Crop_fallow.svg" alt={{this.crop}} class="cropImage">
+                        
+                          <img src="/Village/{{#if $eq this.supplyCategory 'D'}}Crop_fallow_black.svg{{/if}}{{#if $eq this.supplyCategory 'P'}}Crop_fallow_red.svg{{/if}}{{#if $eq this.supplyCategory 'M'}}Crop_fallow_orange.svg{{/if}}{{#if $eq this.supplyCategory 'G'}}Crop_fallow_green.svg{{/if}}" alt={{this.crop}} class="cropImage">
                         {{/if}}
                       {{/if}}
                     {{/if}}
@@ -38,12 +42,15 @@
               //////////////////////////////////////////////// -->
                 {{#if isStageZero}}
                   <div class="yield cropInfo" title='potential yield'><span>Pot. Yield = </span>{{this.yield}}</div>
+                  <div class="yield cropInfo" title='Potential yield'><span>Pot. Gain = </span>{{potentialRevenue}} </div>
                 {{else}}
                   {{#if isStageFour}}
                     <div class="yield cropInfo" title='final yield'><span>Final Yield = </span>{{this.yield}}</div>
+                    <div class="yield cropInfo" title='final yield'><span>Gain = </span>{{potentialRevenue}}</div>
                   {{else}}
                     <div class="waterSupply cropInfo" style="{{#if fitToField}}font-size:0.9em;{{/if}}"><span>Water Supply = </span>{{this.supply}}</div>
                     <div class="yield cropInfo" title='expected yield'><span>Exp. Yield = </span>{{this.yield}}</div>
+                    <div class="yield cropInfo" title='Potential yield'><span>Pot. Gain = </span>{{potentialRevenue}} </div>
                   {{/if}}
                 {{/if}}
             

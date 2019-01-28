@@ -5,6 +5,7 @@ Template.Irrigation.onCreated(function() {
     self.subscribe('fields');
     self.subscribe('timeLine');
     self.subscribe('water');
+    self.subscribe('transactions');
   });
 });
 
@@ -20,6 +21,17 @@ Template.Irrigation.helpers({
   presentAction: function(){
     var presentAction = TimeLine.findOne({});
     return presentAction;
+  },
+  myallocation: function(){
+    var presentAction = TimeLine.findOne({});
+    var season = presentAction.season;
+    var stage = presentAction.stage;
+    var village = Meteor.user().roles[1];
+    //var village = this.village;
+    var waterDoc = Water.findOne({season:season, stage:stage});
+    //take the allocation of the village
+    var allocVillage = waterDoc.allocation[village-1].value;
+    return allocVillage;
   },
   rain: function(){
     var presentAction = TimeLine.findOne({});
@@ -42,7 +54,7 @@ Template.Irrigation.helpers({
     var presentAction = TimeLine.findOne({});
     var season = presentAction.season;
     var stage = presentAction.stage;
-    var waterDoc = Water.findOne({season:season,stage:stage});
+    var waterDoc = Water.findOne({game_id:Meteor.user().profile.game_id,season:season,stage:stage});
     var allocation = waterDoc.allocation[Number(Meteor.user().roles[1])-1].value;
     return allocation;
   },
@@ -50,7 +62,7 @@ Template.Irrigation.helpers({
     var presentAction = TimeLine.findOne({});
     var season = presentAction.season;
     var stage = presentAction.stage;
-    var waterDoc = Water.findOne({season:season,stage:stage});
+    var waterDoc = Water.findOne({game_id:Meteor.user().profile.game_id,season:season,stage:stage});
     var received = waterDoc.received[Number(Meteor.user().roles[1])-1].value;
     return received;
   },
@@ -74,6 +86,28 @@ Template.Irrigation.helpers({
     var village = Villages.findOne({village: Number(Meteor.user().roles[1])});
     return village.storage;
   },
+  tradeAverage : function(){
+    var presentAction = TimeLine.findOne({});
+    var season = presentAction.season;
+    var stage = presentAction.stage;
+    var tr_received = Transactions.find({game_id:Meteor.user().profile.game_id, toWhom:String(Meteor.user().profile.role), season : presentAction.season, stage : presentAction.stage}).fetch();
+    var tr_sent = Transactions.find({game_id:Meteor.user().profile.game_id, who:String(Meteor.user().profile.role), season : presentAction.season, stage : presentAction.stage}).fetch();
+    //console.log(Meteor.user().profile.role);
+    //console.log(tr_sent);
+    var amount_received = 0;
+    var amount_sent = 0;
+    _.forEach(tr_received, function(item){
+      amount_received += item.quantity;
+    });
+
+    _.forEach(tr_sent, function(item){
+      amount_sent += item.quantity;
+    });
+
+    return (amount_received - amount_sent);
+
+  }
+
 });
 
 Template.Irrigation.events({

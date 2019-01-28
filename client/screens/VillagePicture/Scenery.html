@@ -18,15 +18,19 @@
 
 
     {{#if showRainAndCanal}}
-    <div class="cloud center">
-      <img src="/Village/Cloud.svg" id="RainingCloud">
-      <span class="text-in-cloud" id="TextCloud">{{rain}}</span>
-      <div class="cloud-panel">
-          <span class="cloud-info-title">{{rainEvent.name}}</span>
-          <br>
-          <span class="cloud-info center">{{rainEvent.description}}</span>
-      </div>
-    </div>
+      {{#if thereIsARainEvent}}
+        <div class="cloud center">
+          <img src="/Village/Cloud.svg" id="RainingCloud" data-toggle="modal" data-target="#mcloud">
+          <span class="text-in-cloud" id="TextCloud"  data-toggle="modal" data-target="#mcloud">{{rain}}</span>
+          <!--
+          <div class="cloud-panel">
+              <span class="cloud-info-title">{{rainEvent.name}}</span>
+              <br>
+              <span class="cloud-info center">{{rainEvent.description}}</span>
+          </div>
+        -->
+        </div>
+      {{/if}}
     <!--
             <div class="rain-on-screen">
               <div class="stacked-icons">
@@ -54,5 +58,6 @@
           <span class="tank-capacity">{{storage.value}} / {{storage.capacity}}</span>
     {{/if}}
     {{> Fields}}
+    {{> Cloud}}
 
 </template>

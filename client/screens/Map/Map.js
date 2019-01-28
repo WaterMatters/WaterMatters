@@ -6,6 +6,7 @@ Template.Map.onCreated(function() {
     self.subscribe('villages');
     self.subscribe('crops');
     self.subscribe('events');
+    self.subscribe('fields');
   });
 });
 

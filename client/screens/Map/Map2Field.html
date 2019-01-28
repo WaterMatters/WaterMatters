@@ -1,13 +1,13 @@
 <template name="Map2Field">
-        <div class="map-field" title={{this.crop}}>
-          {{#if cropRice}}
-          <img src="/Village/Crop_Rice.svg" alt={{this.crop}} class="img-field">
+        <div class="map-field" title={{data.crop}}>
+          {{#if cropRice data}}
+          <img src="/Village/{{#if $eq data.supplyCategory 'D'}}Crop_Rice_black.svg{{/if}}{{#if $eq data.supplyCategory 'P'}}Crop_Rice_red.svg{{/if}}{{#if $eq data.supplyCategory 'M'}}Crop_Rice_orange.svg{{/if}}{{#if $eq data.supplyCategory 'G'}}Crop_Rice_green.svg{{/if}}" alt="{{data.crop}}" class="img-field">
           {{/if}}
-          {{#if cropMaize}}
-          <img src="/Village/Crop_corn.svg" alt={{this.crop}} class="img-field">
+          {{#if cropMaize data}}
+          <img src="/Village/{{#if $eq data.supplyCategory 'D'}}Crop_corn_black.svg{{/if}}{{#if $eq data.supplyCategory 'P'}}Crop_corn_red.svg{{/if}}{{#if $eq data.supplyCategory 'M'}}Crop_corn_orange.svg{{/if}}{{#if $eq data.supplyCategory 'G'}}Crop_corn_green.svg{{/if}}" alt="{{data.crop}}" class="img-field">
           {{/if}}
-          {{#if cropSoybean}}
-          <img src="/Village/Crop_beans.svg" alt={{this.crop}} class="img-field">
+          {{#if cropSoybean data}}
+          <img src="/Village/{{#if $eq data.supplyCategory 'D'}}Crop_beans_black.svg{{/if}}{{#if $eq data.supplyCategory 'P'}}Crop_beans_red.svg{{/if}}{{#if $eq data.supplyCategory 'M'}}Crop_beans_orange.svg{{/if}}{{#if $eq data.supplyCategory 'G'}}Crop_beans_green.svg{{/if}}" alt="{{data.crop}}" class="img-field">
           {{/if}}
         </div>
 </template>

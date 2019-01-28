@@ -45,7 +45,7 @@
                                 {{>ParticipationEvent}}
                             {{/each}}
                             {{#if waterManager}}
-                              <button type="button" class="btn {{btnInactive}} {{#if isEnough}}repair{{/if}}" name="button"></button>
+                              {{>Repair}}
                             {{else}}
                             {{/if}}
                         </div>
@@ -122,4 +122,5 @@
           </div>
         </div>
     {{/if}}
+
 </template>

@@ -12,13 +12,16 @@
             <div class="irrigationInfos col-12"> 
               <div class="center"> 
                 <div class="right">        
-                  <span>Rain : {{rain}}</span><br>
+                  <!--<span>Rain : {{rain}}</span><br>
                   <span>Water allocated to you: {{allocation}}</span><br>
-                  <span>Water you actually received: {{received}}</span>
+                  <span>Water you actually received: {{received}}</span>-->
+                  <span>Water from canal : {{myallocation}}</span><br>
+                  <span>Water traded : {{tradeAverage}}</span><br>
+                  <span>Water available this stage : {{received}}</span>
                 </div> 
               </div> 
             </div>
-            <span style="font-weight:bold;text-decoration:underline;margin-left : 20px;">Manage your water</span><br>
+            <!--<span style="font-weight:bold;text-decoration:underline;margin-left : 20px;margin-top : 20px">Manage your water</span><br>
             <div class="manage-water col-12" style=" margin-bottom: 25px;">       
               <div class="center"> 
                 <div class="right">       
@@ -28,10 +31,16 @@
                   {{/if}}
                 </div>
               </div>
-            </div>
+            </div>-->
+
+            {{#if $gt storage.capacity 0}}
+              <div style="margin-left : 100px; margin-top: 15px;">
+                <span>Storage: <input type="number" class="input-manual storage-input" min="0" max="{{storage.capacity}}" value="{{storage.value}}"></span>
+              </div>
+            {{/if}}
           </div>
 
-          <div class="water-irrigation" style="display: flex;">
+          <div class="water-irrigation" style="display: flex;margin-top: 10px;">
               <div class="row" >
                 {{#each fields}}
                       {{> SupplySlot}}

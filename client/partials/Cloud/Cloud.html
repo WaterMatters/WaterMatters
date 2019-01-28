@@ -1,0 +1,41 @@
+<template name="Cloud">
+	<!-- Trigger the modal with a button 
+	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#cloudModal">Credits</button>-->
+
+	<div class="modal fade" id="mcloud" role="dialog">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h7 class="iCloud-modal-title">Rain informations</h7>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					
+				</div>
+				<div class="modal-body" style="text-align: center">
+					{{#if isARainEvent}}
+						<span class="iCloud-title">{{rainEvent.name}}</span><br>
+						<span class="iCloud-text">{{rainEvent.description}}</span>
+						<hr>
+						{{#if isRaining}}
+							{{#with rainInfos}}
+								<p class="iCloud-rain">It rained {{rain}} units on your fields. The rain event adds {{rainModif}} units.</p>
+							{{/with}}
+						{{/if}}
+					{{else}}
+						{{#if isRaining}}
+							{{#with rainInfos}}
+								<p class="iCloud-rain">It rained {{rain}} units on your fields.</p>
+							{{/with}}
+						{{/if}}
+					{{/if}}
+				</div>
+				<!--<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>-->
+			</div>
+			
+		</div>
+	</div>
+	
+
+	
+</template>

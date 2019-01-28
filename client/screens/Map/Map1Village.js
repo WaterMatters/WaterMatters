@@ -7,6 +7,7 @@ Template.Map1Village.onCreated(function() {
   self.autorun(function() {
     self.subscribe('villages');
     self.subscribe('timeLine');
+    self.subscribe('fields');
   });
 });
 
@@ -149,6 +150,59 @@ Template.Map1Village.helpers({
   {
     return v.waterManager;
   },
+  checkIdle : function(v)
+  {
+    var user = Meteor.users.findOne({"profile.game_id" : Meteor.user().profile.game_id, "profile.role" : "village"+v.village});
+    var result = false;
+
+    if(user.status.idle == false)
+    {
+      result = true; //Online and active
+    }
+
+    //console.log("Village " + v.village + " : " + result);
+    return result;
+  },
+  isConnected : function(v)
+  {
+    var user = Meteor.users.findOne({"profile.game_id" : Meteor.user().profile.game_id, "profile.role" : "village"+v.village});
+    var result = false;
+    if(user !== undefined)
+    {
+      result = true;
+    }
+    return result;
+  },/*
+  isRegistered : function(v) {
+    var result = true;
+    var user = Meteor.users.findOne({"profile.game_id" : Meteor.user().profile.game_id, "profile.role" : "village"+v.village});
+    console.log(user);
+    if(user == undefined)
+    {
+      result = false;
+    }
+    return result;
+  },*/
+  villageNb : function(v){
+    return v.village;
+  },
+  fields: function(d){
+    var village = Villages.findOne({village:Number(d.village)});
+    if(typeof village !== 'undefined'){
+      var villageNumber = village.village;
+      var presentAction = TimeLine.findOne({});
+      if(typeof presentAction !== 'undefined'){
+        var season = presentAction.season;
+        var stage = presentAction.stage;
+        if(stage < 4){
+          var fields = Fields.find({village: Number(villageNumber),season:Number(season),stage:Number(stage)});
+        } else {
+          var fields = Fields.find({village: Number(villageNumber),season:Number(season),stage:Number(stage-1)});
+        }
+        return fields;
+      };
+    };
+  }
 });
 
 

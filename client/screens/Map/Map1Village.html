@@ -2,25 +2,33 @@
 {{#if Template.subscriptionsReady}}
   <div class="map-village-container {{#if waterManager this.village}}{{#if storage this.village}}wmhastank{{else}}wmhasnotank{{/if}}{{else}}{{#if storage this.village}}hastank{{else}}hasnotank{{/if}}{{/if}}" id="V{{this.village}}" style="left : {{setLeft this.village}}; top: {{setTop this.village}}">
 
-    
     <div class="map-village-header">
       <div class="village-name"  style="{{#if isWM this}}margin-left: -40px;{{/if}}">
           <!-- Village {{this.village}} 
             {{this.village}}.-->  {{name}}
+            <!--{{#if isRegistered this}} Est enregistré ! {{/if}}-->
+            {{#if isConnected this}}
+              {{#if checkIdle this}}
+                <span class="dot-online" title="Online"></span>
+              {{else}}
+                <span class="dot-idle" title="Idle"></span>
+              {{/if}}
+            {{else}}
+              <span class="dot-notonline" title="Offline"></span>
+            {{/if}}
             {{#if waterManager this.village}}
               <div class="village-water-manager">
                 <!--<img src="/Map/Water_Manager_crown_label.png" alt={{cap}} class="img-cap-map">-->
               </div>
             {{/if}}
       </div>
-      <!--{{#if $.Session.equals 'see-map-toggle' 'opened'}}
+      <!--{{#if $.Session.equals 'see-map-toggle' 'opened'}} 
         <div>
           Money = {{this.money}} Pz.
         </div>
       {{else}}
       {{/if}}-->
     </div>
-    
     <div class="map-fields-area" style="{{#if isWM this}}margin-left: -25px;{{/if}}">
       {{#if $.Session.equals 'see-map-toggle' 'opened'}}
         {{#if isController}}
@@ -32,14 +40,20 @@
             {{this.money}} Pz.
           </div>
         {{else}}
-            {{#each this.crops}}
+            <!--{{#each this.crops}}
                 {{> Map2Field}}
+            {{/each}}-->
+            {{#each fields this}}
+              {{> Map2Field data=this}}
             {{/each}}
         {{/if}}
       {{else}}
-        {{#each this.crops}}
+        <!--{{#each this.crops}}
             {{> Map2Field}}
-        {{/each}}
+        {{/each}}-->
+        {{#each fields this}}
+              {{> Map2Field data=this}}
+            {{/each}}
       {{/if}}
 <!--
       {{#if displayFields}}

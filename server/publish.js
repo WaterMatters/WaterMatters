@@ -17,6 +17,9 @@ Messages.allow({
   insert:function(userId, doc){
     console.log("userId : " + userId + "\n doc : " + doc);
     return true;    
+  },
+  remove:function(){
+    return true;
   }
 });
 
@@ -37,6 +40,9 @@ Notifications.allow({
     return true;    
   },
   update:function(userId, doc) {
+    return true;
+  },
+  remove:function(){
     return true;
   }
 });
@@ -128,12 +134,15 @@ Meteor.publish('timeLine', function(){ //publish timeLine of a specific game
 Meteor.publish('fields', function(){ // deliver only the field documents of the village
   if(Meteor.userId()){
     var gameId = Meteor.user().profile.game_id;
+    /*
     if (Meteor.user().roles[0] === 'village'){
         return Fields.find({game_id:gameId, village:Number(Meteor.user().roles[1])});
     }
     else{
         return Fields.find({game_id:gameId});
     };
+    */
+    return Fields.find({game_id:gameId});
   };
 });
 

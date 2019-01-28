@@ -380,6 +380,36 @@
 		width: 80px;
 		height: 79px;
 	}
+
+	.dot-online {
+		width: 15px;
+		height: 15px;
+		border-radius: 15px;
+		background-color: green;
+		position: absolute;
+		margin-left : 10px;
+		margin-top : 10px;
+	}
+
+	.dot-notonline {
+		width: 15px;
+		height: 15px;
+		border-radius: 15px;
+		background-color: red;
+		position: absolute;
+		margin-left : 10px;
+		margin-top : 10px;
+	}
+
+	.dot-idle {
+		width: 15px;
+		height: 15px;
+		border-radius: 15px;
+		background-color: yellow;
+		position: absolute;
+		margin-left : 10px;
+		margin-top : 10px;
+	}
 }
 
 @media only screen and (min-width:301px) and (max-width: 1280px) /* Tablets only */
@@ -440,6 +470,36 @@
 		font-size: 16px;
 		margin-left: 0px;
 	}
+
+	.dot-online {
+		width: 15px;
+		height: 15px;
+		border-radius: 15px;
+		background-color: green;
+		position: absolute;
+		margin-left : 5px;
+		margin-top : 5px;
+	}
+
+	.dot-notonline {
+		width: 15px;
+		height: 15px;
+		border-radius: 15px;
+		background-color: red;
+		position: absolute;
+		margin-left : 5px;
+		margin-top : 5px;
+	}
+
+	.dot-idle {
+		width: 15px;
+		height: 15px;
+		border-radius: 15px;
+		background-color: yellow;
+		position: absolute;
+		margin-left : 5px;
+		margin-top : 5px;
+	}
 }
 
 @media only screen and (min-width:1281px) and (max-width: 1600px) /* Medium screens only */
@@ -499,6 +559,36 @@
 	{
 		font-size: 16px;
 		margin-left: 2px;
+	}
+
+	.dot-online {
+		width: 15px;
+		height: 15px;
+		border-radius: 15px;
+		background-color: green;
+		position: absolute;
+		margin-left : 5px;
+		margin-top : 5px;
+	}
+
+	.dot-notonline {
+		width: 15px;
+		height: 15px;
+		border-radius: 15px;
+		background-color: red;
+		position: absolute;
+		margin-left : 5px;
+		margin-top : 5px;
+	}
+
+	.dot-idle {
+		width: 15px;
+		height: 15px;
+		border-radius: 15px;
+		background-color: yellow;
+		position: absolute;
+		margin-left : 5px;
+		margin-top : 5px;
 	}
 }
 
