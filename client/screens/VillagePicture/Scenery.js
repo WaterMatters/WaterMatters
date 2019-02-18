@@ -60,7 +60,7 @@ Template.Scenery.helpers({
     var eventRain = Events.findOne({game_id : Meteor.user().profile.game_id, season:presentAction.season, stage:presentAction.stage, event:'changeRain'});
     var thereIsARainEvent = false;
 
-    console.log(eventRain);
+    //console.log(eventRain);
     
     if(eventRain !== undefined && String(eventRain.where).indexOf(String(village)) !== -1 ){
       thereIsARainEvent = true;

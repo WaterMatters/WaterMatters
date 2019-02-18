@@ -68,7 +68,7 @@ Template.Irrigation.helpers({
   },
   canStayOnIrrigation: function(){
     var presentAction = TimeLine.findOne({});
-    if(presentAction.stage < 4 && presentAction.stage > 0){
+    if(presentAction.stage < 4 && presentAction.stage >= 0){
       return true;
     } else {
       Session.set('view', 'village');
